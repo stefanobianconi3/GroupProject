@@ -1,29 +1,17 @@
-# README #
+# Pros Chain #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+This repository is only for learning purposes. Any other activity is not allowed.
 
-### What is this repository for? ###
+# Description #
 
-* Project Work PROS-Chain, piattaforma di analisi e modellazione BPMN
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+This project is intended to create a single-page application for BPMN activities.
 
-### How do I get set up? ###
+### Phases ###
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+This section will contain all the phases of the project
 
-### Contribution guidelines ###
+# Phase 1 #
 
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+1. Gestione Login
+2. Gestione File (visualizzazione e salvataggio modelli)
+3. Inclusione editore bpmn.io
