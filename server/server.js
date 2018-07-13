@@ -2,6 +2,7 @@ const https = require('https')
 const fs = require('fs')
 
 const {app} = require('./src/app')
+const port = 8443
 
 const sslOptions = {
 	key: fs.readFileSync(),
@@ -9,4 +10,4 @@ const sslOptions = {
 }
 
 let httpsServer = https.createServer(sslOptions, app)
-httpsServer.listen(443, () => console.log(`HTTP server at localhost: 3001\n`))
+httpsServer.listen(port, () => console.log('HTTPS server at localhost: '+port+'\n'))
