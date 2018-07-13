@@ -5,9 +5,9 @@ const {app} = require('./src/app')
 const port = 8443
 
 const sslOptions = {
-	key: fs.readFileSync(),
-	cert: fs.readFileSync()
+	key: fs.readFileSync('./certificate/key.pem'),
+	cert: fs.readFileSync('./certificate/cert.pem')
 }
 
 let httpsServer = https.createServer(sslOptions, app)
-httpsServer.listen(port, () => console.log('HTTPS server at localhost: '+port+'\n'))
+httpsServer.listen(port, () => console.log(`HTTP server at localhost: `+port+"\n"))
