@@ -8,10 +8,10 @@ body{
 }
 .logo{
 	color: white;
-	margin: 0;
-	font-size: 20px;
+	margin-top: -13px;
+	font-size: 40px;
 	padding: 4px 0;
-	padding-bottom: 15px;
+	padding-bottom: 10px;
 
 }
 .login-bottom-text{
