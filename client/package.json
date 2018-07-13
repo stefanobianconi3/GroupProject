@@ -1,0 +1,14 @@
+{
+  "name": "pros-chain-client",
+  "version": "0.0.1",
+  "description": "Client del progetto Pros Chain",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "client"
+  ],
+  "author": "Stefano Bianconi, Gian Marco Pazzaglia, Daniele Moscati",
+  "license": "MIT"
+}
