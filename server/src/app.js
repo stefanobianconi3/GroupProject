@@ -29,6 +29,10 @@ dbConnect().catch((e) => {
 
 /* ROUTES */
 
+app.get('/', function (req, res) {
+    res.send('o hai!')
+})
+
 // Routers
 
 module.exports = {app}
