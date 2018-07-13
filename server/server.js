@@ -1,6 +1,8 @@
 const https = require('https')
 const fs = require('fs')
 
+const {app} = require('./src/app')
+
 const sslOptions = {
 	key: fs.readFileSync(),
 	cert: fs.readFileSync()
