@@ -31,7 +31,4 @@ dbConnect().catch((e) => {
 
 // Routers
 
-// Middleware to catch errors
-app.use(checkRoute)
-
 module.exports = {app}
