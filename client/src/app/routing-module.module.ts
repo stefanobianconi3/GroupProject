@@ -6,6 +6,7 @@ import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 import { HomePageComponent } from 'src/app/components/home-page/home-page.component';
 import { DashboardComponent } from 'src/app/components/dashboard/dashboard.component';
 import {RouteGuardService} from 'src/app/route-guard.service';
+import { SigninComponent } from './components/signin/signin.component';
 const routes: Routes = [
   {
     path:'homepage',
@@ -21,6 +22,10 @@ const routes: Routes = [
     path: '',
     redirectTo: 'homepage',
     pathMatch: 'full'
+  },
+  {
+  path: 'homepage/Signin',
+  component: SigninComponent
   }
 ];
 
@@ -39,7 +44,7 @@ const routes: Routes = [
     RouteGuardService
   ],
 
-  declarations: []
+  declarations: [SigninComponent]
 })
 export class RoutingModuleModule {
   

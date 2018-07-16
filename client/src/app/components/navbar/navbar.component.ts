@@ -12,6 +12,9 @@ export class NavbarComponent implements OnInit {
 login(){
   this.route.navigate(['homepage','dashboard'])
 }
+signin(){
+  this.route.navigate(['homepage','Signin'])
+}
   ngOnInit() {
   }
 
