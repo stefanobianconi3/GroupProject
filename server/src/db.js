@@ -3,7 +3,8 @@ var mysql = require('mysql');
 var connection = mysql.createConnection({
     host: 'sql7.freemysqlhosting.net',
     user: 'sql7247495',
-    password: 'nZcB2fCzNY'
+    password: 'nZcB2fCzNY',
+    database: 'sql7247495'
 });
 
 const dbConnect = async () => {
