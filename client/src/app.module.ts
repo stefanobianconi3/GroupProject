@@ -5,23 +5,9 @@ import { AppComponent } from './app/components/app/app.component';
 import { NavbarComponent } from './app/components/navbar/navbar.component';
 import { HomePageComponent } from './app/components/home-page/home-page.component';
 import { DashboardComponent } from 'src/app/components/dashboard/dashboard.component';
+import { RoutingModuleModule } from 'src/routing-module.module';
 
-const routes: Routes = [
-  {
-    path:'homepage',
-    component: HomePageComponent,
 
-  },
-  {
-    path: 'homepage/dashboard',
-    component: DashboardComponent
-  },
-  {
-    path: '',
-    redirectTo: 'homepage',
-    pathMatch: 'full'
-  }
-];
 
 @NgModule({
   declarations: [
@@ -32,7 +18,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)
+    RoutingModuleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
