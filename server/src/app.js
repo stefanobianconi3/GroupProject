@@ -29,9 +29,10 @@ dbConnect().catch((e) => {
 
 /* ROUTES */
 
-app.get('/', function (req, res) {
-    res.send('hello world');
-});
+const authRoute = require("./routes/auth")
+
 // Routers
+// Auth API
+app.use('/api/auth', authRoute)
 
 module.exports = {app}
