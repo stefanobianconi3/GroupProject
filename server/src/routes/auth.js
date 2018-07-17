@@ -9,7 +9,6 @@ const { encryptionOptions } = require('../config/encryptionOptions')
 const { connection } = require('../db')
 
 router.post('/login', async (req, res) => {
-    let userPass = req.body.password
     connection.query("select * from users where email = ? ;", [req.body.email], function (err, results, fields) {
         if (err) {
             res.send({
@@ -23,7 +22,7 @@ router.post('/login', async (req, res) => {
                     error: "No user found with this email"
                 })
             } else {
-                let correctPass = bcrypt.compareSync(userPass, results[0].pass)
+                let correctPass = bcrypt.compareSync(req.body.password, results[0].pass)
                 if (correctPass) {
                     res.send({
                         success: true,
