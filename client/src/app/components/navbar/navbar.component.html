@@ -2,31 +2,41 @@
     <div class="container">
 	<div class="row">
 		<div class="col-sm-6">
-			<a><div class="logo" (click)="toHome()">ProsChain</div></a>
+			<div class="logo">ProsChain</div>
 		</div>
 		<div class="col-sm-6 hidden-xs">
+			<form  name="loginForm" #f="ngForm" (ngSubmit)="logIn(f)" >
 			<div class="row">
 				<div class="col-sm-5">
-					  <div class="form-group">
-					    <input *ngIf="!isLogged" type="text" class="form-control" placeholder="Email Address">
-					    <div class="login-bottom-text checkbox hidden-sm">
+					  <div *ngIf="!isLogged" class="form-group">
+					    <input required type="email" name="email"  ngModel #email="ngModel" id="email"  class="form-control" placeholder="Email Address" >
+							<div *ngIf="email.dirty && email.touched && email.invalid" >
+								<div class="alert-danger" *ngIf="email.errors.required">Email required</div>
+								<div class="alert-danger" *ngIf="email.errors.email">Email incorrect</div>
+							</div>
+							<div class="login-bottom-text checkbox hidden-sm">
 						  </div>
 					  </div>
 				</div>	
-				<div class="col-sm-5">
+				<div *ngIf="!isLogged" class="col-sm-5">
 					 <div class="form-group">
-					    <input *ngIf="!isLogged" type="text" class="form-control" placeholder="Password">
-					    <div *ngIf="!isLogged" class="login-bottom-text hidden-sm"> Forgot your password?  </div>
+					    <input required minlength="6"  type="password" ngModel #email="ngModel" id="password"  class="form-control" placeholder="Password">
+							<div *ngIf="password.dirty && password.touched && password.invalid" >
+									<div class="alert-danger" *ngIf="password.errors.required">Password required</div>
+									<div class="alert-danger" *ngIf="password.errors.email">Password incorrect</div>
+								</div>
+							<div  class="login-bottom-text hidden-sm"> Forgot your password?  </div>
 					  </div>
 				</div>
 				<div class="col-sm-2">
 					 <div class="btn-group">
-							<button *ngIf="!isLogged" type="button" value="Login" class="btn btn-outline-dark" (click)="login()">Login</button>
+							<button *ngIf="!isLogged" type="submit" [disabled]="!f.valid" value="Login" class="btn btn-outline-dark">Login</button>
 							<button *ngIf="isLogged" type="button" value="Logout" class="btn btn-outline-dark" (click)="logout($event)">logout</button>
 							<button *ngIf="!isLogged" type="button" value="Sign In" class="btn btn-outline-dark" (click)="signin()" >Sign In</button> 
 					 </div>
 				</div>
 			</div>	
+			</form>
 		</div>
 	</div>
 	</div>

@@ -7,7 +7,7 @@ import { HomePageComponent } from './app/components/home-page/home-page.componen
 import { DashboardComponent } from 'src/app/components/dashboard/dashboard.component';
 import { RoutingModuleModule } from 'src/app/routing-module.module';
 import { AuthService } from 'src/app/services/auth.service';
-
+import { NgForm, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,7 +20,9 @@ import { AuthService } from 'src/app/services/auth.service';
 
   imports: [
     BrowserModule,
-    RoutingModuleModule
+    RoutingModuleModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
 
   providers: [AuthService],
