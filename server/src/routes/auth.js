@@ -9,9 +9,8 @@ const { encryptionOptions } = require('../config/encryptionOptions')
 const { connection } = require('../db')
 
 router.post('/login', async (req, res) => {
-    let userEmail = req.body.email
     let userPass = req.body.password
-    connection.query("select * from users where email = ? ;", [userEmail], function (err, results, fields) {
+    connection.query("select * from users where email = ? ;", [req.body.email], function (err, results, fields) {
         if (err) {
             res.send({
                 success: false,
@@ -42,10 +41,9 @@ router.post('/login', async (req, res) => {
 })
 
 router.post('/register', async (req, res) => {
-    let userEmail = req.body.email
     if (req.body.password.length >= 6) {
         let userPass = encryptPassword(req.body.password)
-        connection.query("insert into users (id, email, pass) values (NULL,?,?);", [userEmail, userPass], function (err, results, fields) {
+        connection.query("insert into users (id, email, pass) values (NULL,?,?);", [req.body.email, userPass], function (err, results, fields) {
             if (err) {
                 res.send({
                     success: false,
