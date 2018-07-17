@@ -18,17 +18,24 @@ router.post('/login', async (req, res) => {
                 error: err
             })
         } else {
-            let correctPass = bcrypt.compareSync(userPass, results[0].pass)
-            if (correctPass) {
-                res.send({
-                    success: true,
-                    data: results
-                })
-            } else {
+            if (results.length === 0) {
                 res.send({
                     success: false,
-                    error: "The passwords doesn't match"
+                    error: "No user found"
                 })
+            } else {
+                let correctPass = bcrypt.compareSync(userPass, results[0].pass)
+                if (correctPass) {
+                    res.send({
+                        success: true,
+                        data: results
+                    })
+                } else {
+                    res.send({
+                        success: false,
+                        error: "The passwords doesn't match"
+                    })
+                }
             }
         }
     })
