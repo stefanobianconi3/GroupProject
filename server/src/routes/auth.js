@@ -36,20 +36,27 @@ router.post('/login', async (req, res) => {
 
 router.post('/register', async (req, res) => {
     let userEmail = req.body.email
-    let userPass = encryptPassword(req.body.password)
-    connection.query("insert into users (id, email, pass) values (NULL,?,?);", [userEmail, userPass], function (err, results, fields) {
-        if (err) {
-            res.send({
-                success: false,
-                error: err
-            })
-        } else {
-            res.send({
-                success: true,
-                data: results
-            })
-        }
-    })
+    if (req.body.password.length >= 6) {
+        let userPass = encryptPassword(req.body.password)
+        connection.query("insert into users (id, email, pass) values (NULL,?,?);", [userEmail, userPass], function (err, results, fields) {
+            if (err) {
+                res.send({
+                    success: false,
+                    error: err
+                })
+            } else {
+                res.send({
+                    success: true,
+                    data: results
+                })
+            }
+        })
+    } else {
+        res.send({
+            success: false,
+            error: "The required password length is at least 6 characters"
+        })
+    }
 })
 
 function encryptPassword(password) {
