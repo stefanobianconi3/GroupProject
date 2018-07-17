@@ -12,21 +12,22 @@ export class NavbarComponent implements OnInit {
 private isLogged:boolean =false;
   constructor(private route: Router, private auth:AuthService) { }
 logIn(form: NgForm){
-  alert(form.value.email)
   this.auth.login();
   this.isLogged = this.auth.isLoggedIn();
   this.route.navigate(['homepage','dashboard'])
 }
-signin(){
+signin(form){
+  form.reset();
   this.route.navigate(['homepage','Signin'])
 }
 toHome(){
   this.route.navigate(['homepage'])
 }
-logout(e){
+logout(e, form){
   this.auth.logout();
   this.isLogged= this.auth.isLoggedIn();
   this.route.navigate(['homepage']);
+  
   e.preventDefault();
 }
   ngOnInit() {
