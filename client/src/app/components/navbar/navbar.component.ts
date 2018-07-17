@@ -18,6 +18,9 @@ login(){
 signin(){
   this.route.navigate(['homepage','Signin'])
 }
+toHome(){
+  this.route.navigate(['homepage'])
+}
 logout(e){
   this.auth.logout();
   this.isLogged= this.auth.isLoggedIn();
