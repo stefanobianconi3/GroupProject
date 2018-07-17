@@ -21,7 +21,7 @@ router.post('/login', async (req, res) => {
             if (results.length === 0) {
                 res.send({
                     success: false,
-                    error: "No user found"
+                    error: "No user found with this email"
                 })
             } else {
                 let correctPass = bcrypt.compareSync(userPass, results[0].pass)
