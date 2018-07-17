@@ -6,6 +6,7 @@ import { NavbarComponent } from './app/components/navbar/navbar.component';
 import { HomePageComponent } from './app/components/home-page/home-page.component';
 import { DashboardComponent } from 'src/app/components/dashboard/dashboard.component';
 import { RoutingModuleModule } from 'src/app/routing-module.module';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 
@@ -16,11 +17,14 @@ import { RoutingModuleModule } from 'src/app/routing-module.module';
     HomePageComponent,
     DashboardComponent
   ],
+
   imports: [
     BrowserModule,
     RoutingModuleModule
   ],
-  providers: [],
+
+  providers: [AuthService],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

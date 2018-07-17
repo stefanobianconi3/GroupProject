@@ -25,7 +25,8 @@
 				</div>
 				<div class="col-sm-2">
 					 <div class="btn-group">
-							<button type="button" value="Login" class="btn btn-outline-dark" (click)="login()">Login</button>
+							<button *ngIf="!isLogged" type="button" value="Login" class="btn btn-outline-dark" (click)="login()">Login</button>
+							<button *ngIf="isLogged" type="button" value="Logout" class="btn btn-outline-dark" (click)="logout($event)">logout</button>
 							<button type="button" value="Sign In" class="btn btn-outline-dark" (click)="signin()" >Sign In</button> 
 					 </div>
 				</div>
