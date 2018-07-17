@@ -13,7 +13,10 @@ router.post('/login', async (req, res) => {
     let userPass = req.body.password
     connection.query("select * from users where email = ? ;", [userEmail], function (err, results, fields) {
         if (err) {
-            res.send(err)
+            res.send({
+                success: false,
+                error: err
+            })
         } else {
             let correctPass = bcrypt.compareSync(userPass, results[0].pass)
             if (correctPass) {
@@ -36,9 +39,15 @@ router.post('/register', async (req, res) => {
     let userPass = encryptPassword(req.body.password)
     connection.query("insert into users (id, email, pass) values (NULL,?,?);", [userEmail, userPass], function (err, results, fields) {
         if (err) {
-            res.send(err)
+            res.send({
+                success: false,
+                error: err
+            })
         } else {
-            res.send(results)
+            res.send({
+                success: true,
+                data: results
+            })
         }
     })
 })
