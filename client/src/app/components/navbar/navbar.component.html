@@ -1,4 +1,5 @@
 <header>
+	<div *ngIf="!isLogged; else logged">
     <div class="container">
 	<div class="row">
 		<div class="col-sm-6">
@@ -8,7 +9,7 @@
 			<form  name="loginForm" #f="ngForm" (ngSubmit)="logIn(f)" >
 			<div class="row">
 				<div class="col-sm-5">
-					  <div *ngIf="!isLogged" class="form-group">
+					  <div class="form-group">
 					    <input required email type="email" name="email"  ngModel #email="ngModel" id="email"  class="form-control" placeholder="Email Address" >
 							<div *ngIf="email.dirty && email.touched && email.invalid" >
 								<div class="alert-danger" *ngIf="email.errors.required">Email required</div>
@@ -18,20 +19,19 @@
 						  </div>
 					  </div>
 				</div>	
-				<div *ngIf="!isLogged" class="col-sm-5">
+				<div class="col-sm-5">
 					 <div class="form-group">
 					    <input required minlength="6"  type="password" ngModel #password="ngModel" id="password" name="password"  class="form-control" placeholder="Password">
 							<div *ngIf="password.dirty && password.touched && password.invalid" >
-									<div class="alert-danger" *ngIf="password.errors.required">Password required</div>
+									<div class="alert-danger" *ngIf="password.errors.required">Password Required</div>
 							</div>
 							<div  class="login-bottom-text hidden-sm"> Forgot your password?  </div>
 					  </div>
 				</div>
 				<div class="col-sm-2">
 					 <div class="btn-group">
-							<button *ngIf="!isLogged" type="submit" [disabled]="!f.valid" value="Login" class="btn btn-outline-dark">Login</button>
-							<button *ngIf="isLogged" type="button" value="Logout" class="btn btn-outline-dark" (click)="logout($event)">logout</button>
-							<button *ngIf="!isLogged" type="button" value="Sign In" class="btn btn-outline-dark" (click)="signin(f.form)" >Sign In</button> 
+							<button type="submit" [disabled]="!f.valid" value="Login" class="btn btn-outline-dark">Login</button>
+							<button type="button" value="Sign In" class="btn btn-outline-dark" (click)="signin(f.form)" >Sign In</button> 
 					 </div>
 				</div>
 			</div>	
@@ -40,4 +40,9 @@
 		
 	</div>
 	</div>
+</div>
+<!-->Qua sotto la navbar per quando è loggato<-->
+<ng-template #logged>
+	<button *ngIf="isLogged" type="button" value="Logout" class="btn btn-outline-dark" (click)="logout($event)">logout</button>
+</ng-template>
 </header>
