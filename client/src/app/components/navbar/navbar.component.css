@@ -4,11 +4,11 @@ body{
 
 .logo{
 	color: white;
-	margin-top: -13px;
+	margin-top: -17px;
 	font-size: 40px;
 	padding: 4px 0;
 	padding-bottom: 10px;
-
+	
 }
 .btn-group{
 	margin-right: 100px;
@@ -22,8 +22,9 @@ body{
 }
 
 header{
+	height: 75px;
 	background: #04c052;
-	padding-top: 20px;
+	padding-top: 19px;
 }
 header .form-group{
 	margin-bottom: 0px;
@@ -41,4 +42,17 @@ header .btn-header-login{
 .login-main span{
 	font-size: 12px;
 } 
-
+/* navbar dopo il login */
+.navbar{
+	height: 50px;
+	background: #3c5346;
+}
+.navbar-brand{
+	color: white;
+}
+.nav-link{
+	color: white;
+}
+.nav-link dropdown-toggle{
+	color: white;
+}
