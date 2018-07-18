@@ -22,7 +22,7 @@ router.post('/login', async (req, res) => {
                     error: "No user found with this email"
                 })
             } else {
-                let correctPass = bcrypt.compareSync(req.body.password, results[0].pass)
+                let correctPass = comparePasswords(req.body.password, results[0].pass)
                 if (correctPass) {
                     res.send({
                         success: true,
@@ -66,6 +66,11 @@ router.post('/register', async (req, res) => {
 function encryptPassword(password) {
     let encryptedPass = bcrypt.hashSync(password, encryptionOptions.saltRounds)
     return encryptedPass
+}
+
+function comparePasswords(password, hash) {
+    let result = bcrypt.compareSync(password, hash)
+    return result
 }
 
 module.exports = router
