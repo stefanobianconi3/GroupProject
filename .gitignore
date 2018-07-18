@@ -92,6 +92,7 @@ typings/
 npm-debug.log
 testem.log
 /typings
+.rnd
 
 # e2e
 /e2e/*.js
@@ -100,10 +101,6 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-
-# Local TLS components
-key.pem
-cert.pem
 
 # Test folder
 playground
