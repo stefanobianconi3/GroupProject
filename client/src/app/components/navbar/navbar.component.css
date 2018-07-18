@@ -1,0 +1,71 @@
+body{
+    font-family: 'Open Sans', sans-serif;
+}
+
+.logo{
+	color: white;
+	margin-top: -17px;
+	font-size: 40px;
+	padding: 4px 0;
+	padding-bottom: 10px;
+	
+}
+.btn-group{
+	margin-right: 100px;
+}
+.login-bottom-text{
+	margin-top: 0px;
+	margin-bottom: 0px;
+	font-size: 12px;
+	color: white;
+	line-height: 19px;
+}
+
+header{
+	height: 75px;
+	background: #04c052;
+	padding-top: 19px;
+}
+header .form-group{
+	margin-bottom: 0px;
+}
+header .btn-header-login{
+	margin-bottom: 15px;	
+}
+.login-main{
+	margin-top: 130px;
+}
+.multibox{
+	padding-left: 0px;
+	padding-bottom: 10px;
+}
+.login-main span{
+	font-size: 12px;
+} 
+/* navbar dopo il login */
+.navbar{
+	height: 50px;
+	background: #272c33;
+}
+.navbar-brand{
+	color: white;
+}
+.nav-link{
+	color: white;
+}
+.nav-link dropdown-toggle{
+	color: white;
+}
+.logout-button{
+	position: absolute;
+	right:30px;
+	top:9px;
+}
+.search{
+	position: relative;
+	left: 630px;
+}
+.input-group{
+	height: 31px;
+	margin-top: -1px;
+}

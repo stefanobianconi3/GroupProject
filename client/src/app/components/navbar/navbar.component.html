@@ -1,0 +1,90 @@
+<header *ngIf="!isLogged; else logged">
+	<div>
+    <div class="container">
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="logo" (click)="toHome()">ProsChain</div>
+		</div>
+		<div class="col-sm-6 hidden-xs">
+			<form  name="loginForm" #f="ngForm" (ngSubmit)="logIn(f)" >
+			<div class="row">
+				<div class="col-sm-5">
+					  <div class="form-group">
+					    <input required email type="email" name="email"  ngModel #email="ngModel" id="email"  class="form-control" placeholder="Email Address" >
+							<div *ngIf="email.dirty && email.touched && email.invalid" >
+								<div class="alert-danger" *ngIf="email.errors.required">Email required</div>
+								<div class="alert-danger" *ngIf="email.errors.invalid">Email incorrect</div>
+							</div>
+							<div class="login-bottom-text checkbox hidden-sm">
+						  </div>
+					  </div>
+				</div>	
+				<div class="col-sm-5">
+					 <div class="form-group">
+					    <input required minlength="6"  type="password" ngModel #password="ngModel" id="password" name="password"  class="form-control" placeholder="Password">
+							<div *ngIf="password.dirty && password.touched && password.invalid" >
+									<div class="alert-danger" *ngIf="password.errors.required">Password Required</div>
+							</div>
+							<div  class="login-bottom-text hidden-sm"> Forgot your password?  </div>
+					  </div>
+				</div>
+				<div class="col-sm-2">
+					 <div class="btn-group">
+							<button type="submit" [disabled]="!f.valid" value="Login" class="btn btn-outline-dark">Login</button>
+							<button type="button" value="Sign In" class="btn btn-outline-dark" (click)="signin(f.form)" >Sign In</button> 
+					 </div>
+				</div>
+			</div>	
+		</form>
+		</div>
+		
+	</div>
+	</div>
+</div>
+</header>
+<!-->Qua sotto la navbar per quando è loggato<-->
+<ng-template #logged>
+	<div class="navbar">
+		<div class="row">
+			<nav class="navbar navbar-expand-lg">
+				<a class="navbar-brand" href="#">ProsChain</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+					</button>
+					
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul class="navbar-nav mr-auto">
+						<li class="nav-item">
+							<a class="nav-link" href="#">Link1</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Link2</a>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Dropdown
+							</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="#">Action</a>
+							<a class="dropdown-item" href="#">Another action</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#">Something else here</a>
+							</div>
+						</li>
+						</ul>
+						<div class="search">
+							<form class="form-inline my-2 my-lg-0">
+								<div class="input-group">
+								<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+								<button class="btn btn-outline-light btn-sm" type="submit">Search</button>
+								</div>
+							</form>
+						</div>
+					</div>
+			</nav>
+			<div class="logout-button">
+			<button *ngIf="isLogged" type="button" value="Logout" class="btn btn-outline-light btn-sm" (click)="logout($event)">logout</button>
+			</div>
+		</div>
+	</div>
+</ng-template>
