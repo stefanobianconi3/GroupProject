@@ -59,11 +59,17 @@ router.post('/register', async (req, res) => {
                     error: err
                 })
             } else {
+                let payload = {
+                    email: req.body.email,
+                    password: userPass
+                }
+                let token = jwt.sign(payload, secret, jwtOptions)
                 res.send({
                     success: true,
                     data: [{
                         email: req.body.email
-                    }]
+                    }],
+                    token: token
                 })
             }
         })
