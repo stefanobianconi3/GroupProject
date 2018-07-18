@@ -1,13 +1,11 @@
 'use strict'
 
-var bcrypt = require('bcrypt')
-var jwt = require('jsonwebtoken')
 const express = require('express')
 
 const router = express.Router()
 
-const { encryptionOptions } = require('../config/encryptionOptions')
-const { secret, jwtOptions } = require('../config/jwtOptions')
+const authMethods = require('../methods/authMethods')
+
 const { connection } = require('../db')
 
 router.post('/login', async (req, res) => {
@@ -24,13 +22,13 @@ router.post('/login', async (req, res) => {
                     error: "No user found with this email"
                 })
             } else {
-                let correctPass = comparePasswords(req.body.password, results[0].pass)
+                let correctPass = authMethods.comparePasswords(req.body.password, results[0].pass)
                 if (correctPass) {
-                    deleteItemsOnJson(results[0], ["id", "pass"])
+                    authMethods.deleteItemsOnJson(results[0], ["id", "pass"])
                     res.send({
                         success: true,
                         data: results,
-                        token: jwt.sign(createJwtPayload(results[0].email, results[0].pass), secret, jwtOptions)
+                        token: authMethods.createJwtToken(authMethods.createJwtPayload(results[0].email, results[0].pass))
                     })
                 } else {
                     res.send({
@@ -45,7 +43,7 @@ router.post('/login', async (req, res) => {
 
 router.post('/register', async (req, res) => {
     if (req.body.password.length >= 6) {
-        let userPass = encryptPassword(req.body.password)
+        let userPass = authMethods.encryptPassword(req.body.password)
         connection.query("insert into users (id, email, pass) values (NULL,?,?);", [req.body.email, userPass], function (err, results, fields) {
             if (err) {
                 res.send({
@@ -58,7 +56,7 @@ router.post('/register', async (req, res) => {
                     data: [{
                         email: req.body.email
                     }],
-                    token: jwt.sign(createJwtPayload(req.body.email, userPass), secret, jwtOptions)
+                    token: authMethods.createJwtToken(authMethods.createJwtPayload(req.body.email, userPass))
                 })
             }
         })
@@ -69,28 +67,5 @@ router.post('/register', async (req, res) => {
         })
     }
 })
-
-function deleteItemsOnJson(array, items) {
-    for (let i = 0; i < items.length; i++) {
-        delete array[items[i]]
-    }
-}
-
-function createJwtPayload(email, password) {
-    return {
-        email: email,
-        password: password
-    }
-}
-
-function encryptPassword(password) {
-    let encryptedPass = bcrypt.hashSync(password, encryptionOptions.saltRounds)
-    return encryptedPass
-}
-
-function comparePasswords(password, hash) {
-    let result = bcrypt.compareSync(password, hash)
-    return result
-}
 
 module.exports = router
