@@ -43,7 +43,8 @@ router.post('/login', async (req, res) => {
 router.post('/register', async (req, res) => {
     if (req.body.password.length >= 6) {
         let userPass = authMethods.encryptPassword(req.body.password)
-        connection.query("insert into users (id, email, pass) values (NULL,?,?);", [req.body.email, userPass], function (err, results, fields) {
+        let insertionArray = [req.body.email, userPass, req.body.firstname, req.body.lastname, req.body.date]
+        connection.query("insert into users (id, email, pass, firstname, lastname, date) values (NULL,?,?,?,?,?);", insertionArray, function (err, results, fields) {
             if (err) {
                 res.send({
                     success: false,
@@ -53,7 +54,10 @@ router.post('/register', async (req, res) => {
                 res.send({
                     success: true,
                     data: [{
-                        email: req.body.email
+                        email: req.body.email,
+                        firstname: req.body.firstname,
+                        lastname: req.body.lastname,
+                        date: req.body.date
                     }],
                     token: authMethods.createJwtToken(authMethods.createJwtPayload(req.body.email, userPass))
                 })
