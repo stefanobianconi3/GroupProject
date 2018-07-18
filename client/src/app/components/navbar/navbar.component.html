@@ -72,14 +72,19 @@
 							</div>
 						</li>
 						</ul>
-						<form class="form-inline my-2 my-lg-0">
-							<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-							<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-						</form>
+						<div class="search">
+							<form class="form-inline my-2 my-lg-0">
+								<div class="input-group">
+								<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+								<button class="btn btn-outline-light btn-sm" type="submit">Search</button>
+								</div>
+							</form>
+						</div>
 					</div>
 			</nav>
-			<button *ngIf="isLogged" type="button" value="Logout" class="btn btn-outline-light btn-sm logout" (click)="logout($event)">logout</button>
-			
+			<div class="logout-button">
+			<button *ngIf="isLogged" type="button" value="Logout" class="btn btn-outline-light btn-sm" (click)="logout($event)">logout</button>
+			</div>
 		</div>
 	</div>
 </ng-template>

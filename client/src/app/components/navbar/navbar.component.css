@@ -56,3 +56,16 @@ header .btn-header-login{
 .nav-link dropdown-toggle{
 	color: white;
 }
+.logout-button{
+	position: absolute;
+	right:30px;
+	top:9px;
+}
+.search{
+	position: relative;
+	left: 630px;
+}
+.input-group{
+	height: 31px;
+	margin-top: -1px;
+}
