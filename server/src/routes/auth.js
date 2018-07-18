@@ -26,7 +26,11 @@ router.post('/login', async (req, res) => {
             } else {
                 let correctPass = comparePasswords(req.body.password, results[0].pass)
                 if (correctPass) {
-                    let token = jwt.sign({ email: results[0].email, password: results[0].pass }, secret, jwtOptions)
+                    let payload = {
+                        email: results[0].email,
+                        password: results[0].pass
+                    }
+                    let token = jwt.sign(payload, secret, jwtOptions)
                     delete results[0]["pass"]
                     res.send({
                         success: true,
