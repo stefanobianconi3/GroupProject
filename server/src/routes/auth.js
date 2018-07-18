@@ -22,8 +22,7 @@ router.post('/login', async (req, res) => {
                     error: "No user found with this email"
                 })
             } else {
-                let correctPass = authMethods.comparePasswords(req.body.password, results[0].pass)
-                if (correctPass) {
+                if (authMethods.comparePasswords(req.body.password, results[0].pass)) {
                     authMethods.deleteItemsOnJson(results[0], ["id", "pass"])
                     res.send({
                         success: true,
@@ -48,7 +47,7 @@ router.post('/register', async (req, res) => {
             if (err) {
                 res.send({
                     success: false,
-                    error: err
+                    error: err.sqlMessage
                 })
             } else {
                 res.send({
