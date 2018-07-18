@@ -31,6 +31,7 @@ router.post('/login', async (req, res) => {
                         password: results[0].pass
                     }
                     let token = jwt.sign(payload, secret, jwtOptions)
+                    delete results[0]["id"]
                     delete results[0]["pass"]
                     res.send({
                         success: true,
@@ -60,7 +61,9 @@ router.post('/register', async (req, res) => {
             } else {
                 res.send({
                     success: true,
-                    data: results
+                    data: [{
+                        email: req.body.email
+                    }]
                 })
             }
         })
