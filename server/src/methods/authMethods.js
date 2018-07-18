@@ -19,17 +19,14 @@ module.exports = {
     },
 
     encryptPassword: function(password) {
-        let encryptedPass = bcrypt.hashSync(password, encryptionOptions.saltRounds)
-        return encryptedPass
+        return bcrypt.hashSync(password, encryptionOptions.saltRounds)
     },
 
     comparePasswords: function(password, hash) {
-        let result = bcrypt.compareSync(password, hash)
-        return result
+        return bcrypt.compareSync(password, hash)
     },
 
     createJwtToken: function (payload) {
-        let token = jwt.sign(payload, secret, jwtOptions)
-        return token
+        return jwt.sign(payload, secret, jwtOptions)
     }
 }
