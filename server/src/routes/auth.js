@@ -1,11 +1,13 @@
 'use strict'
 
 var bcrypt = require('bcrypt')
+var jwt = require('jsonwebtoken')
 const express = require('express')
 
 const router = express.Router()
 
 const { encryptionOptions } = require('../config/encryptionOptions')
+const { secret, jwtOptions } = require('../config/jwtOptions')
 const { connection } = require('../db')
 
 router.post('/login', async (req, res) => {
@@ -24,9 +26,11 @@ router.post('/login', async (req, res) => {
             } else {
                 let correctPass = comparePasswords(req.body.password, results[0].pass)
                 if (correctPass) {
+                    let token = jwt.sign({ email: results[0].email, password: results[0].pass }, secret, jwtOptions)
                     res.send({
                         success: true,
-                        data: results
+                        data: results,
+                        token: token
                     })
                 } else {
                     res.send({
