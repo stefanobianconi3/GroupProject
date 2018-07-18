@@ -14,7 +14,7 @@ const routes: Routes = [
 
   },
   {
-    path: 'homepage/dashboard',
+    path: 'dashboard',
     component: DashboardComponent,
     canActivate: [RouteGuardService]//classe o servizio che deve implementare che ritrona true o false per attivare la rotta
   },
@@ -24,7 +24,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-  path: 'homepage/Signin',
+  path: 'signin',
   component: SigninComponent
   }
 ];
@@ -43,8 +43,6 @@ const routes: Routes = [
   providers:[
     RouteGuardService
   ],
-
-  declarations: [SigninComponent]
 })
 export class RoutingModuleModule {
   

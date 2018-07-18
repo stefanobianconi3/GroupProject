@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import { NgForm } from '@angular/forms/src/directives/ng_form';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-navbar',
@@ -11,27 +11,33 @@ import { NgForm } from '@angular/forms/src/directives/ng_form';
 export class NavbarComponent implements OnInit {
 private isLogged:boolean =false;
   constructor(private route: Router, private auth:AuthService) { }
+
 logIn(form: NgForm){
-  this.auth.login();
-  this.isLogged = this.auth.isLoggedIn();
-  this.route.navigate(['homepage','dashboard'])
+  this.auth.login(form.value.email, form.value.password);
+  this.checkLogged();
+  this.route.navigate(['dashboard']);
 }
+
 signin(form){
   form.reset();
-  this.route.navigate(['homepage','Signin'])
+  this.route.navigate(['signin']);
 }
 toHome(){
   this.route.navigate(['homepage'])
 }
 logout(e, form){
   this.auth.logout();
-  this.isLogged= this.auth.isLoggedIn();
+  this.checkLogged();
   this.route.navigate(['homepage']);
   
   e.preventDefault();
 }
-  ngOnInit() {
-    this.isLogged=this.auth.isLoggedIn();
-  }
+
+checkLogged(){
+  this.isLogged = this.auth.isLoggedIn();
+}
+
+ngOnInit() {
+}
 
 }
