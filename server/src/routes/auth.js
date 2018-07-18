@@ -26,17 +26,11 @@ router.post('/login', async (req, res) => {
             } else {
                 let correctPass = comparePasswords(req.body.password, results[0].pass)
                 if (correctPass) {
-                    let payload = {
-                        email: results[0].email,
-                        password: results[0].pass
-                    }
-                    let token = jwt.sign(payload, secret, jwtOptions)
-                    delete results[0]["id"]
-                    delete results[0]["pass"]
+                    deleteItemsOnJson(results[0], ["id", "pass"])
                     res.send({
                         success: true,
                         data: results,
-                        token: token
+                        token: jwt.sign(createJwtPayload(results[0].email, results[0].pass), secret, jwtOptions)
                     })
                 } else {
                     res.send({
@@ -59,17 +53,12 @@ router.post('/register', async (req, res) => {
                     error: err
                 })
             } else {
-                let payload = {
-                    email: req.body.email,
-                    password: userPass
-                }
-                let token = jwt.sign(payload, secret, jwtOptions)
                 res.send({
                     success: true,
                     data: [{
                         email: req.body.email
                     }],
-                    token: token
+                    token: jwt.sign(createJwtPayload(req.body.email, userPass), secret, jwtOptions)
                 })
             }
         })
@@ -80,6 +69,19 @@ router.post('/register', async (req, res) => {
         })
     }
 })
+
+function deleteItemsOnJson(array, items) {
+    for (let i = 0; i < items.length; i++) {
+        delete array[items[i]]
+    }
+}
+
+function createJwtPayload(email, password) {
+    return {
+        email: email,
+        password: password
+    }
+}
 
 function encryptPassword(password) {
     let encryptedPass = bcrypt.hashSync(password, encryptionOptions.saltRounds)
