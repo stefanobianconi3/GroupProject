@@ -31,7 +31,7 @@ router.post('/login', async (req, res) => {
                 } else {
                     res.send({
                         success: false,
-                        error: "The passwords doesn't match"
+                        error: "The passwords don't match"
                     })
                 }
             }
