@@ -10,11 +10,25 @@ import { NgForm } from '@angular/forms';
 })
 export class NavbarComponent implements OnInit {
 private isLogged:boolean =false;
-  constructor(private route: Router, private auth:AuthService) { }
+
+  constructor(private route: Router, private auth:AuthService) { 
+    auth.outLogin.subscribe(
+      () => {
+        this.isLogged=true;
+    });
+    auth.outSignin.subscribe(
+      () => {
+        this.isLogged=true;
+    });
+    auth.outLogout.subscribe(
+      () => {
+        this.isLogged=false;
+    });
+
+  }
 
 logIn(form: NgForm){
   this.auth.login(form.value.email, form.value.password);
-  this.checkLogged();
   this.route.navigate(['dashboard']);
 }
 
@@ -27,14 +41,9 @@ toHome(){
 }
 logout(e, form){
   this.auth.logout();
-  this.checkLogged();
   this.route.navigate(['homepage']);
   
   e.preventDefault();
-}
-
-checkLogged(){
-  this.isLogged = this.auth.isLoggedIn();
 }
 
 ngOnInit() {
