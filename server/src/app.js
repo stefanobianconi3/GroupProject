@@ -5,6 +5,7 @@ const path = require('path')
 const helmet = require('helmet')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
+const cors = require('cors')
 
 const {dbConnect} = require('./db')
 
@@ -16,6 +17,9 @@ app.use(helmet())
 
 /* LOGGING */
 app.use(morgan('combined'))
+
+/* CORS */
+app.use(cors())
 
 /* MISCELLANEOUS */
 app.use(bodyParser.json())
