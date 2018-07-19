@@ -11,6 +11,7 @@ const routes: Routes = [
   {
     path:'homepage',
     component: HomePageComponent,
+    canActivate: [RouteGuardService],
 
   },
   {
@@ -25,7 +26,7 @@ const routes: Routes = [
   },
   {
   path: 'signin',
-  component: SigninComponent
+  component: SigninComponent,
   }
 ];
 

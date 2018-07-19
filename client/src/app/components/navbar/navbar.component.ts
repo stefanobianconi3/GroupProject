@@ -29,7 +29,6 @@ private isLogged:boolean =false;
 
 logIn(form: NgForm){
   this.auth.login(form.value.email, form.value.password);
-  this.route.navigate(['dashboard']);
 }
 
 signin(form){
@@ -47,6 +46,7 @@ logout(e, form){
 }
 
 ngOnInit() {
+  this.isLogged=this.auth.isLoggedIn();
 }
 
 }
