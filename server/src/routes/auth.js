@@ -40,7 +40,7 @@ router.post('/login', async (req, res) => {
     })
 })
 
-router.post('/register', async (req, res) => {
+router.post('/signin', async (req, res) => {
     if (req.body.password.length >= 6) {
         let userPass = authMethods.encryptPassword(req.body.password)
         let insertionArray = [req.body.email, userPass, req.body.firstname, req.body.lastname, req.body.date]
