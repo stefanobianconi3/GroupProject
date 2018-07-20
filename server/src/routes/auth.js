@@ -17,13 +17,13 @@ router.post('/login', async (req, res) => {
             })
         } else {
             connection.query("select * from users where email = ? ;", [req.body.email], function (err, results, fields) {
+                connection.release()
                 if (err) {
                     res.send({
                         success: false,
                         error: err
                     })
                 } else {
-                    connection.release()
                     if (results.length === 0) {
                         res.send({
                             success: false,
@@ -62,13 +62,13 @@ router.post('/signin', async (req, res) => {
                 let userPass = authMethods.encryptPassword(req.body.password)
                 let insertionArray = [req.body.email, userPass, req.body.firstname, req.body.lastname, req.body.date]
                 connection.query("insert into users (id, email, pass, firstname, lastname, date) values (NULL,?,?,?,?,?);", insertionArray, function (err, results, fields) {
+                    connection.release()
                     if (err) {
                         res.send({
                             success: false,
                             error: err.sqlMessage
                         })
                     } else {
-                        connection.release()
                         res.send({
                             success: true,
                             data: [{
