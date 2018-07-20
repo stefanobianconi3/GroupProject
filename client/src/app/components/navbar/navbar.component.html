@@ -3,7 +3,7 @@
     <div class="container">
 	<div class="row">
 		<div class="col-sm-6">
-			<div class="logo" (click)="toHome()">ProsChain</div>
+			<div class="logo">ProsChain</div>
 		</div>
 		<div class="col-sm-6 hidden-xs">
 			<form  name="loginForm" #f="ngForm" (ngSubmit)="logIn(f)" >
@@ -47,40 +47,16 @@
 	<div class="navbar">
 		<div class="row">
 			<nav class="navbar navbar-expand-lg">
-				<a class="navbar-brand" href="#">ProsChain</a>
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-					</button>
-					
-					<div class="collapse navbar-collapse" id="navbarSupportedContent">
-						<ul class="navbar-nav mr-auto">
-						<li class="nav-item">
-							<a class="nav-link" href="#">Link1</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">Link2</a>
-						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Dropdown
-							</a>
-							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="#">Action</a>
-							<a class="dropdown-item" href="#">Another action</a>
-							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="#">Something else here</a>
-							</div>
-						</li>
-						</ul>
-						<div class="search">
-							<form class="form-inline my-2 my-lg-0">
-								<div class="input-group">
-								<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-								<button class="btn btn-outline-light btn-sm" type="submit">Search</button>
-								</div>
-							</form>
-						</div>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<div class="icon-bar">
+							<a class="active" href="#"><i class="fa fa-home"></i></a> 
+							<a href="#"><i class="fa fa-search"></i></a> 
+							<a href="#"><i class="fa fa-envelope"></i></a> 
+							<a href="#"><i class="fa fa-globe"></i></a>
+							<a href="#"><i class="fa fa-trash"></i></a> 
 					</div>
+					
+				</div>
 			</nav>
 			<div class="logout-button">
 			<button *ngIf="isLogged" type="button" value="Logout" class="btn btn-outline-light btn-sm" (click)="logout($event)">logout</button>

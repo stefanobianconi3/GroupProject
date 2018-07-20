@@ -35,9 +35,7 @@ signin(form){
   form.reset();
   this.route.navigate(['signin']);
 }
-toHome(){
-  this.route.navigate(['homepage'])
-}
+
 logout(e, form){
   this.auth.logout();
   this.route.navigate(['homepage']);
