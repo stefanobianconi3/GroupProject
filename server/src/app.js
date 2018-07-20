@@ -25,14 +25,7 @@ app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({'extended': true}))
 
-/* DATABASE */
-dbConnect().catch((e) => {
-  console.log(e.message)
-  process.exit(1)
-})
-
 /* ROUTES */
-
 const authRoute = require("./routes/auth")
 
 // Routers
