@@ -13,6 +13,7 @@ export class AuthService {
 @Output() outSignin = new EventEmitter()
 @Output() outLogout = new EventEmitter()
 @Output() errorLogin = new EventEmitter()
+@Output() errorSignin = new EventEmitter()
 
 private APIAUTHURL = ServerLocation.URL+'api/auth';
 constructor(private http: HttpClient, private route: Router) { }
@@ -31,12 +32,12 @@ constructor(private http: HttpClient, private route: Router) { }
         this.outSignin.emit();
       }
         else{
-          
-         alert('errore signin')
+          this.errorSignin.emit(payload.error);
+
         }
       },
       (error:any) => {
-        alert(error)
+        this.errorSignin.emit(error)
       }
     )
   }
