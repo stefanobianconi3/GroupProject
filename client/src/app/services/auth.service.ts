@@ -26,6 +26,7 @@ constructor(private http: HttpClient, private route: Router) { }
       (payload:any) => {
         if(payload.success){
         localStorage.setItem('token', payload.token);
+        localStorage.setItem('nome', firstname);
         this.outSignin.emit();
       }
         else{
@@ -40,6 +41,7 @@ constructor(private http: HttpClient, private route: Router) { }
 
    logout(){
     localStorage.removeItem('token');
+    localStorage.removeItem('nome');
     this.outLogout.emit();
   }
 
@@ -47,7 +49,9 @@ constructor(private http: HttpClient, private route: Router) { }
     this.http.post(this.APIAUTHURL+'/login', {email: email, password: password}).subscribe(
       (payload: any) => {
         if(payload.success){
+          let userData = payload.data[0]
           localStorage.setItem('token', payload.token);
+          localStorage.setItem('nome',userData.firstname);
           this.outLogin.emit();
           this.route.navigate(['dashboard']);
         } else {
