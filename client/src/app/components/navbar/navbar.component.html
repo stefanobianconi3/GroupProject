@@ -8,6 +8,7 @@
 		<div class="col-sm-6 hidden-xs">
 			<form  name="loginForm" #f="ngForm" (ngSubmit)="logIn(f)" >
 			<div class="row">
+					<div class="alert-danger" *ngIf="fail">{{errore}}</div>
 				<div class="col-sm-5">
 					  <div class="form-group">
 					    <input required email type="email" name="email"  ngModel #email="ngModel" id="email"  class="form-control" placeholder="Email Address" >
