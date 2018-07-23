@@ -27,9 +27,12 @@ app.use(bodyParser.urlencoded({'extended': true}))
 
 /* ROUTES */
 const authRoute = require("./routes/auth")
+const dataRoute = require("./routes/data")
 
 // Routers
 // Auth API
 app.use('/api/auth', authRoute)
+// Data API
+app.use('/api/data', authRoute)
 
 module.exports = {app}
