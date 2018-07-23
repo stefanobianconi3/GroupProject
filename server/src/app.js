@@ -33,6 +33,6 @@ const dataRoute = require("./routes/data")
 // Auth API
 app.use('/api/auth', authRoute)
 // Data API
-app.use('/api/data', authRoute)
+app.use('/api/data', dataRoute)
 
 module.exports = {app}
