@@ -1,16 +1,23 @@
 'use strict'
 
 const express = require('express')
-const fs = require('fs')
 
 const router = express.Router()
 
 const dataMethods = require('../methods/dataMethods')
 
-const dataLocation = dataMethods.defineDataLocation(__dirname)
-
 router.get('/', async (req, res) => {
-    res.send(dataLocation)
+    if (dataMethods.checkJwtValidity(req.headers.token)) {
+        res.send({
+            success: true,
+            data: dataMethods.readDirectory(req.headers.id)
+        })
+    } else {
+        res.send({
+            success: false,
+            error: 'Not a valid token provided'
+        })
+    }
 })
 
 module.exports = router
