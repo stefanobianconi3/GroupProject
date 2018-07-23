@@ -1,5 +1,6 @@
 var jwt = require('jsonwebtoken')
 const fs = require('fs')
+const glob = require('glob')
 
 const { secret } = require('../config/jwtOptions')
 
@@ -26,7 +27,7 @@ module.exports = {
             fs.mkdirSync(dataLocation + id)
             return fs.readdirSync(dataLocation + id)
         } else {
-            return fs.readdirSync(dataLocation + id)
+            return glob.sync(dataLocation + id + '/**/*')
         }
     }
 }
