@@ -33,12 +33,10 @@ module.exports = {
         }
         if (!fs.existsSync(dataLocation + id)) {
             fs.mkdirSync(dataLocation + id)
-            return glob.sync(dataLocation + id + '/**/*')
-        } else {
-            return glob.sync(dataLocation + id + '/**/*').map(function (match) {
-                return path.relative(dataLocation + id, match);
-            })
         }
+        return glob.sync(dataLocation + id + '/**/*').map(function (match) {
+            return path.relative(dataLocation + id, match);
+        })
     },
 
     JsonGlobResult: function (data) {
@@ -53,5 +51,14 @@ module.exports = {
             }
         }
         return array
-    }
+    },
+
+    createFolder: function (name, id) {
+        if (!fs.existsSync(dataLocation + id + "\\" + name)) {
+            fs.mkdirSync(dataLocation + id + "\\" + name)
+            return true
+        } else {
+            return false
+        }
+    },
 }
