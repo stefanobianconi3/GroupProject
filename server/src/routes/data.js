@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
     })
 })
 
-router.post('/folder/new', async (req, res) => {
+router.post('/folder', async (req, res) => {
     if (dataMethods.createFolder(req.body.folderName, req.headers.id)) {
         res.send({
             success: true,
@@ -31,7 +31,7 @@ router.post('/folder/new', async (req, res) => {
     }
 })
 
-router.post('/folder/delete', async (req, res) => {
+router.delete('/folder', async (req, res) => {
     if (dataMethods.deleteFolder(req.body.folderName, req.headers.id)) {
         res.send({
             success: true,
@@ -45,7 +45,7 @@ router.post('/folder/delete', async (req, res) => {
     }
 })
 
-router.put('/folder/modify', async (req, res) => {
+router.put('/folder', async (req, res) => {
     if (dataMethods.updateFolder(req.body.folderName, req.headers.id, req.body.folderNewName)) {
         res.send({
             success: true,
