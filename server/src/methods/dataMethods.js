@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken')
 const path = require('path')
 const fs = require('fs')
+const rimraf = require('rimraf')
 const glob = require('glob')
 
 const { secret } = require('../config/jwtOptions')
@@ -61,4 +62,13 @@ module.exports = {
             return false
         }
     },
+
+    deleteFolder: function (name, id) {
+        if (fs.existsSync(dataLocation + id + "\\" + name)) {
+            rimraf.sync(dataLocation + id + "\\" + name)
+            return true
+        } else {
+            return false
+        }
+    }
 }

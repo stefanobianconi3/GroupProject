@@ -41,4 +41,25 @@ router.post('/folder/new', async (req, res) => {
     }
 })
 
+router.post('/folder/delete', async (req, res) => {
+    if (dataMethods.checkJwtValidity(req.headers.token)) {
+        if (dataMethods.deleteFolder(req.body.folderName, req.headers.id)) {
+            res.send({
+                success: true,
+                data: dataMethods.JsonGlobResult(dataMethods.readDirectory(req.headers.id))
+            })
+        } else {
+            res.send({
+                success: false,
+                error: "No folder found with this name"
+            })
+        }
+    } else {
+        res.send({
+            success: false,
+            error: 'Not a valid token provided'
+        })
+    }
+})
+
 module.exports = router
