@@ -1,10 +1,7 @@
-const jwt = require('jsonwebtoken')
 const path = require('path')
 const fs = require('fs')
 const rimraf = require('rimraf')
 const glob = require('glob')
-
-const { secret } = require('../config/jwtOptions')
 
 const dataLocation = defineDataLocation(__dirname)
 
@@ -20,13 +17,6 @@ function trimString (phrase, prefix) {
 }
 
 module.exports = {
-    checkJwtValidity: function (token) {
-        return jwt.verify(token, secret)
-    },
-
-    decodeJwtToken: function (token) {
-        return jwt.decode(token)
-    },
 
     readDirectory: function (id) {
         if (!fs.existsSync(dataLocation)) {
