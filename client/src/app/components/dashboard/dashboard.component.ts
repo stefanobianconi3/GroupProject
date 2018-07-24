@@ -12,7 +12,7 @@ private nome = this.getNome();
   
   getNome(){
     return localStorage.getItem('nome')
-    }
+  }
   
   ngOnInit() {
   }

@@ -31,7 +31,11 @@ background-attachment: fixed;
 		font-weight:bold;
 	}
 	.img{
-		padding-top: 15px;
+		padding-top: 43px;
 		padding-right: 0px;
 	}
+}
+
+.datepicker{
+	margin-left: 15px;
 }
