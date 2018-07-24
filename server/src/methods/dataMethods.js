@@ -70,5 +70,19 @@ module.exports = {
         } else {
             return false
         }
+    },
+
+    updateFolder: function (name, id, newName) {
+        try {
+            if (fs.existsSync(dataLocation + id + "\\" + name)) {
+                fs.renameSync(dataLocation + id + "\\" + name, dataLocation + id + "\\" + newName)
+                return true
+            } else {
+                return false
+            }
+        }
+        catch (err) {
+            return false
+        }
     }
 }

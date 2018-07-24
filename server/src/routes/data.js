@@ -62,4 +62,25 @@ router.post('/folder/delete', async (req, res) => {
     }
 })
 
+router.put('/folder/modify', async (req, res) => {
+    if (dataMethods.checkJwtValidity(req.headers.token)) {
+        if (dataMethods.updateFolder(req.body.folderName, req.headers.id, req.body.folderNewName)) {
+            res.send({
+                success: true,
+                data: dataMethods.JsonGlobResult(dataMethods.readDirectory(req.headers.id))
+            })
+        } else {
+            res.send({
+                success: false,
+                error: "There is a problem"
+            })
+        }
+    } else {
+        res.send({
+            success: false,
+            error: 'Not a valid token provided'
+        })
+    }
+})
+
 module.exports = router
