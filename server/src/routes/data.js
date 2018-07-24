@@ -8,9 +8,10 @@ const dataMethods = require('../methods/dataMethods')
 
 router.get('/', async (req, res) => {
     if (dataMethods.checkJwtValidity(req.headers.token)) {
+        let ff = dataMethods.readDirectory(req.headers.id)
         res.send({
             success: true,
-            data: dataMethods.readDirectory(req.headers.id)
+            data: dataMethods.JsonGlobResult(ff)
         })
     } else {
         res.send({
