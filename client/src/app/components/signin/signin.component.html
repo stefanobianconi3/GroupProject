@@ -12,8 +12,8 @@
                     <input ngModel #password="ngModel" type="password" name="password" id="password"  class="form-control input-lg" placeholder="Password"  />
                     <input type="password" name="confirm_password" value="" class="form-control input-lg" placeholder="Confirm Password"  />   
                     <label>Birth Date</label> 
-                    <div class="row">
-                        <ngb-datepicker ngModel #date="ngModel" name="date" id="date"
+                    <div class="row" >
+                        <ngb-datepicker class="datepicker"ngModel #date="ngModel" name="date" id="date"
                         [minDate]="{year: 1950, month: 1}"
                         [maxDate]="{year: 2018, month: 1}"
                         >

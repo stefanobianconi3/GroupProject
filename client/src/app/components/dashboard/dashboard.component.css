@@ -1,15 +1,14 @@
 /**
- * Panello latearle autouscente con navigazione
+ * Panello laterale autouscente con navigazione
  * che esce al clic da sinistra
  */
-.nav {
-  /*  largezza libera, potrai sperimentare */
+ .nav {
   width: 320px;
   min-width: 320px;
   /* fissiamo e indichiamo l'altezza massima  */
   height: 100%;
   position: fixed;
-  top: 0;
+  top: 50px;
   bottom: 0;
   margin: 0;
   /* spostiamo(nascondiamo)il pannello rispetto bordo sinistro della pagina  */
@@ -27,12 +26,26 @@
 }
 
 /* ricerca */
+input[type=search]::-webkit-search-cancel-button,
+  input[type=search]::-webkit-search-decoration,
+  input[type=search]::-webkit-search-results-button,
+  input[type=search]::-webkit-search-results-decoration {
+  -webkit-appearance:none;
+}
 
 .form-group {
   padding: 0;
   position: absolute;
   top: 90px;
- }
+  left: 20px;
+  width: 55%;
+}
+
+input[type=search] {
+  -webkit-appearance:textfield;
+  -webkit-box-sizing:content-box;
+}
+
 .button{
   position: absolute;
   top: 90px;
@@ -50,7 +63,7 @@
   /* rispetto bordo sinistro del pannello  */
   left: 320px;
   /* rispetto bordo superiore  */
-  top: 0.3em;
+  top: -45px;
   /* spazzi interni  */
   padding: 0.5em;
   /* indichiamo il colore dello sfondo del interruttore
@@ -66,7 +79,7 @@
   font-size: 1.2em;
   line-height: 1;
   /* sempre in prima vista rispetto altri elementi della pagina  */
-  z-index: 2001;
+  
   /* animazione del colore del testo al hover */
   -webkit-transition: color .25s ease-in-out;
   -moz-transition: color .25s ease-in-out;
@@ -152,41 +165,12 @@ body {
   -webkit-animation: bugfix infinite 1s;
 }
 
-@-webkit-keyframes bugfix {
-  to {
-    padding: 0;
-  }
-}
-
-/**
-* per dispositivi medie e piccoli
-*/
-
-@media screen and (min-width: 320px) {
-  html,
-  body {
-    margin: 0;
-    overflow-x: hidden;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  html,
-  body {
-    margin: 0;
-    overflow-x: hidden;
-  }
-  .nav {
-    width: 100%;
-    box-shadow: none
-  }
-}
-
 /**
 * Definiamo lo stile del titolo(logo) del pannello  
 */
 .logo{
   color: rgb(255, 255, 255);
+    
 }
 .nav h2 {
   width: 90%;
@@ -370,27 +354,3 @@ body {
   -webkit-transition: width 0s ease;
   transition: width 0s ease;
 }
-
-
-
-/*
-.mask-content {
-  display: block;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
-  visibility: hidden;
-  opacity: 0;
-}
-
-[id='nav-toggle']:checked ~ .mask-content {
-  visibility: visible;
-  opacity: 1;
-  -webkit-transition: opacity .5s, visibility .5s;
-  transition: opacity .5s, visibility .5s;
-}
-*/
