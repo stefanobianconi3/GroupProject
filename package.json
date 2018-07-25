@@ -1,0 +1,18 @@
+{
+  "name": "pros-chain",
+  "version": "0.0.1",
+  "description": "Sito Web per modelli BPMN",
+  "scripts": {
+    "setup": "concurrently \"cd client && npm install\" \"cd server && npm install\"",
+    "client": "cd client && npm start",
+    "server": "cd server && npm start",
+    "start": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://bitbucket.org/PROSLab/pros-chain.git"
+  },
+  "author": "Università degli Studi di Camerino, Corso di Informatica L-31",
+  "license": "MIT",
+  "homepage": "https://bitbucket.org/PROSLab/pros-chain#readme"
+}
