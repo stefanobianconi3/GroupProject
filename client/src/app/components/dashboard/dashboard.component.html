@@ -1,43 +1,24 @@
-<!-- Left Panel -->
-
-<aside id="left-panel" class="left-panel">
-    <nav class="navbar navbar-expand-sm navbar-default">
-
-        <div class="navbar-header">
-            <img src="http://apromore.unicam.it/img/apromore_logo.png" alt="Logo">
-        </div>
-
-        <div id="main-menu" class="main-menu collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <h3 class="menu-title">Folders</h3><!-- /.menu-title -->
-                <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Components</a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-puzzle-piece"></i><a href="">1</a></li>
-                        <li><i class="fa fa-id-badge"></i><a href="">2</a></li>
-                        <li><i class="fa fa-bars"></i><a href="">3</a></li>
-                        <li><i class="fa fa-share-square-o"></i><a href="">4</a></li>
-                        <li><i class="fa fa-id-card-o"></i><a href="">5</a></li>
-                        <li><i class="fa fa-exclamation-triangle"></i><a href="">6</a></li>
-                        <li><i class="fa fa-spinner"></i><a href="">7</a></li>
-                        <li><i class="fa fa-fire"></i><a href="">8</a></li>
-                        <li><i class="fa fa-book"></i><a href="">9</a></li>
-                        <li><i class="fa fa-th"></i><a href="">10</a></li>
-                        <li><i class="fa fa-file-word-o"></i><a href="">11</a></li>
-                    </ul>
-                </li>               
+<body>
+    <input type="checkbox" id="nav-toggle" hidden>
+        <nav class="nav">
+            <h2 class="logo">Welcome {{nome}}</h2>
+            <label for="nav-toggle" class="nav-toggle" onclick></label>
+            <form>
+                <div class="form-group">
+                <input type="search" class="form-control" placeholder="...">
+                </div>
+                <div class="button">
+                <input type="submit" class="btn btn-outline-light" value="Cerca">
+                </div>
+            </form>
+            <ul>
+                <li><a href="#1">Uno </a>
+                <li><a href="#2">Due</a>
+                <li><a href="#3">Tre</a>
+                <li><a href="#4">Quattro</a>
+                <li><a href="#5">Cinque</a>
+                <li><a href="#6">Sei</a>
+                <li><a href="#7">Sete</a> 
             </ul>
-        </div><!-- /.navbar-collapse -->
-    </nav>
-</aside><!-- /#left-panel -->
-
-<!-- Left Panel -->
-
-<!-- Right Panel -->
-
-<div id="right-panel" class="right-panel">
-
-    <div class="content mt-3">
-
-
-
+        </nav>
+</body>

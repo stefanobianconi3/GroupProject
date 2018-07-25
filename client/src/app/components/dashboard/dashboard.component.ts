@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
-  constructor() { }
-
+private nome = this.getNome();
+  constructor(private http: HttpClientModule) { }
+  
+  getNome(){
+    return localStorage.getItem('nome')
+  }
+  
   ngOnInit() {
   }
 

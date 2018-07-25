@@ -10,7 +10,8 @@ import { NgForm } from '@angular/forms';
 })
 export class NavbarComponent implements OnInit {
 private isLogged:boolean =false;
-
+private fail : boolean = false;
+private errore:String;
   constructor(private route: Router, private auth:AuthService) { 
     auth.outLogin.subscribe(
       () => {
@@ -24,21 +25,23 @@ private isLogged:boolean =false;
       () => {
         this.isLogged=false;
     });
+    auth.errorLogin.subscribe(
+      (errore) => {
+        this.fail=true;
+        this.errore=errore;
 
+    });
   }
 
 logIn(form: NgForm){
   this.auth.login(form.value.email, form.value.password);
-  this.route.navigate(['dashboard']);
 }
 
 signin(form){
   form.reset();
   this.route.navigate(['signin']);
 }
-toHome(){
-  this.route.navigate(['homepage'])
-}
+
 logout(e, form){
   this.auth.logout();
   this.route.navigate(['homepage']);
@@ -47,6 +50,7 @@ logout(e, form){
 }
 
 ngOnInit() {
+  this.isLogged=this.auth.isLoggedIn();
 }
 
 }
