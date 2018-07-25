@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {RouterModule, Routes} from '@angular/router'; 
 import { AppComponent } from './app/components/app/app.component';
 import { NavbarComponent } from './app/components/navbar/navbar.component';
@@ -17,13 +18,15 @@ import {HttpClientModule} from '@angular/common/http';
     NavbarComponent,
     HomePageComponent,
     DashboardComponent,
-    SigninComponent
+    SigninComponent,
+  
   ],
 
   imports: [
     BrowserModule,
     RoutingModuleModule,
     FormsModule,
+    NgbModule.forRoot(),
     ReactiveFormsModule,
     HttpClientModule
   ],
