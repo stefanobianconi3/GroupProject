@@ -16,6 +16,19 @@ function trimString (phrase, prefix) {
     return phrase.replace(prefix+"\\", '')
 }
 
+function dirTree(filename) {
+    var stats = fs.lstatSync(filename),
+        info = {
+            name: path.basename(filename)
+        }
+    if (stats.isDirectory()) {
+        info.children = fs.readdirSync(filename).map(function (child) {
+            return dirTree(filename + '/' + child)
+        })
+    }
+    return info;
+}
+
 module.exports = {
 
     readDirectory: function (id) {
@@ -25,23 +38,7 @@ module.exports = {
         if (!fs.existsSync(dataLocation + id)) {
             fs.mkdirSync(dataLocation + id)
         }
-        return glob.sync(dataLocation + id + '/**/*').map(function (match) {
-            return path.relative(dataLocation + id, match);
-        })
-    },
-
-    JsonGlobResult: function (data) {
-        let pointer
-        let array = {}
-        for (let i = 0; i < data.length; i++) {
-            if (!(data[i].indexOf(".") > -1)) {
-                pointer = data[i]
-                array[data[i]] = []
-            } else {
-                array[pointer].push(trimString(data[i], pointer))
-            }
-        }
-        return array
+        return dirTree(dataLocation + id)['children']
     },
 
     createFolder: function (name, id) {
