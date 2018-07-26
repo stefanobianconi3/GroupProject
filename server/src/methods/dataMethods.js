@@ -1,7 +1,6 @@
 const path = require('path')
 const fs = require('fs')
 const rimraf = require('rimraf')
-const glob = require('glob')
 
 const dataLocation = defineDataLocation(__dirname)
 
