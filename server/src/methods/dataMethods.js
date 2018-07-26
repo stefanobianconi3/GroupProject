@@ -22,9 +22,12 @@ function dirTree(filename) {
             name: path.basename(filename)
         }
     if (stats.isDirectory()) {
+        info.type = 'dir'
         info.children = fs.readdirSync(filename).map(function (child) {
             return dirTree(filename + '/' + child)
         })
+    } else {
+        info.type = 'file'
     }
     return info;
 }
