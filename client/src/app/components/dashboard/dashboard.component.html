@@ -1,8 +1,8 @@
 <body>
     <input type="checkbox" id="nav-toggle" hidden>
-        <nav class="nav">
+        <nav class="nav" id="miaNav">
             <h2 class="logo">Welcome {{nome}}</h2>
-            <label for="nav-toggle" class="nav-toggle" onclick></label>
+            <label for="nav-toggle" class="nav-toggle" (click)="clickNav()" ></label>
             <form>
                 <div class="form-group">
                 <input type="search" class="form-control" placeholder="...">
@@ -21,4 +21,8 @@
                 <li><a href="#7">Sete</a> 
             </ul>
         </nav>
+
+        <div id="miaDash">
+            dashboard works
+        </div>
 </body>

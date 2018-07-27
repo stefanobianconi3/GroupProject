@@ -8,12 +8,35 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class DashboardComponent implements OnInit {
 private nome = this.getNome();
+private side:boolean = true;
+
   constructor(private http: HttpClientModule) { }
   
   getNome(){
     return localStorage.getItem('nome')
   }
+  openNav(){
+    
+    document.getElementById('miaNav').style.width="250px";
+    document.getElementById('miaDash').style.marginLeft="320px";
+    this.side=false;
+    
+  }
+
+  closeNav(){
+    document.getElementById("miaDash").style.marginLeft= "0px";
+    this.side=true;
+
+}
+clickNav(){
+ if(this.side){
+  this.openNav();
+ }else {
+   this.closeNav();
+ }
   
+}
+
   ngOnInit() {
   }
 
