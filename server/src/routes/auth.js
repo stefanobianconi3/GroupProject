@@ -69,6 +69,17 @@ router.post('/signin', async (req, res) => {
                             error: err.sqlMessage
                         })
                     } else {
+                        try {
+                            authMethods.notifyMail(
+                                "Nuova iscrizione", "Si è appena iscritto un nuovo utente con le seguenti informazioni:\n"
+                                + "Nome: " + req.body.firstname + "\n"
+                                + "Cognome: " + req.body.lastname + "\n"
+                                + "Email: " + req.body.email + "\n"
+                                + "Data: " + req.body.date
+                            )
+                        } catch (err) {
+                            console.log(err)
+                        }
                         res.send({
                             success: true,
                             data: [{
