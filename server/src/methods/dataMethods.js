@@ -11,10 +11,6 @@ function defineDataLocation (dirname) {
     return location.replace('method','')
 }
 
-function trimString (phrase, prefix) {
-    return phrase.replace(prefix+"\\", '')
-}
-
 function dirTree(filename) {
     var stats = fs.lstatSync(filename),
         info = {
