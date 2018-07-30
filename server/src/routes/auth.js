@@ -27,7 +27,7 @@ router.post('/login', async (req, res) => {
                     if (results.length === 0) {
                         res.send({
                             success: false,
-                            error: "No user found with this email"
+                            error: "Invalid email or password"
                         })
                     } else {
                         if (authMethods.comparePasswords(req.body.password, results[0].pass)) {
@@ -40,7 +40,7 @@ router.post('/login', async (req, res) => {
                         } else {
                             res.send({
                                 success: false,
-                                error: "The passwords don't match"
+                                error: "Invalid email or password"
                             })
                         }
                     }
@@ -66,7 +66,7 @@ router.post('/signin', async (req, res) => {
                     if (err) {
                         res.send({
                             success: false,
-                            error: err.sqlMessage
+                            error: "There is an error. Please try again!"
                         })
                     } else {
                         try {
