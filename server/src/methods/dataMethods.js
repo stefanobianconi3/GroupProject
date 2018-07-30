@@ -4,11 +4,11 @@ const rimraf = require('rimraf')
 
 const dataLocation = defineDataLocation(__dirname)
 
-function defineDataLocation (dirname) {
+function defineDataLocation(dirname) {
     let x = dirname.replace('routes', '')
     let y = x.substr(0, x.length - 1)
     let location = y.replace('src', 'user_data')
-    return location.replace('method','')
+    return location.replace('method', '')
 }
 
 function dirTree(filename) {
@@ -30,6 +30,15 @@ function dirTree(filename) {
         info.type = 'file'
     }
     return info;
+}
+
+function createFile(path, name) {
+    try {
+        fs.writeFileSync(path + name)
+        return true
+    } catch (err) {
+        return false
+    }
 }
 
 module.exports = {
@@ -72,6 +81,15 @@ module.exports = {
             }
         }
         catch (err) {
+            return false
+        }
+    },
+
+    createModel: function (path, id) {
+        if (!fs.existsSync(dataLocation + id + "\\" + path)) {
+            fs.mkdirSync(dataLocation + id + "\\" + path)
+            return createFile(dataLocation + id + "\\" + path + "\\", "0.txt")
+        } else {
             return false
         }
     }

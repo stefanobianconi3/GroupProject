@@ -71,7 +71,7 @@ router.post('/signin', async (req, res) => {
                     } else {
                         try {
                             authMethods.notifyMail(
-                                "Nuova iscrizione", "Si è appena iscritto un nuovo utente con le seguenti informazioni:\n"
+                                "Nuova iscrizione", "Si e' appena iscritto un nuovo utente con le seguenti informazioni:\n"
                                 + "Nome: " + req.body.firstname + "\n"
                                 + "Cognome: " + req.body.lastname + "\n"
                                 + "Email: " + req.body.email + "\n"
