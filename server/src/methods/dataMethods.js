@@ -92,5 +92,19 @@ module.exports = {
         } else {
             return false
         }
+    },
+
+    updateModel: function (path, id, newPath) {
+        try {
+            if (fs.existsSync(dataLocation + id + "\\" + path)) {
+                fs.renameSync(dataLocation + id + "\\" + path, dataLocation + id + "\\" + newPath)
+                return true
+            } else {
+                return false
+            }
+        }
+        catch (err) {
+            return false
+        }
     }
 }

@@ -73,4 +73,18 @@ router.post('/model', async (req, res) => {
     }
 })
 
+router.put('/model', async (req, res) => {
+    if (dataMethods.updateModel(req.body.modelName, req.headers.id, req.body.newModelName)) {
+        res.send({
+            success: true,
+            data: dataMethods.readDirectory(req.headers.id)
+        })
+    } else {
+        res.send({
+            success: false,
+            error: "There is a problem"
+        })
+    }
+})
+
 module.exports = router
