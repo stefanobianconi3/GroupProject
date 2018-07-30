@@ -115,5 +115,22 @@ module.exports = {
         } else {
             return false
         }
+    },
+
+    existsModel: function (path, id) {
+        if (fs.existsSync(dataLocation + id + "\\" + path)) {
+            return true
+        } else {
+            return false
+        }
+    },
+
+    openModel: function (path, id) {
+        if (path.indexOf(".") === -1) {
+            //Assumo che debba aprire la prima versione del modello
+            return fs.readFileSync(dataLocation + id + "\\" + path + "\\" + "0.txt", { encoding: 'utf-8' })
+        } else {
+            return fs.readFileSync(dataLocation + id + "\\" + path, { encoding: 'utf-8' })
+        }
     }
 }

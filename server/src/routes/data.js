@@ -101,4 +101,18 @@ router.delete('/model', async (req, res) => {
     }
 })
 
+router.post('/model/open', async (req, res) => {
+    if (dataMethods.existsModel(req.body.modelName, req.headers.id)) {
+        res.send({
+            success: true,
+            data: dataMethods.openModel(req.body.modelName, req.headers.id)
+        })
+    } else {
+        res.send({
+            success: false,
+            error: "There is a problem"
+        })
+    }
+})
+
 module.exports = router
