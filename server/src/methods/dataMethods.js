@@ -106,5 +106,14 @@ module.exports = {
         catch (err) {
             return false
         }
+    },
+
+    deleteModel: function (path, id) {
+        if (fs.existsSync(dataLocation + id + "\\" + path)) {
+            rimraf.sync(dataLocation + id + "\\" + path)
+            return true
+        } else {
+            return false
+        }
     }
 }

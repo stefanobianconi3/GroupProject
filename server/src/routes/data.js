@@ -87,4 +87,18 @@ router.put('/model', async (req, res) => {
     }
 })
 
+router.delete('/model', async (req, res) => {
+    if (dataMethods.deleteModel(req.body.modelName, req.headers.id)) {
+        res.send({
+            success: true,
+            data: dataMethods.readDirectory(req.headers.id)
+        })
+    } else {
+        res.send({
+            success: false,
+            error: "There is a problem"
+        })
+    }
+})
+
 module.exports = router
