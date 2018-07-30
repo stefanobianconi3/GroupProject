@@ -21,6 +21,11 @@ function dirTree(filename) {
         info.children = fs.readdirSync(filename).map(function (child) {
             return dirTree(filename + '/' + child)
         })
+        if (info.children.length > 0) {
+            if (info.children[0]['type'] == 'file') {
+                info.type = 'model'
+            }
+        }
     } else {
         info.type = 'file'
     }
