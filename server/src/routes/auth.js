@@ -60,8 +60,8 @@ router.post('/signin', async (req, res) => {
         } else {
             if (req.body.password.length >= 6) {
                 let userPass = authMethods.encryptPassword(req.body.password)
-                let insertionArray = [req.body.email, userPass, req.body.firstname, req.body.lastname, req.body.date]
-                connection.query("insert into users (id, email, pass, firstname, lastname, date) values (NULL,?,?,?,?,?);", insertionArray, function (err, results, fields) {
+                let insertionArray = [req.body.email, userPass, req.body.firstname, req.body.lastname, req.body.date, req.body.affiliation]
+                connection.query("insert into users (id, email, pass, firstname, lastname, date, affiliation) values (NULL,?,?,?,?,?, ?);", insertionArray, function (err, results, fields) {
                     connection.release()
                     if (err) {
                         res.send({
