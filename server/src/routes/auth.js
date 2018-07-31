@@ -62,7 +62,6 @@ router.post('/signin', async (req, res) => {
                 let userPass = authMethods.encryptPassword(req.body.password)
                 let insertionArray = [req.body.email, userPass, req.body.firstname, req.body.lastname, req.body.date, req.body.affiliation]
                 connection.query("insert into users (id, email, pass, firstname, lastname, date, affiliation) values (NULL,?,?,?,?,?, ?);", insertionArray, function (err, results, fields) {
-                    connection.release()
                     if (err) {
                         res.send({
                             success: false,
@@ -81,15 +80,27 @@ router.post('/signin', async (req, res) => {
                         } catch (err) {
                             console.log(err)
                         }
-                        res.send({
-                            success: true,
-                            data: [{
-                                email: req.body.email,
-                                firstname: req.body.firstname,
-                                lastname: req.body.lastname,
-                                date: req.body.date
-                            }],
-                            token: authMethods.createJwtToken(authMethods.createJwtPayload(req.body.email, results[0].id))
+                        connection.query('select id from users where email = ?', req.body.email, function (err, results, fields){
+                            connection.release()
+                            if (err) {
+                                res.send({
+                                    success: false,
+                                    error: "There is an error. Please try again!"
+                                })
+                            } else {
+                                let userId = results[0].id
+                                res.send({
+                                    success: true,
+                                    data: [{
+                                        id: userId,
+                                        email: req.body.email,
+                                        firstname: req.body.firstname,
+                                        lastname: req.body.lastname,
+                                        date: req.body.date
+                                    }],
+                                    token: authMethods.createJwtToken(authMethods.createJwtPayload(req.body.email, userId))
+                                })
+                            }
                         })
                     }
                 })
