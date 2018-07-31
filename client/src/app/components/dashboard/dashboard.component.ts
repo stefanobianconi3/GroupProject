@@ -19,12 +19,14 @@ private side:boolean = true;
     
     document.getElementById('miaNav').style.width="250px";
     document.getElementById('miaDash').style.marginLeft="320px";
+    document.getElementById('miaDash').style.width="77.5%";
     this.side=false;
     
   }
 
   closeNav(){
     document.getElementById("miaDash").style.marginLeft= "0px";
+    document.getElementById('miaDash').style.width="100%";
     this.side=true;
 
 }

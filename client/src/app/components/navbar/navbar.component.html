@@ -44,72 +44,74 @@
 </header>
 <!-->Qua sotto la navbar per quando è loggato<-->
 <ng-template #logged>
-	<div class="navbar">
-		<div class="row">
-			<div class="d-flex">
-				<div class="dropdown mr-1">
-				  <button type="button" class="btn btn-secondary dropdown-toggle btn-sm" id="File" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
-					File
-				  </button>
-				  <div class="dropdown-menu" aria-labelledby="File">
-						<a class="dropdown-item" href="#">Action</a>
-						<a class="dropdown-item" href="#">Another action</a>
-						<a class="dropdown-item" href="#">Something else here</a>
-				  </div>
-				</div>
-				<div class="dropdown mr-1">
-				  <button type="button" class="btn btn-secondary dropdown-toggle btn-sm" id="Discover" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
-					Discover
+	<body>
+		<div class="navbar navbar-default navbar-fixed-top">
+			<div class="row">
+				<div class="d-flex">
+					<div class="dropdown mr-1">
+					<button type="button" class="btn btn-secondary dropdown-toggle btn-sm" id="File" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
+						File
 					</button>
-				  <div class="dropdown-menu" aria-labelledby="Discover">
-						<a class="dropdown-item" href="#">Action</a>
-						<a class="dropdown-item" href="#">Another action</a>
-						<a class="dropdown-item" href="#">Something else here</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">Separated link</a>
+					<div class="dropdown-menu" aria-labelledby="File">
+							<a class="dropdown-item" href="#">Action</a>
+							<a class="dropdown-item" href="#">Another action</a>
+							<a class="dropdown-item" href="#">Something else here</a>
+					</div>
+					</div>
+					<div class="dropdown mr-1">
+					<button type="button" class="btn btn-secondary dropdown-toggle btn-sm" id="Discover" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
+						Discover
+						</button>
+					<div class="dropdown-menu" aria-labelledby="Discover">
+							<a class="dropdown-item" href="#">Action</a>
+							<a class="dropdown-item" href="#">Another action</a>
+							<a class="dropdown-item" href="#">Something else here</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#">Separated link</a>
+						</div>
+					</div>
+					<div class="dropdown mr-1">
+						<button type="button" class="btn btn-secondary dropdown-toggle btn-sm" id="Analyze" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
+							Analyze
+						</button>
+						<div class="dropdown-menu" aria-labelledby="Analyze">
+							<a class="dropdown-item" href="#">Action</a>
+							<a class="dropdown-item" href="#">Another action</a>
+							<a class="dropdown-item" href="#">Something else here</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#">Separated link</a>
+						</div>
+					</div>
+					<div class="dropdown mr-1">
+						<button type="button" class="btn btn-secondary dropdown-toggle btn-sm" id="Redesign" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
+							Redesign
+						</button>
+						<div class="dropdown-menu" aria-labelledby="Redesign">
+							<a class="dropdown-item" href="#">Action</a>
+							<a class="dropdown-item" href="#">Another action</a>
+							<a class="dropdown-item" href="#">Something else here</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#">Separated link</a>
+						</div>
+					</div>
+					<div class="dropdown mr-1">
+						<button type="button" class="btn btn-secondary dropdown-toggle btn-sm" id="Implement" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
+							Implement
+						</button>
+						<div class="dropdown-menu" aria-labelledby="Implement">
+							<a class="dropdown-item" href="#">Action</a>
+							<a class="dropdown-item" href="#">Another action</a>
+							<a class="dropdown-item" href="#">Something else here</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#">Separated link</a>
+						</div>
 					</div>
 				</div>
-				<div class="dropdown mr-1">
-					<button type="button" class="btn btn-secondary dropdown-toggle btn-sm" id="Analyze" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
-						Analyze
-					</button>
-					<div class="dropdown-menu" aria-labelledby="Analyze">
-						<a class="dropdown-item" href="#">Action</a>
-						<a class="dropdown-item" href="#">Another action</a>
-						<a class="dropdown-item" href="#">Something else here</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">Separated link</a>
-					</div>
+				
+				<div class="logout-button">
+					<button *ngIf="isLogged" type="button" value="Logout" class="btn btn-outline-light btn-sm" (click)="logout($event)">Logout</button>
 				</div>
-				<div class="dropdown mr-1">
-					<button type="button" class="btn btn-secondary dropdown-toggle btn-sm" id="Redesign" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
-						Redesign
-					</button>
-					<div class="dropdown-menu" aria-labelledby="Redesign">
-						<a class="dropdown-item" href="#">Action</a>
-						<a class="dropdown-item" href="#">Another action</a>
-						<a class="dropdown-item" href="#">Something else here</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">Separated link</a>
-					</div>
-				</div>
-				<div class="dropdown mr-1">
-					<button type="button" class="btn btn-secondary dropdown-toggle btn-sm" id="Implement" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
-						Implement
-					</button>
-					<div class="dropdown-menu" aria-labelledby="Implement">
-						<a class="dropdown-item" href="#">Action</a>
-						<a class="dropdown-item" href="#">Another action</a>
-						<a class="dropdown-item" href="#">Something else here</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">Separated link</a>
-					</div>
-				</div>
-			</div>
-			
-			<div class="logout-button">
-				<button *ngIf="isLogged" type="button" value="Logout" class="btn btn-outline-light btn-sm" (click)="logout($event)">Logout</button>
 			</div>
 		</div>
-	</div>
+	</body>
 </ng-template>
