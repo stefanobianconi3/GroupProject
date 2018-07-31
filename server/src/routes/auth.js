@@ -76,7 +76,7 @@ router.post('/signin', async (req, res) => {
                                 + "Cognome: " + req.body.lastname + "\n"
                                 + "Email: " + req.body.email + "\n"
                                 + "Data: " + req.body.date + "\n"
-                                + "Affiliazione: " + req.body.affiliazione
+                                + "Affiliazione: " + req.body.affiliation
                             )
                         } catch (err) {
                             console.log(err)
