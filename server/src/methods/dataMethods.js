@@ -32,10 +32,15 @@ function dirTree(filename) {
     return info;
 }
 
-function createFile(path, name) {
+function createFile(path, name, content) {
     try {
-        fs.writeFileSync(path + name)
-        return true
+        if(content){
+            fs.writeFileSync(path + name, content)
+            return true
+        } else {
+            fs.writeFileSync(path + name)
+            return true
+        }
     } catch (err) {
         return false
     }
@@ -54,8 +59,9 @@ module.exports = {
     },
 
     createFolder: function (name, id) {
-        if (!fs.existsSync(dataLocation + id + "\\" + name)) {
-            fs.mkdirSync(dataLocation + id + "\\" + name)
+        console.log(dataLocation + id)
+        if (!fs.existsSync(dataLocation + id + "//" + name)) {
+            fs.mkdirSync(dataLocation + id + "//" + name)
             return true
         } else {
             return false
@@ -63,8 +69,8 @@ module.exports = {
     },
 
     deleteFolder: function (name, id) {
-        if (fs.existsSync(dataLocation + id + "\\" + name)) {
-            rimraf.sync(dataLocation + id + "\\" + name)
+        if (fs.existsSync(dataLocation + id + "//" + name)) {
+            rimraf.sync(dataLocation + id + "//" + name)
             return true
         } else {
             return false
@@ -73,8 +79,8 @@ module.exports = {
 
     updateFolder: function (name, id, newName) {
         try {
-            if (fs.existsSync(dataLocation + id + "\\" + name)) {
-                fs.renameSync(dataLocation + id + "\\" + name, dataLocation + id + "\\" + newName)
+            if (fs.existsSync(dataLocation + id + "//" + name)) {
+                fs.renameSync(dataLocation + id + "//" + name, dataLocation + id + "//" + newName)
                 return true
             } else {
                 return false
@@ -86,9 +92,9 @@ module.exports = {
     },
 
     createModel: function (path, id) {
-        if (!fs.existsSync(dataLocation + id + "\\" + path)) {
-            fs.mkdirSync(dataLocation + id + "\\" + path)
-            return createFile(dataLocation + id + "\\" + path + "\\", "0.txt")
+        if (!fs.existsSync(dataLocation + id + "//" + path)) {
+            fs.mkdirSync(dataLocation + id + "//" + path)
+            return createFile(dataLocation + id + "//" + path + "//", "0.txt", undefined)
         } else {
             return false
         }
@@ -96,8 +102,8 @@ module.exports = {
 
     updateModel: function (path, id, newPath) {
         try {
-            if (fs.existsSync(dataLocation + id + "\\" + path)) {
-                fs.renameSync(dataLocation + id + "\\" + path, dataLocation + id + "\\" + newPath)
+            if (fs.existsSync(dataLocation + id + "//" + path)) {
+                fs.renameSync(dataLocation + id + "//" + path, dataLocation + id + "//" + newPath)
                 return true
             } else {
                 return false
@@ -109,8 +115,8 @@ module.exports = {
     },
 
     deleteModel: function (path, id) {
-        if (fs.existsSync(dataLocation + id + "\\" + path)) {
-            rimraf.sync(dataLocation + id + "\\" + path)
+        if (fs.existsSync(dataLocation + id + "//" + path)) {
+            rimraf.sync(dataLocation + id + "//" + path)
             return true
         } else {
             return false
@@ -118,19 +124,27 @@ module.exports = {
     },
 
     existsModel: function (path, id) {
-        if (fs.existsSync(dataLocation + id + "\\" + path)) {
+        if (fs.existsSync(dataLocation + id + "//" + path)) {
             return true
         } else {
             return false
         }
     },
 
-    openModel: function (path, id) {
-        if (path.indexOf(".") === -1) {
-            //Assumo che debba aprire la prima versione del modello
-            return fs.readFileSync(dataLocation + id + "\\" + path + "\\" + "0.txt", { encoding: 'utf-8' })
+    openModel: function (path, id, version) {
+        if (version) {
+            return fs.readFileSync(dataLocation + id + "//" + path + "//" + version+".txt", { encoding: 'utf-8' })
         } else {
-            return fs.readFileSync(dataLocation + id + "\\" + path, { encoding: 'utf-8' })
+            //Assumo che debba aprire la prima versione del modello
+            return fs.readFileSync(dataLocation + id + "//" + path + "//" + "0.txt", { encoding: 'utf-8' })
+        }
+    },
+
+    saveModel: function (path, id, content, version){
+        if (fs.existsSync(dataLocation + id + "//" + path + "//" + version + ".txt")){
+            return false
+        } else {
+            return createFile(dataLocation + id + "//" + path + "//", version+".txt", content)
         }
     }
 }

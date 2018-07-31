@@ -1,6 +1,6 @@
 {
   "name": "pros-chain-server",
-  "version": "0.0.1",
+  "version": "0.3.0",
   "description": "Server del progetto Pros Chain",
   "main": "server.js",
   "scripts": {

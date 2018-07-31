@@ -105,7 +105,21 @@ router.post('/model/open', async (req, res) => {
     if (dataMethods.existsModel(req.body.modelName, req.headers.id)) {
         res.send({
             success: true,
-            data: dataMethods.openModel(req.body.modelName, req.headers.id)
+            data: dataMethods.openModel(req.body.modelName, req.headers.id, req.body.version)
+        })
+    } else {
+        res.send({
+            success: false,
+            error: "There is a problem"
+        })
+    }
+})
+
+router.post('/model/save', async (req, res) => {
+    if (dataMethods.saveModel(req.body.modelName, req.headers.id, req.body.content, req.body.version)) {
+        res.send({
+            success: true,
+            data: 'Model saved correctly'
         })
     } else {
         res.send({
