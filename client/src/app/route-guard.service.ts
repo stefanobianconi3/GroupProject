@@ -37,4 +37,4 @@ export class RouteGuardService implements CanActivate {
       };
     }
   }
-}}
+}
