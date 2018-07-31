@@ -96,7 +96,7 @@ router.delete('/model', async (req, res) => {
     } else {
         res.send({
             success: false,
-            error: "There is a problem"
+            error: "There is such model with that name"
         })
     }
 })
@@ -110,7 +110,7 @@ router.post('/model/open', async (req, res) => {
     } else {
         res.send({
             success: false,
-            error: "There is a problem"
+            error: "There is no such model"
         })
     }
 })
@@ -124,7 +124,7 @@ router.post('/model/save', async (req, res) => {
     } else {
         res.send({
             success: false,
-            error: "There is a problem"
+            error: "Overwriting a version is not allowed"
         })
     }
 })
