@@ -7,6 +7,8 @@ import { HomePageComponent } from 'src/app/components/home-page/home-page.compon
 import { DashboardComponent } from 'src/app/components/dashboard/dashboard.component';
 import {RouteGuardService} from 'src/app/route-guard.service';
 import { SigninComponent } from './components/signin/signin.component';
+import { ModelerComponent } from './components/modeler/modeler.component';
+
 const routes: Routes = [
   {
     path:'homepage',
@@ -27,6 +29,11 @@ const routes: Routes = [
   {
   path: 'signin',
   component: SigninComponent,
+  },
+  {
+    path: 'modeler',
+    component: ModelerComponent,
+    canActivate: [RouteGuardService]
   }
 ];
 
@@ -44,6 +51,8 @@ const routes: Routes = [
   providers:[
     RouteGuardService
   ],
+
+  declarations: [],
 })
 export class RoutingModuleModule {
   

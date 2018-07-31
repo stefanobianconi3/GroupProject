@@ -25,7 +25,16 @@ export class RouteGuardService implements CanActivate {
         else{
           this.router.navigate(['homepage']);
           return false;
-      }
+        }
+      };
+      case "modeler": {
+        if(this.auth.isLoggedIn()){
+          return true;
+        } else {
+            this.router.navigate(['homepage']);
+            return false;
+        }
+      };
     }
   }
 }}
