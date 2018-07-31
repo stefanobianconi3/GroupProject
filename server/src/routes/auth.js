@@ -35,7 +35,7 @@ router.post('/login', async (req, res) => {
                             res.send({
                                 success: true,
                                 data: results,
-                                token: authMethods.createJwtToken(authMethods.createJwtPayload(results[0].email, results[0].pass))
+                                token: authMethods.createJwtToken(authMethods.createJwtPayload(results[0].email, results[0].id))
                             })
                         } else {
                             res.send({
@@ -89,7 +89,7 @@ router.post('/signin', async (req, res) => {
                                 lastname: req.body.lastname,
                                 date: req.body.date
                             }],
-                            token: authMethods.createJwtToken(authMethods.createJwtPayload(req.body.email, userPass))
+                            token: authMethods.createJwtToken(authMethods.createJwtPayload(req.body.email, results[0].id))
                         })
                     }
                 })

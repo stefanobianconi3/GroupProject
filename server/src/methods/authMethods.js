@@ -28,10 +28,10 @@ module.exports = {
         return transporter.sendMail(message)
     },
 
-    createJwtPayload: function(email, password) {
+    createJwtPayload: function(email, id) {
         return {
-            email: email,
-            password: password
+            id: id,
+            email: email
         }
     },
 
