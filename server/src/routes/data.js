@@ -54,7 +54,7 @@ router.put('/folder', async (req, res) => {
     } else {
         res.send({
             success: false,
-            error: "There is a problem"
+            error: "There is no such folder with that name"
         })
     }
 })
@@ -68,7 +68,7 @@ router.post('/model', async (req, res) => {
     } else {
         res.send({
             success: false,
-            error: "There is a problem"
+            error: "There is a problem during the creation of the model. Please try again!"
         })
     }
 })
@@ -82,7 +82,7 @@ router.put('/model', async (req, res) => {
     } else {
         res.send({
             success: false,
-            error: "There is a problem"
+            error: "There is no such model with that name"
         })
     }
 })
@@ -96,7 +96,7 @@ router.delete('/model', async (req, res) => {
     } else {
         res.send({
             success: false,
-            error: "There is such model with that name"
+            error: "There is no such model with that name"
         })
     }
 })
