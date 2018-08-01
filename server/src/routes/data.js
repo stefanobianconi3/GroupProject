@@ -13,7 +13,7 @@ router.use(authenticate)
 router.get('/', async (req, res) => {
     res.send({
         success: true,
-        data: dataMethods.JsonGlobResult(dataMethods.readDirectory(req.headers.id))
+        data: dataMethods.readDirectory(req.headers.id)
     })
 })
 
@@ -21,7 +21,7 @@ router.post('/folder', async (req, res) => {
     if (dataMethods.createFolder(req.body.folderName, req.headers.id)) {
         res.send({
             success: true,
-            data: dataMethods.JsonGlobResult(dataMethods.readDirectory(req.headers.id))
+            data: dataMethods.readDirectory(req.headers.id)
         })
     } else {
         res.send({
@@ -35,7 +35,7 @@ router.delete('/folder', async (req, res) => {
     if (dataMethods.deleteFolder(req.body.folderName, req.headers.id)) {
         res.send({
             success: true,
-            data: dataMethods.JsonGlobResult(dataMethods.readDirectory(req.headers.id))
+            data: dataMethods.readDirectory(req.headers.id)
         })
     } else {
         res.send({
@@ -49,12 +49,82 @@ router.put('/folder', async (req, res) => {
     if (dataMethods.updateFolder(req.body.folderName, req.headers.id, req.body.folderNewName)) {
         res.send({
             success: true,
-            data: dataMethods.JsonGlobResult(dataMethods.readDirectory(req.headers.id))
+            data: dataMethods.readDirectory(req.headers.id)
         })
     } else {
         res.send({
             success: false,
-            error: "There is a problem"
+            error: "There is no such folder with that name"
+        })
+    }
+})
+
+router.post('/model', async (req, res) => {
+    if (dataMethods.createModel(req.body.modelName, req.headers.id)) {
+        res.send({
+            success: true,
+            data: dataMethods.readDirectory(req.headers.id)
+        })
+    } else {
+        res.send({
+            success: false,
+            error: "There is a problem during the creation of the model. Please try again!"
+        })
+    }
+})
+
+router.put('/model', async (req, res) => {
+    if (dataMethods.updateModel(req.body.modelName, req.headers.id, req.body.newModelName)) {
+        res.send({
+            success: true,
+            data: dataMethods.readDirectory(req.headers.id)
+        })
+    } else {
+        res.send({
+            success: false,
+            error: "There is no such model with that name"
+        })
+    }
+})
+
+router.delete('/model', async (req, res) => {
+    if (dataMethods.deleteModel(req.body.modelName, req.headers.id)) {
+        res.send({
+            success: true,
+            data: dataMethods.readDirectory(req.headers.id)
+        })
+    } else {
+        res.send({
+            success: false,
+            error: "There is no such model with that name"
+        })
+    }
+})
+
+router.post('/model/open', async (req, res) => {
+    if (dataMethods.existsModel(req.body.modelName, req.headers.id)) {
+        res.send({
+            success: true,
+            data: dataMethods.openModel(req.body.modelName, req.headers.id, req.body.version)
+        })
+    } else {
+        res.send({
+            success: false,
+            error: "There is no such model"
+        })
+    }
+})
+
+router.post('/model/save', async (req, res) => {
+    if (dataMethods.saveModel(req.body.modelName, req.headers.id, req.body.content, req.body.version)) {
+        res.send({
+            success: true,
+            data: 'Model saved correctly'
+        })
+    } else {
+        res.send({
+            success: false,
+            error: "Overwriting a version is not allowed"
         })
     }
 })

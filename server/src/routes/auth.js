@@ -27,7 +27,7 @@ router.post('/login', async (req, res) => {
                     if (results.length === 0) {
                         res.send({
                             success: false,
-                            error: "No user found with this email"
+                            error: "Invalid email or password"
                         })
                     } else {
                         if (authMethods.comparePasswords(req.body.password, results[0].pass)) {
@@ -35,12 +35,12 @@ router.post('/login', async (req, res) => {
                             res.send({
                                 success: true,
                                 data: results,
-                                token: authMethods.createJwtToken(authMethods.createJwtPayload(results[0].email, results[0].pass))
+                                token: authMethods.createJwtToken(authMethods.createJwtPayload(results[0].email, results[0].id))
                             })
                         } else {
                             res.send({
                                 success: false,
-                                error: "The passwords don't match"
+                                error: "Invalid email or password"
                             })
                         }
                     }
@@ -60,24 +60,47 @@ router.post('/signin', async (req, res) => {
         } else {
             if (req.body.password.length >= 6) {
                 let userPass = authMethods.encryptPassword(req.body.password)
-                let insertionArray = [req.body.email, userPass, req.body.firstname, req.body.lastname, req.body.date]
-                connection.query("insert into users (id, email, pass, firstname, lastname, date) values (NULL,?,?,?,?,?);", insertionArray, function (err, results, fields) {
-                    connection.release()
+                let insertionArray = [req.body.email, userPass, req.body.firstname, req.body.lastname, req.body.date, req.body.affiliation]
+                connection.query("insert into users (id, email, pass, firstname, lastname, date, affiliation) values (NULL,?,?,?,?,?, ?);", insertionArray, function (err, results, fields) {
                     if (err) {
                         res.send({
                             success: false,
-                            error: err.sqlMessage
+                            error: "There is an error. Please try again!"
                         })
                     } else {
-                        res.send({
-                            success: true,
-                            data: [{
-                                email: req.body.email,
-                                firstname: req.body.firstname,
-                                lastname: req.body.lastname,
-                                date: req.body.date
-                            }],
-                            token: authMethods.createJwtToken(authMethods.createJwtPayload(req.body.email, userPass))
+                        try {
+                            authMethods.notifyMail(
+                                "Nuova iscrizione", "Si e' appena iscritto un nuovo utente con le seguenti informazioni:\n"
+                                + "Nome: " + req.body.firstname + "\n"
+                                + "Cognome: " + req.body.lastname + "\n"
+                                + "Email: " + req.body.email + "\n"
+                                + "Data: " + req.body.date + "\n"
+                                + "Affiliazione: " + req.body.affiliation
+                            )
+                        } catch (err) {
+                            console.log(err)
+                        }
+                        connection.query('select id from users where email = ?', req.body.email, function (err, results, fields){
+                            connection.release()
+                            if (err) {
+                                res.send({
+                                    success: false,
+                                    error: "There is an error. Please try again!"
+                                })
+                            } else {
+                                let userId = results[0].id
+                                res.send({
+                                    success: true,
+                                    data: [{
+                                        id: userId,
+                                        email: req.body.email,
+                                        firstname: req.body.firstname,
+                                        lastname: req.body.lastname,
+                                        date: req.body.date
+                                    }],
+                                    token: authMethods.createJwtToken(authMethods.createJwtPayload(req.body.email, userId))
+                                })
+                            }
                         })
                     }
                 })

@@ -6,9 +6,26 @@ const { secret } = require('../config/jwtOptions')
 
 const authenticate = async (req, res, next) => {
     if (req.headers.token) {
-        if (jwt.verify(req.headers.token, secret)) {
-            return next()
-        } else {
+        try {
+            let verification = jwt.verify(req.headers.token, secret)
+            if (verification) {
+                let id = verification['id']
+                if(id == req.headers.id){
+                    return next()
+                } else {
+                    res.send({
+                        success: false,
+                        error: 'The signed token does not belong to the provided id'
+                    })
+                }
+            } else {
+                res.send({
+                    success: false,
+                    error: 'Not a valid token provided'
+                })
+            }
+        }
+        catch (err) {
             res.send({
                 success: false,
                 error: 'Not a valid token provided'

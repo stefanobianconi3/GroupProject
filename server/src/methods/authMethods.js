@@ -1,8 +1,15 @@
 var bcrypt = require('bcrypt')
 var jwt = require('jsonwebtoken')
+const nodemailer = require('nodemailer')
 
+const { mailOptions } = require('../config/mailOptions')
 const { secret, jwtOptions } = require('../config/jwtOptions')
 const { encryptionOptions } = require('../config/encryptionOptions')
+
+const transporter = nodemailer.createTransport({
+    service: mailOptions.service,
+    auth: mailOptions.auth
+})
 
 module.exports = {
     deleteItemsOnJson: function(array, items) {
@@ -11,10 +18,20 @@ module.exports = {
         }
     },
 
-    createJwtPayload: function(email, password) {
+    notifyMail: function (subject, text) {
+        let message = {
+            from: 'Pros-Chain Notifier',
+            to: mailOptions.receiver,
+            subject: subject,
+            text: text
+        };
+        return transporter.sendMail(message)
+    },
+
+    createJwtPayload: function(email, id) {
         return {
-            email: email,
-            password: password
+            id: id,
+            email: email
         }
     },
 
