@@ -8,6 +8,7 @@ import { DashboardComponent } from 'src/app/components/dashboard/dashboard.compo
 import {RouteGuardService} from 'src/app/route-guard.service';
 import { SigninComponent } from './components/signin/signin.component';
 import { ModelerComponent } from './components/modeler/modeler.component';
+import { DashbodyComponent } from './components/dashbody/dashbody.component';
 
 const routes: Routes = [
   {

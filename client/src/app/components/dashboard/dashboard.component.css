@@ -331,33 +331,3 @@ input[type=search] {
   transition: width 0s ease;
 }
 
-/* CONTENUTO DASHBOARD */
-
-#miaDash {
-  width: 100%;
-  position: fixed;
-  background-color: #272c33;
-}
-
-#tabella {
-  border-collapse: collapse;
-}
-
-#theader {
-  position: fixed;
-  
-}
-
-#tbody {
-  padding: 5px;
-  background-color: white;
-  margin-right: 0px;
-}
-
-
-#pagination {
-  position: fixed;
-  top: 55px;
-  right: 100px;
-}
-

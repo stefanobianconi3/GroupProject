@@ -12,6 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { NgForm, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { ModelerComponent } from 'src/app/components/modeler/modeler.component';
+import { DashbodyComponent } from 'src/app/components/dashbody/dashbody.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ModelerComponent } from 'src/app/components/modeler/modeler.component';
     HomePageComponent,
     DashboardComponent,
     SigninComponent,
-    ModelerComponent
+    ModelerComponent,
+    DashbodyComponent
   
   ],
 
