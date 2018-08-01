@@ -12,13 +12,8 @@
                 </div>
             </form>
             <ul>
-                <li><a href="#1">Uno </a>
-                <li><a href="#2">Due</a>
-                <li><a href="#3">Tre</a>
-                <li><a href="#4">Quattro</a>
-                <li><a href="#5">Cinque</a>
-                <li><a href="#6">Sei</a>
-                <li><a href="#7">Sete</a> 
+                <li *ngFor="let f of folder">
+                    <a>{{f.name}}</a>
             </ul>
         </nav>
 
@@ -28,6 +23,7 @@
                 <thead id="thead">
                     <div class="btn-toolbar" role="toolbar" id="toolbar-dash" aria-label="Toolbar with button groups">
                         <div class="btn-group mr-2 btn-sm" role="group" aria-label="First group">
+                            
                           <button type="button" class="btn btn-secondary">1</button>
                           <button type="button" class="btn btn-secondary">2</button>
                           <button type="button" class="btn btn-secondary">3</button>

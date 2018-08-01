@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ServerLocation } from '../classes/ServerLocation';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -9,14 +9,15 @@ import { HttpClient } from '@angular/common/http';
 export class DataService {
 private folder = [];
 private APIURL= ServerLocation.URL+'api/data';
-private header = {
-  token: localStorage.getItem('token'),
-  id: localStorage.getItem('id')
-}
-  constructor(private http:HttpClient) { }
+private headers;
+  constructor(private http:HttpClient) { 
+    this.headers = new HttpHeaders()
+    .set("token", localStorage.getItem('token'))
+    .set("id", localStorage.getItem('id'));
+  }
 
   getFolder(){
-  return this.http.get(this.APIURL, {headers: this.header})
+  return this.http.get(this.APIURL+"/", {headers: this.headers})
  }
  
 }

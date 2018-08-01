@@ -43,9 +43,11 @@ clickNav(){
 
   ngOnInit() {
     this.data.getFolder().subscribe((res) => {
-      console.log(res);
-      this.folder = res['data'];
-      console.log(this.folder);
+      if(res['success']){
+        this.folder = res['data'];
+      } else {
+        //Faccio altro
+      }
     })
   }
 
