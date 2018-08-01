@@ -1,38 +1,56 @@
 <div class="container" id="wrap">
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-            <form #signinf="ngForm" (ngSubmit)="signIn(signinf)" accept-charset="utf-8" class="form" >    <legend>Sign In</legend>
-                    <div class="row">
-                        <div class="col-xs-6 col-md-6">
-                            <input  ngModel #firstname="ngModel" type="text" name="firstname" id="firstname" class="form-control input-lg" placeholder="First Name"  /></div>
-                        <div class="col-xs-6 col-md-6">
-                            <input ngModel #lastname="ngModel" type="text" name="lastname" id="lastname" class="form-control input-lg" placeholder="Last Name"  /></div>
-                    </div>
-                    <input ngModel #email="ngModel" type="email" name="email" id="email" class="form-control input-lg" placeholder="Your Email"  />
-                    <input ngModel #password="ngModel" type="password" name="password" id="password"  class="form-control input-lg" placeholder="Password"  />
-                    <input type="password" name="confirm_password" value="" class="form-control input-lg" placeholder="Confirm Password"  />   
-                    <label>Birth Date</label> 
+    <div class="row">
+        <div class="col-md-12 col-md-offset-3">
+        <form #signinf="ngForm" (ngSubmit)="signIn(signinf)" accept-charset="utf-8" class="form" >    <legend>Sign In</legend>
+            <div class="row col-md-6" id="identità">
+                <div class="col-xs-7 col-md-7">
+                    <input  ngModel #firstname="ngModel" type="text" name="firstname" id="firstname" class="form-control input-lg" placeholder="First Name"  /></div>
+                <div class="col-xs-7 col-md-7">
+                    <input ngModel #lastname="ngModel" type="text" name="lastname" id="lastname" class="form-control input-lg" placeholder="Last Name"  /></div>
+            </div>
+                <input ngModel #email="ngModel" type="email" name="email" id="email" class="form-control input-lg col-md-6" placeholder="Your Email"  />
+                <input ngModel #password="ngModel" type="password" name="password" id="password"  class="form-control input-lg col-md-6" placeholder="Password"  />
+                <input type="password" name="confirm_password" value="" class="form-control input-lg col-md-6" placeholder="Confirm Password"  />   
+                 
+                <label id="data"><h4>Birth Date</h4></label> 
                     <div class="row" >
-                        <ngb-datepicker class="datepicker"ngModel #date="ngModel" name="date" id="date"
+                        <ngb-datepicker class="datepicker"ngModel #date="ngModel" name="date" id="date" 
                         [minDate]="{year: 1950, month: 1}"
                         [maxDate]="{year: 2018, month: 1}"
                         >
 
                         </ngb-datepicker>
                     </div>
-                       
-                        <br />
-                        <button class="btn btn-lg btn-primary btn-block signin-btn" type="submit">Create my account</button>
-                        <span class="help-block">By clicking Create my account, you agree to our Terms and that you 
-                                have read our Data Use Policy, including our Cookie Use.</span>
-                                <div class="alert-danger" *ngIf="fail">Errore nella registrazione</div>
-            </form>
+                
+            <br>
+                <div class="col-md-6 medium">
+                    <h4 id="affiliation">Affiliation</h4>
+                        <div class="funkyradio">
+                            <div class="funkyradio-default-1">
+                                <input type="checkbox" name="checkbox" id="checkbox1" />
+                                <label for="checkbox1">Student</label>
+                            </div>
+                            <div class="funkyradio-default-2">
+                                <input type="checkbox" name="checkbox" id="checkbox2" />
+                                <label for="checkbox2">Company</label>
+                            </div>
+                            <div class="funkyradio-default-3">
+                                <input type="checkbox" name="checkbox" id="checkbox3" />
+                                <label for="checkbox3">Private</label>
+                            </div>
+                        </div>  
+                </div>  
+                
 
-        </div>
-        <div class="img">     
-                <p>
-                    <img src="http://apromore.unicam.it/img/apromore_logo.png" width="500" hspace="25">
-                </p>
-        </div>
+                <br />
+                <div id="submit">
+                    <button class="btn btn-lg btn-success btn-block signin-btn" type="submit">Create my account</button>
+                    <span class="help-block">By clicking Create my account, you agree to our Terms and that you 
+                        have read our Data Use Policy, including our Cookie Use.</span>
+                    <div class="alert-danger" *ngIf="fail">Errore nella registrazione</div>
+                </div>
+        </form>
+
+        
     </div>
 </div>    

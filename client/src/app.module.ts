@@ -11,6 +11,7 @@ import { RoutingModuleModule } from 'src/app/routing-module.module';
 import { AuthService } from 'src/app/services/auth.service';
 import { NgForm, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { ModelerComponent } from 'src/app/components/modeler/modeler.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import {HttpClientModule} from '@angular/common/http';
     HomePageComponent,
     DashboardComponent,
     SigninComponent,
+    ModelerComponent
   
   ],
 
@@ -28,7 +30,8 @@ import {HttpClientModule} from '@angular/common/http';
     FormsModule,
     NgbModule.forRoot(),
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    
   ],
 
   providers: [AuthService],
