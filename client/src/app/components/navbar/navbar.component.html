@@ -9,7 +9,7 @@
 			<form  name="loginForm" #f="ngForm" (ngSubmit)="logIn(f)" >
 			<div class="row">
 				<div class="col-sm-5">
-					<div class="alert-danger" *ngIf="errore">{{errore}}</div>
+					<div class="alert-danger" id="allerta" *ngIf="errore">{{errore}}</div>
 					  <div class="form-group">
 					    <input required email type="email" name="email"  ngModel #email="ngModel" id="email"  class="form-control" placeholder="Email Address" >
 							<div *ngIf="email.dirty && email.touched && email.invalid" >

@@ -42,7 +42,14 @@ header .btn-header-login{
 .login-main span{
 	font-size: 12px;
 } 
+
+#allerta {
+	position: absolute;
+	top: 35px;
+}
+
 /* navbar dopo il login */
+
 .navbar{
 	
 	height: 50px;
