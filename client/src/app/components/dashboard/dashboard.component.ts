@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,8 +10,9 @@ import { HttpClientModule } from '@angular/common/http';
 export class DashboardComponent implements OnInit {
 private nome = this.getNome();
 private side:boolean = true;
+private folder;
 
-  constructor(private http: HttpClientModule) { }
+  constructor(private http: HttpClientModule, private data: DataService) { }
   
   getNome(){
     return localStorage.getItem('nome')
@@ -40,6 +42,11 @@ clickNav(){
 }
 
   ngOnInit() {
+    this.data.getFolder().subscribe((res) => {
+      console.log(res);
+      this.folder = res['data'];
+      console.log(this.folder);
+    })
   }
 
 }

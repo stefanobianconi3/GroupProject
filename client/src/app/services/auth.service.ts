@@ -54,6 +54,7 @@ constructor(private http: HttpClient, private route: Router) { }
         if(payload.success){
           let userData = payload.data[0]
           localStorage.setItem('token', payload.token);
+          localStorage.setItem('id',userData.id);
           localStorage.setItem('nome',userData.firstname);
           this.outLogin.emit();
           this.route.navigate(['dashboard']);
