@@ -33,10 +33,10 @@ const customModdle = {
 @Component({
   selector: 'app-modeler',
   templateUrl: './modeler.component.html',
-  styleUrls: ['./modeler.component.scss']
+  styleUrls: ['./modeler.component.css']
 })
 export class ModelerComponent implements OnInit {
-  title = 'Angular/BPMN';
+  
   modeler;
   bpmnXML =
   '<?xml version="1.0" encoding="UTF-8"?>' +
@@ -64,7 +64,7 @@ export class ModelerComponent implements OnInit {
     this.modeler = new Modeler({
       container: '#canvas',
       width: '100%',
-      height: '600px',
+      height: '500px',
       additionalModules: [
         PropertiesPanelModule,
 
@@ -76,9 +76,10 @@ export class ModelerComponent implements OnInit {
         {[InjectionNames.originalPaletteProvider]: ['type', OriginalPaletteProvider]},
         {[InjectionNames.paletteProvider]: ['type', CustomPaletteProvider]},
       ],
-      propertiesPanel: {
+    
+      /* propertiesPanel: {
         parent: '#properties'
-      },
+      },*/
       moddleExtension: {
         custom: customModdle
       }
