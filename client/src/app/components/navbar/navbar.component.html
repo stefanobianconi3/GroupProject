@@ -30,9 +30,9 @@
 					  </div>
 				</div>
 				<div class="col-sm-2">
-					 <div class="btn-group">
-							<button type="submit" [disabled]="!f.valid" value="Login" class="btn btn-outline-dark">Login</button>
-							<button type="button" value="Sign In" class="btn btn-outline-dark" (click)="signin(f.form)" >Sign In</button> 
+					 <div class="btn-group btn-sm">
+							<button type="submit" [disabled]="!f.valid" value="Login" class="btn btn-outline-dark btn-sm">Login</button>
+							<button type="button" value="Sign In" class="btn btn-outline-dark btn-sm" (click)="signin(f.form)" >Sign In</button> 
 					 </div>
 				</div>
 			</div>	
@@ -48,22 +48,25 @@
 	<body>
 		<div class="navbar navbar-default navbar-fixed-top">
 			<div class="row">
-				<div class="d-flex">
-					<div class="dropdown mr-1">
-					<button type="button" class="btn btn-secondary dropdown-toggle btn-sm" id="File" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
-						File
-					</button>
-					<div class="dropdown-menu" aria-labelledby="File">
+				<div class="d-flex ">
+					<div class="btn-group" id="file" mdbDropdown>
+						<button mdbDropdownToggle type="button" mdbBtn color="grey" size="sm" class="dropdown-toggle waves-light" mdbWavesEffect>
+							File
+						</button>
+					
+						<div class="dropdown-menu dropdown-primary">
 							<a class="dropdown-item" href="#">Action</a>
 							<a class="dropdown-item" href="#">Another action</a>
 							<a class="dropdown-item" href="#">Something else here</a>
+							<div class="divider dropdown-divider"></div>
+							<a class="dropdown-item" href="#">Separated link</a>
+						</div>
 					</div>
-					</div>
-					<div class="dropdown mr-1">
-					<button type="button" class="btn btn-secondary dropdown-toggle btn-sm" id="Discover" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
-						Discover
+					<div class="btn-group" id="discover" mdbDropdown>
+						<button mdbDropdownToggle mdbBtn color="grey" size="sm" class="dropdown-toggle waves-light" type="button" mdbWavesEffect>
+							Discover
 						</button>
-					<div class="dropdown-menu" aria-labelledby="Discover">
+						<div class="dropdown-menu">
 							<a class="dropdown-item" href="#">Action</a>
 							<a class="dropdown-item" href="#">Another action</a>
 							<a class="dropdown-item" href="#">Something else here</a>
@@ -71,11 +74,11 @@
 							<a class="dropdown-item" href="#">Separated link</a>
 						</div>
 					</div>
-					<div class="dropdown mr-1">
-						<button type="button" class="btn btn-secondary dropdown-toggle btn-sm" id="Analyze" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
+					<div class="btn-group" id="analyze" mdbDropdown>
+						<button mdbDropdownToggle mdbBtn color="grey" size="sm" class="dropdown-toggle waves-light" type="button" mdbWavesEffect>
 							Analyze
 						</button>
-						<div class="dropdown-menu" aria-labelledby="Analyze">
+						<div class="dropdown-menu">
 							<a class="dropdown-item" href="#">Action</a>
 							<a class="dropdown-item" href="#">Another action</a>
 							<a class="dropdown-item" href="#">Something else here</a>
@@ -83,11 +86,11 @@
 							<a class="dropdown-item" href="#">Separated link</a>
 						</div>
 					</div>
-					<div class="dropdown mr-1">
-						<button type="button" class="btn btn-secondary dropdown-toggle btn-sm" id="Redesign" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
+					<div class="btn-group" id="redesign" mdbDropdown>
+						<button mdbDropdownToggle mdbBtn color="grey" size="sm" class="dropdown-toggle waves-light" type="button" mdbWavesEffect>
 							Redesign
 						</button>
-						<div class="dropdown-menu" aria-labelledby="Redesign">
+						<div class="dropdown-menu">
 							<a class="dropdown-item" href="#">Action</a>
 							<a class="dropdown-item" href="#">Another action</a>
 							<a class="dropdown-item" href="#">Something else here</a>
@@ -95,11 +98,23 @@
 							<a class="dropdown-item" href="#">Separated link</a>
 						</div>
 					</div>
-					<div class="dropdown mr-1">
-						<button type="button" class="btn btn-secondary dropdown-toggle btn-sm" id="Implement" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
+					<div class="btn-group" id="implement" mdbDropdown>
+						<button mdbDropdownToggle mdbBtn color="grey" size="sm" class="dropdown-toggle waves-light" type="button" mdbWavesEffect>
 							Implement
 						</button>
-						<div class="dropdown-menu" aria-labelledby="Implement">
+						<div class="dropdown-menu">
+							<a class="dropdown-item" href="#">Action</a>
+							<a class="dropdown-item" href="#">Another action</a>
+							<a class="dropdown-item" href="#">Something else here</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#">Separated link</a>
+						</div>
+					</div>
+					<div class="btn-group" id="monitor" mdbDropdown>
+						<button mdbDropdownToggle mdbBtn color="grey" size="sm" class="dropdown-toggle waves-light" type="button" mdbWavesEffect>
+							Monitor
+						</button>
+						<div class="dropdown-menu">
 							<a class="dropdown-item" href="#">Action</a>
 							<a class="dropdown-item" href="#">Another action</a>
 							<a class="dropdown-item" href="#">Something else here</a>

@@ -33,12 +33,36 @@ input[type=search]::-webkit-search-cancel-button,
   -webkit-appearance:none;
 }
 
-.form-group {
+#foldername {
   padding: 0;
   position: absolute;
   top: 90px;
   left: 20px;
   width: 55%;
+}
+
+/* modifico icone */
+.fa-plus-square {
+  font-size: 40px;
+  padding: 1px;
+}
+
+#creaCartella {
+  position: absolute;
+  top: 82px;
+  left: 200px;
+}
+
+#eliminaCartella {
+  position: absolute;
+  top: 120px;
+  left: 15px;
+}
+
+#modificaCartella {
+  position: absolute;
+  top: 120px;
+  left: 100px;
 }
 
 input[type=search] {
@@ -47,8 +71,8 @@ input[type=search] {
 
 .button{
   position: absolute;
-  top: 90px;
-  left: 230px;
+  top: 80px;
+  left: 195px;
 }
 
 /**
@@ -329,35 +353,5 @@ input[type=search] {
   background: transparent;
   -webkit-transition: width 0s ease;
   transition: width 0s ease;
-}
-
-/* CONTENUTO DASHBOARD */
-
-#miaDash {
-  width: 100%;
-  position: fixed;
-  background-color: #272c33;
-}
-
-#tabella {
-  border-collapse: collapse;
-}
-
-#theader {
-  position: fixed;
-  
-}
-
-#tbody {
-  padding: 5px;
-  background-color: white;
-  margin-right: 0px;
-}
-
-
-#pagination {
-  position: fixed;
-  top: 55px;
-  right: 100px;
 }
 

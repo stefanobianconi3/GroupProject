@@ -33,7 +33,7 @@ const customModdle = {
 @Component({
   selector: 'app-modeler',
   templateUrl: './modeler.component.html',
-  styleUrls: ['./modeler.component.css']
+  styleUrls: ['./modeler.component.scss']
 })
 export class ModelerComponent implements OnInit {
   

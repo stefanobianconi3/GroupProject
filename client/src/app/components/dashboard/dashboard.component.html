@@ -1,76 +1,37 @@
 <body>
     <input type="checkbox" id="nav-toggle" hidden>
         <nav class="nav" id="miaNav">
+                
             <h2 class="logo">Welcome {{nome}}</h2>
+            
             <label for="nav-toggle" class="nav-toggle" (click)="clickNav()" ></label>
-            <form>
-                <div class="form-group">
-                <input type="search" class="form-control" placeholder="...">
-                </div>
-                <div class="button">
-                <input type="submit" class="btn btn-outline-light" value="Cerca">
-                </div>
+            
+            <form name="folderForm" #fold="ngForm" (ngSubmit)="newFolderReq(fold)">
+                <input required type="text" class="form-control" ngModel #foldername="ngModel" id="foldername" name="foldername" placeholder="nome cartella">  
+                <button type="submit" class="btn btn-outline-light btn-sm" id="creaCartella" title="crea cartella"> <i class="fa fa-plus-square" aria-hidden="true" ></i> </button>
             </form>
+            <form>
+                <button type="button" class="btn btn-outline-light btn-sm" id="eliminaCartella" title="Elimina cartella"> <i class="fa fa-trash" aria-hidden="true" ></i></button>
+            </form>
+            <form>
+                <button type="button" class="btn btn-outline-light btn-sm" id="modificaCartella" title="Modifica cartella"> <i class="fa fa-pencil-square" aria-hidden="true" ></i></button>
+            </form>
+
             <ul>
-                <li><a href="#1">Uno </a>
-                <li><a href="#2">Due</a>
-                <li><a href="#3">Tre</a>
-                <li><a href="#4">Quattro</a>
-                <li><a href="#5">Cinque</a>
-                <li><a href="#6">Sei</a>
-                <li><a href="#7">Sete</a> 
+                <li *ngFor="let f of folder">
+                        <a (click)="select(f)"> <i class="fa fa-folder-o" aria-hidden="true"> {{f.name}}</i>
+                            <ul *ngIf="selected && selected['name'] == f['name']">
+                                <li *ngFor="let r of selected['children']">
+                                    <a (click)="select(r)"><i class="fa fa-folder-o" aria-hidden="true"> </i> {{r.name}}</a>
+                            </ul>
+                    </a>
             </ul>
         </nav>
 
         <div class="container-fluid" id="miaDash">
             
-            <table class="table table-sm" id="tabella">
-                <thead id="thead">
-                    <div class="btn-toolbar" role="toolbar" id="toolbar-dash" aria-label="Toolbar with button groups">
-                        <div class="btn-group mr-2 btn-sm" role="group" aria-label="First group">
-                          <button type="button" class="btn btn-secondary">1</button>
-                          <button type="button" class="btn btn-secondary">2</button>
-                          <button type="button" class="btn btn-secondary">3</button>
-                          <button type="button" class="btn btn-secondary">4</button>
-                          <button type="button" class="btn btn-secondary">5</button>
-                          <button type="button" class="btn btn-secondary">6</button>
-                          <button type="button" class="btn btn-secondary">7</button>
-                          <button type="button" class="btn btn-secondary">8</button>
-                        </div>
-                      
-                        <nav aria-label="Page navigation">
-                            <ul class="pagination justify-content-end" id="pagination">
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                    <span class="sr-only">Previous</span>
-                                    </a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                    <span class="sr-only">Next</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                      
-                    </div>
-                </thead>
-                <tbody id="tbody">
-                    <div style="width: 100%; height: 525px; overflow-y: scroll; border: 1px solid rgb(9, 9, 34)" id="tbody">
-                    
+           <app-dashbody></app-dashbody>
 
-                    </div>
-                </tbody>
-
-               
-            </table>
-                
-            
         </div>
             
         
