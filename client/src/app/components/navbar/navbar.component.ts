@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { NgForm } from '@angular/forms';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-navbar',
@@ -11,8 +12,8 @@ import { NgForm } from '@angular/forms';
 export class NavbarComponent implements OnInit {
 private isLogged:boolean =false;
 private fail : boolean = false;
-private errore:String;
-  constructor(private route: Router, private auth:AuthService) { 
+  private errore: String;
+  constructor(private route: Router, private auth: AuthService, private data: DataService) { 
     auth.outLogin.subscribe(
       () => {
         this.isLogged=true;
@@ -30,7 +31,12 @@ private errore:String;
         this.fail=true;
         this.errore=errore;
 
-    });
+      });
+    data.outLogout.subscribe(
+      () => {
+        this.isLogged = false;
+      }
+    )
   }
 
 logIn(form: NgForm){

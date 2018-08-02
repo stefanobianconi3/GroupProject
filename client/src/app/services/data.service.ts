@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter } from '@angular/core';
 import { ServerLocation } from '../classes/ServerLocation';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class DataService {
   private folder = [];
   private APIURL = ServerLocation.URL + 'api/data';
+  @Output() outLogout = new EventEmitter()
 
   private headers;
   constructor(private router: Router, private http: HttpClient) {
@@ -34,6 +35,7 @@ export class DataService {
             localStorage.removeItem('token');
             localStorage.removeItem('id');
             localStorage.removeItem('nome');
+            this.outLogout.emit();
             this.router.navigate(['homepage']);
           }
         }

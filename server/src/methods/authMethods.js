@@ -48,6 +48,11 @@ module.exports = {
     },
 
     checkToken: function (token) {
-        return jwt.verify(token, secret)
+        try {
+            return jwt.verify(token, secret)
+        }
+        catch (err) {
+            return false
+        }
     }
 }
