@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {RouterModule, Routes} from '@angular/router'; 
 import { AppComponent } from './app/components/app/app.component';
@@ -11,6 +11,7 @@ import { RoutingModuleModule } from 'src/app/routing-module.module';
 import { AuthService } from 'src/app/services/auth.service';
 import { NgForm, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { ModelerComponent } from 'src/app/components/modeler/modeler.component';
 import { DashbodyComponent } from 'src/app/components/dashbody/dashbody.component';
 
@@ -33,10 +34,12 @@ import { DashbodyComponent } from 'src/app/components/dashbody/dashbody.componen
     NgbModule.forRoot(),
     ReactiveFormsModule,
     HttpClientModule,
-    
+    MDBBootstrapModule.forRoot()
   ],
 
   providers: [AuthService],
+
+  schemas: [ NO_ERRORS_SCHEMA ],
 
   bootstrap: [AppComponent]
 })

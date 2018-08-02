@@ -12,6 +12,7 @@
 }
 .btn-group{
 	margin-right: 100px;
+	margin-top: -7px;
 }
 .login-bottom-text{
 	margin-top: 0px;
@@ -74,11 +75,40 @@ header .btn-header-login{
 .logout-button{
 	position: absolute;
 	right:5px;
-	top:9px;
+	top:3px;
 }
 
 .d-flex{
 	position: absolute;
 	left: 40px;
-	top: 9px;
+	top: 15px;
+}
+
+#file {
+	position: relative;
+	left: 50px;
+}
+
+#discover {
+	position: relative;
+}
+
+#analyze {
+	position: relative;
+	left: -50px;
+}
+
+#redesign {
+	position: relative;
+	left: -100px;
+}
+
+#implement {
+	position: relative;
+	left: -150px;
+}
+
+#monitor {
+	position: relative;
+	left: -200px;
 }
