@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ServerLocation } from '../classes/ServerLocation';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class DataService {
   private APIURL = ServerLocation.URL + 'api/data';
 
   private headers;
-  constructor(private http: HttpClient) {
+  constructor(private router: Router, private http: HttpClient) {
     this.headers = new HttpHeaders()
       .set("token", localStorage.getItem('token'))
       .set("id", localStorage.getItem('id'));
@@ -33,6 +34,7 @@ export class DataService {
             localStorage.removeItem('token');
             localStorage.removeItem('id');
             localStorage.removeItem('nome');
+            this.router.navigate(['homepage']);
           }
         }
       );
