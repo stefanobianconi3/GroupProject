@@ -33,12 +33,24 @@ input[type=search]::-webkit-search-cancel-button,
   -webkit-appearance:none;
 }
 
-.form-group {
+#foldername {
   padding: 0;
   position: absolute;
   top: 90px;
   left: 20px;
   width: 55%;
+}
+
+/* modifico icone */
+.fa-plus-square {
+  font-size: 40px;
+  padding: 1px;
+}
+
+#prova1 {
+  position: absolute;
+  top: 82px;
+  left: 200px;
 }
 
 input[type=search] {

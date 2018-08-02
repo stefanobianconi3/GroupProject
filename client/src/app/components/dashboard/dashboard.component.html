@@ -7,16 +7,18 @@
             <label for="nav-toggle" class="nav-toggle" (click)="clickNav()" ></label>
             
             <form name="folderForm" #fold="ngForm" (ngSubmit)="newFolderReq(fold)">
-                <input required type="text" class="form-control" ngModel #foldername="ngModel" id="foldername" name="foldername" placeholder="...">  
-                <button type="submit" class="btn btn-outline-light" > + </button>
+                <input required type="text" class="form-control" ngModel #foldername="ngModel" id="foldername" name="foldername" placeholder="nome cartella">  
+                <button type="submit" class="btn btn-outline-light btn-sm" id="prova1" title="crea cartella"> <i class="fa fa-plus-square" aria-hidden="true" ></i> </button>
             </form>
+
+            
 
             <ul>
                 <li *ngFor="let f of folder">
-                    <a (click)="select(f)">{{f.name}}
+                        <a (click)="select(f)"> <i class="fa fa-folder-o" aria-hidden="true"> {{f.name}}</i>
                             <ul *ngIf="selected && selected['name'] == f['name']">
                                 <li *ngFor="let r of selected['children']">
-                                     <a (click)="select(r)">{{r.name}}</a>
+                                    <a (click)="select(r)"><i class="fa fa-folder-o" aria-hidden="true"> </i> {{r.name}}</a>
                             </ul>
                     </a>
             </ul>
