@@ -47,10 +47,22 @@ input[type=search]::-webkit-search-cancel-button,
   padding: 1px;
 }
 
-#prova1 {
+#creaCartella {
   position: absolute;
   top: 82px;
   left: 200px;
+}
+
+#eliminaCartella {
+  position: absolute;
+  top: 120px;
+  left: 15px;
+}
+
+#modificaCartella {
+  position: absolute;
+  top: 120px;
+  left: 100px;
 }
 
 input[type=search] {

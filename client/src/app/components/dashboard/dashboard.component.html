@@ -8,10 +8,14 @@
             
             <form name="folderForm" #fold="ngForm" (ngSubmit)="newFolderReq(fold)">
                 <input required type="text" class="form-control" ngModel #foldername="ngModel" id="foldername" name="foldername" placeholder="nome cartella">  
-                <button type="submit" class="btn btn-outline-light btn-sm" id="prova1" title="crea cartella"> <i class="fa fa-plus-square" aria-hidden="true" ></i> </button>
+                <button type="submit" class="btn btn-outline-light btn-sm" id="creaCartella" title="crea cartella"> <i class="fa fa-plus-square" aria-hidden="true" ></i> </button>
             </form>
-
-            
+            <form>
+                <button type="button" class="btn btn-outline-light btn-sm" id="eliminaCartella" title="Elimina cartella"> <i class="fa fa-trash" aria-hidden="true" ></i></button>
+            </form>
+            <form>
+                <button type="button" class="btn btn-outline-light btn-sm" id="modificaCartella" title="Modifica cartella"> <i class="fa fa-pencil-square" aria-hidden="true" ></i></button>
+            </form>
 
             <ul>
                 <li *ngFor="let f of folder">
