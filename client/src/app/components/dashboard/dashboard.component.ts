@@ -25,7 +25,7 @@ private selected;
     
     document.getElementById('miaNav').style.width="250px";
     document.getElementById('miaDash').style.marginLeft="320px";
-    document.getElementById('miaDash').style.width="77.5%";
+    document.getElementById('miaDash').style.width="76.55%";
     this.side=false;
     
   }

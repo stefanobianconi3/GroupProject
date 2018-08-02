@@ -1,36 +1,58 @@
 
-  #tabella {
-    border-collapse: collapse;
-  }
-  
-  #theader {
-    position: fixed;
-    
-  }
-  
-  #tbody {
-    padding: 5px;
-    background-color: white;
-    margin-right: 0px;
-  }
-  
-  #pagination {
-    position: fixed top;
-    right: 100px;
-  }
-
- 
-  /* Style buttons */
-.btn {
-  background-color: red; /* Blue background */
-  border: none; /* Remove borders */
-  color: rgb(0, 0, 0); /* White text */
-  
-  font-size: 40px; /* Set a font size */
-  cursor: pointer; /* Mouse pointer on hover */
+#dash {
+  border-collapse: collapse;
 }
 
-/* Darker background on mouse-over */
-.btn:hover {
-  background-color: rgb(42, 161, 128);
+#icone {
+  position: fixed;
+  border: none; 
+  color: #272c33; 
+  font-size: 30px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */   
 }
+
+#refresh {
+  position: relative;
+  left: 50px;
+}
+
+#bla {
+  position: relative;
+  left: 70px;
+}
+
+#bla1 {
+  position: relative;
+  left: 90px;
+}
+
+#bla2 {
+  position: relative;
+  left: 110px;
+}
+
+#bla3 {
+  position: relative;
+  left: 130px;
+}
+
+#bla4 {
+  position: relative;
+  left: 150px;
+}
+
+#security {
+  position: relative;
+  left: 160px;
+}
+
+  
+#body {
+  position: relative;
+  top: 40px;
+  padding: 5px;
+  background-color: white;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
