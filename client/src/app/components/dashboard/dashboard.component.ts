@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { DataService } from 'src/app/services/data.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,7 +11,8 @@ import { DataService } from 'src/app/services/data.service';
 export class DashboardComponent implements OnInit {
 private nome = this.getNome();
 private side:boolean = true;
-private folder;
+private folder = [];
+
 
   constructor(private http: HttpClientModule, private data: DataService) { }
   
@@ -38,17 +40,32 @@ clickNav(){
  }else {
    this.closeNav();
  }
-  
 }
 
-  ngOnInit() {
-    this.data.getFolder().subscribe((res) => {
-      if(res['success']){
-        this.folder = res['data'];
+newFolderReq(form: NgForm){
+  this.data.newFolder(form.value.foldername).subscribe(
+    (payload) => {
+      if(payload['success']){
+        this.folder = payload['data'];
       } else {
-        //Faccio altro
+        console.log(payload['error'])
       }
-    })
+    }
+  );
+}
+
+
+
+  ngOnInit() {
+    this.data.getFolder().subscribe(
+      (payload) => {
+        if(payload['success']){
+          this.folder = payload['data'];
+        } else {
+          console.log(payload['error'])
+        }
+      }
+    )
   }
 
 }

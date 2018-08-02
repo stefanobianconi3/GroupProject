@@ -1,16 +1,16 @@
 <body>
     <input type="checkbox" id="nav-toggle" hidden>
         <nav class="nav" id="miaNav">
+                
             <h2 class="logo">Welcome {{nome}}</h2>
+            
             <label for="nav-toggle" class="nav-toggle" (click)="clickNav()" ></label>
-            <form>
-                <div class="form-group">
-                <input type="search" class="form-control" placeholder="...">
-                </div>
-                <div class="button">
-                <input type="submit" class="btn btn-outline-light" value="Cerca">
-                </div>
+            
+            <form name="folderForm" #fold="ngForm" (ngSubmit)="newFolderReq(fold)">
+                <input required type="text" class="form-control" ngModel #foldername="ngModel" id="foldername" name="foldername" placeholder="...">  
+                <button type="submit" class="btn btn-outline-light" > + </button>
             </form>
+
             <ul>
                 <li *ngFor="let f of folder">
                     <a>{{f.name}}</a>
@@ -20,8 +20,7 @@
         <div class="container-fluid" id="miaDash">
             
            <app-dashbody></app-dashbody>
-                
-            
+
         </div>
             
         

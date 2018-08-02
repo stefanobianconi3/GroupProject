@@ -9,6 +9,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class DataService {
 private folder = [];
 private APIURL= ServerLocation.URL+'api/data';
+
 private headers;
   constructor(private http:HttpClient) { 
     this.headers = new HttpHeaders()
@@ -17,7 +18,11 @@ private headers;
   }
 
   getFolder(){
-  return this.http.get(this.APIURL+"/", {headers: this.headers})
+  return this.http.get(this.APIURL, {headers: this.headers})
+ }
+
+ newFolder(folderName){
+  return this.http.post(this.APIURL+'/folder', {folderName: folderName}, {headers: this.headers})
  }
  
 }
