@@ -45,5 +45,9 @@ module.exports = {
 
     createJwtToken: function (payload) {
         return jwt.sign(payload, secret, jwtOptions)
+    },
+
+    checkToken: function (token) {
+        return jwt.verify(token, secret)
     }
 }

@@ -114,4 +114,18 @@ router.post('/signin', async (req, res) => {
     })
 })
 
+router.get('/checkToken', async (req, res) => {
+    if (authMethods.checkToken(req.headers.token)) {
+        res.send({
+            success: true,
+            data: "The token is valid"
+        })
+    } else {
+        res.send({
+            success: false,
+            error: "The token is not valid"
+        })
+    }
+})
+
 module.exports = router
