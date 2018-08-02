@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { DataService } from 'src/app/services/data.service';
 import { NgForm } from '@angular/forms';
+import {Folder} from '../../classes/Folder'
 
 @Component({
   selector: 'app-dashboard',
@@ -12,6 +13,7 @@ export class DashboardComponent implements OnInit {
 private nome = this.getNome();
 private side:boolean = true;
 private folder = [];
+private selected;
 
 
   constructor(private http: HttpClientModule, private data: DataService) { }
@@ -54,6 +56,11 @@ newFolderReq(form: NgForm){
   );
 }
 
+select(cartella:Folder){
+  cartella.selected=true;
+  this.selected = cartella;
+  console.log(this.selected['children'])
+}
 
 
   ngOnInit() {

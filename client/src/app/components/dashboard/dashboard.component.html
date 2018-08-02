@@ -13,7 +13,12 @@
 
             <ul>
                 <li *ngFor="let f of folder">
-                    <a>{{f.name}}</a>
+                    <a (click)="select(f)">{{f.name}}
+                            <ul *ngIf="selected && selected['name'] == f['name']">
+                                <li *ngFor="let r of selected['children']">
+                                     <a (click)="select(r)">{{r.name}}</a>
+                            </ul>
+                    </a>
             </ul>
         </nav>
 
