@@ -38,7 +38,26 @@ function createFile(path, name, content) {
             fs.writeFileSync(path + name, content)
             return true
         } else {
-            fs.writeFileSync(path + name)
+            fs.writeFileSync(path + name, 
+                '<?xml version="1.0" encoding="UTF-8"?>' +
+                    '<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ' +
+                                        'xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" ' +
+                                        'xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" ' +
+                                        'xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" ' +
+                                        'targetNamespace="http://bpmn.io/schema/bpmn" ' +
+                                        'id="Definitions_1">' +
+                        '<bpmn:process id="Process_1" isExecutable="false">' +
+                        '<bpmn:startEvent id="StartEvent_1"/>' +
+                        '</bpmn:process>' +
+                        '<bpmndi:BPMNDiagram id="BPMNDiagram_1">' +
+                        '<bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">' +
+                            '<bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">' +
+                            '<dc:Bounds height="36.0" width="36.0" x="173.0" y="102.0"/>' +
+                            '</bpmndi:BPMNShape>' +
+                        '</bpmndi:BPMNPlane>' +
+                        '</bpmndi:BPMNDiagram>' +
+                    '</bpmn:definitions>'
+            )
             return true
         }
     } catch (err) {
@@ -94,7 +113,7 @@ module.exports = {
     createModel: function (path, id) {
         if (!fs.existsSync(dataLocation + id + "//" + path)) {
             fs.mkdirSync(dataLocation + id + "//" + path)
-            return createFile(dataLocation + id + "//" + path + "//", "0.txt", undefined)
+            return createFile(dataLocation + id + "//" + path + "//", "0.xml", undefined)
         } else {
             return false
         }
@@ -133,14 +152,15 @@ module.exports = {
 
     openModel: function (path, id, version) {
         if (version) {
-            return fs.readFileSync(dataLocation + id + "//" + path + "//" + version+".txt", { encoding: 'utf-8' })
+            return fs.readFileSync(dataLocation + id + "//" + path + "//" + version+".xml", { encoding: 'utf-8' })
         } else {
             //Assumo che debba aprire la prima versione del modello
-            return fs.readFileSync(dataLocation + id + "//" + path + "//" + "0.txt", { encoding: 'utf-8' })
+            return fs.readFileSync(dataLocation + id + "//" + path + "//" + "0.xml", { encoding: 'utf-8' })
         }
     },
 
     saveModel: function (path, id, content, version){
-        return createFile(dataLocation + id + "//" + path + "//", version+".txt", content)
+        return createFile(dataLocation + id + "//" + path + "//", version+".xml", content)
     }
+    
 }
