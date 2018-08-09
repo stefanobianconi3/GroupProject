@@ -64,7 +64,7 @@ export class ModelerComponent implements OnInit {
     this.modeler = new Modeler({
       container: '#canvas',
       width: '100%',
-      height: '500px',
+      height: '600px',
       additionalModules: [
         PropertiesPanelModule,
 
@@ -76,14 +76,14 @@ export class ModelerComponent implements OnInit {
         {[InjectionNames.originalPaletteProvider]: ['type', OriginalPaletteProvider]},
         {[InjectionNames.paletteProvider]: ['type', CustomPaletteProvider]},
       ],
-    
-      /* propertiesPanel: {
+      propertiesPanel: {
         parent: '#properties'
-      },*/
+      },
       moddleExtension: {
         custom: customModdle
       }
     });
+
     this.modeler.importXML(this.bpmnXML, function(err) {
       if(err){
         console.log(err)
