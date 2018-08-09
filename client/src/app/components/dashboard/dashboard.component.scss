@@ -48,21 +48,27 @@ input[type=search]::-webkit-search-cancel-button,
 }
 
 #creaCartella {
+  font-size: 25px;
   position: absolute;
-  top: 82px;
-  left: 200px;
-}
-
-#eliminaCartella {
-  position: absolute;
-  top: 120px;
-  left: 15px;
+  top: 86px;
+  left: 205px;
+  color: white;
 }
 
 #modificaCartella {
+  font-size: 25px;
   position: absolute;
-  top: 120px;
-  left: 100px;
+  top: 86px;
+  left: 235px;
+  color: white;
+}
+
+#eliminaCartella {
+  font-size: 25px;
+  position: absolute;
+  top: 84px;
+  left: 265px;
+  color: white;
 }
 
 input[type=search] {
@@ -74,6 +80,22 @@ input[type=search] {
   top: 80px;
   left: 195px;
 }
+
+/** CARTELLE */
+
+#children{
+  font-style: normal;
+  font-family: serif;
+}
+
+#primaCartella{
+  position: absolute;
+  top: 180px;
+  left: 30px;
+}
+
+
+
 
 /**
 * Bottone interruttore del pannello 
