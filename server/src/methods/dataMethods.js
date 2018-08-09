@@ -141,10 +141,6 @@ module.exports = {
     },
 
     saveModel: function (path, id, content, version){
-        if (fs.existsSync(dataLocation + id + "//" + path + "//" + version + ".txt")){
-            return false
-        } else {
-            return createFile(dataLocation + id + "//" + path + "//", version+".txt", content)
-        }
+        return createFile(dataLocation + id + "//" + path + "//", version+".txt", content)
     }
 }
