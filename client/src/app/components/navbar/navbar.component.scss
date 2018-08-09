@@ -20,9 +20,7 @@ body{
 	margin-right: 100px;
 	margin-top: -7px;
 }
-.btn-group{
-	margin-right: 100px;
-}
+
 .login-bottom-text{
 	margin-top: 0px;
 	margin-bottom: 0px;
@@ -89,8 +87,9 @@ header .btn-header-login{
 
 .d-flex{
 	position: absolute;
-	left: 40px;
-	top: 15px;
+	left: 280px;
+	top: 11px;
+	height: 32px;
 }
 
 #file {
@@ -120,4 +119,15 @@ header .btn-header-login{
 #monitor {
 	position: relative;
 	left: -200px;
+}
+
+/**
+* Definiamo lo stile del titolo(logo) del pannello  
+*/
+.logo{
+	color: rgb(255, 255, 255);
+	font-size: 25px;
+	position: absolute;
+	top: 23px;
+	left: 50px;
 }

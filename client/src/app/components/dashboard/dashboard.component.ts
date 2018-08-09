@@ -10,7 +10,7 @@ import { Folder } from '../../classes/Folder'
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  private nome = this.getNome();
+  
   private side: boolean = true;
   private folder = [];
 
@@ -20,6 +20,7 @@ export class DashboardComponent implements OnInit {
   getNome() {
     return localStorage.getItem('nome')
   }
+  
   openNav() {
 
     document.getElementById('miaNav').style.width = "250px";
