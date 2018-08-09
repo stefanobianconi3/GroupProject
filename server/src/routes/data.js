@@ -124,7 +124,7 @@ router.post('/model/save', async (req, res) => {
     } else {
         res.send({
             success: false,
-            error: "Overwriting a version is not allowed"
+            error: "There is an error"
         })
     }
 })
