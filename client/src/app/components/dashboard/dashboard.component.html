@@ -17,15 +17,8 @@
                 <a id="modificaCartella" title="Modifica cartella"> <i class="fa fa-pencil-square-o" aria-hidden="true" ></i></a>
             </form>
 
-            <ul id="primaCartella">
-                <li *ngFor="let f of folder" >
-                        <a (click)="select(f)"> <i class="fa fa-folder-o" aria-hidden="true" > {{f.name}}</i>
-                            <ul *ngIf="selected && selected['name'] == f['name']">
-                                <li *ngFor="let r of selected['children']" id="children">
-                                    <a (click)="select(r)"><i class="fa fa-folder-o" aria-hidden="true"> </i> {{r.name}}</a>
-                            </ul>
-                    </a>
-            </ul>
+            <app-folder [folder]="folder"></app-folder>
+            
         </nav>
 
         <div class="container-fluid" id="miaDash">

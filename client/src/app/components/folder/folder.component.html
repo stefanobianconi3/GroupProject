@@ -1,0 +1,6 @@
+<ul>
+  <li *ngFor="let f of folder">
+  <a (click)="select(f)">{{f.name}}</a>
+  <app-folder *ngIf="selected == f && f['children'].length" [folder]="f['children']"></app-folder>
+  </li>
+</ul>

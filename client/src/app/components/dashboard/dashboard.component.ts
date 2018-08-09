@@ -13,7 +13,6 @@ export class DashboardComponent implements OnInit {
   private nome = this.getNome();
   private side: boolean = true;
   private folder = [];
-  private selected;
 
 
   constructor(private http: HttpClientModule, private data: DataService) { }
@@ -54,12 +53,6 @@ export class DashboardComponent implements OnInit {
         }
       }
     );
-  }
-
-  select(cartella: Folder) {
-    cartella.selected = true;
-    this.selected = cartella;
-    console.log(this.selected['children'])
   }
 
   checkTokenValidity() {
