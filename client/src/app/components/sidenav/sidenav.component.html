@@ -1,5 +1,6 @@
+<input type="checkbox" id="nav-toggle" hidden> 
 <nav class="nav" id="miaNav">
-    
+    <label for="nav-toggle" class="nav-toggle" (click)="clickNav()" ></label> 
     <form name="folderForm" #fold="ngForm" (ngSubmit)="newFolderReq(fold)">
         <input required type="text" class="form-control" ngModel #foldername="ngModel" id="foldername" name="foldername" placeholder="nome cartella">  
         <a type="submit" id="creaCartella" title="crea cartella"> <i class="fa fa-plus-square-o" aria-hidden="true" ></i> </a>

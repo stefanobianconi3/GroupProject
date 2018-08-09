@@ -11,6 +11,7 @@ import { Folder } from '../../classes/Folder'
 })
 export class SidenavComponent implements OnInit {
   private folder = [];
+  private side: boolean = true;
 
   constructor(private http: HttpClientModule, private data: DataService) { }
 
@@ -24,6 +25,29 @@ export class SidenavComponent implements OnInit {
         }
       }
     )
+  }
+
+  openNav() {
+
+    document.getElementById('miaNav').style.width = "250px";
+    document.getElementById('miaDash').style.marginLeft = "320px";
+    document.getElementById('miaDash').style.width = "76.55%";
+    this.side = false;
+
+  }
+
+  closeNav() {
+    document.getElementById("miaDash").style.marginLeft = "0px";
+    document.getElementById('miaDash').style.width = "100%";
+    this.side = true;
+
+  }
+  clickNav() {
+    if (this.side) {
+      this.openNav();
+    } else {
+      this.closeNav();
+    }
   }
 
   newFolderReq(form: NgForm) {
