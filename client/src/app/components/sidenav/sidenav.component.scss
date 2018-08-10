@@ -36,7 +36,7 @@
   #foldername {
     padding: 0;
     position: absolute;
-    top: 90px;
+    top: 25px;
     left: 20px;
     width: 55%;
   }
@@ -50,7 +50,7 @@
   #creaCartella {
     font-size: 25px;
     position: absolute;
-    top: 86px;
+    top: 22px;
     left: 205px;
     color: white;
   }
@@ -58,7 +58,7 @@
   #modificaCartella {
     font-size: 25px;
     position: absolute;
-    top: 86px;
+    top: 22px;
     left: 235px;
     color: white;
   }
@@ -66,7 +66,7 @@
   #eliminaCartella {
     font-size: 25px;
     position: absolute;
-    top: 84px;
+    top: 20px;
     left: 265px;
     color: white;
   }
@@ -75,28 +75,7 @@
     -webkit-appearance:textfield;
    }
   
-  .button{
-    position: absolute;
-    top: 80px;
-    left: 195px;
-  }
-  
-  /** CARTELLE */
-  
-  #children{
-    font-style: normal;
-    font-family: serif;
-  }
-  
-  #primaCartella{
-    position: absolute;
-    top: 180px;
-    left: 30px;
-  }
-  
-  
-  
-  
+   
   /**
   * Bottone interruttore del pannello 
   * tag <label>
@@ -186,6 +165,9 @@
   
   [id='nav-toggle']:checked ~ .nav > .nav-toggle:after {
     content: '\2715';
+    position: absolute;
+    top: -19px;
+    left: 3px;
   }
   
   

@@ -1,6 +1,6 @@
-<ul>
+<ul id="primaCartella">
   <li *ngFor="let f of folder">
   <a *ngIf="isDir(f)" (click)="select(f)">{{f.name}}</a>
-  <app-folder *ngIf="selected == f && f['children'].length" [folder]="f['children']"></app-folder>
+  <app-folder *ngIf="selected == f && f['children'].length" [folder]="f['children']" id="children"></app-folder>
   </li>
 </ul>
