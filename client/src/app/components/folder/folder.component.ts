@@ -16,6 +16,15 @@ export class FolderComponent implements OnInit {
   ngOnInit() {
   }
 
+  isDir(folder) {
+    console.log(folder['type'])
+    if (folder['type'] == "dir") {
+      return true
+    } else {
+      return false
+    }
+  }
+
   select(cartella: Folder) {
     cartella.selected = true;
     this.selected = cartella;
