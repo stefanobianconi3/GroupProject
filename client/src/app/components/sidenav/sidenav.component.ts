@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, Input } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { DataService } from 'src/app/services/data.service';
 import { NgForm } from '@angular/forms';
@@ -13,6 +13,7 @@ export class SidenavComponent implements OnInit {
   @ViewChild('mylabel') mylabel: ElementRef
   private folder = [];
   private side: boolean = true;
+  @Input() folderName;
 
   constructor(private http: HttpClientModule, private data: DataService) { }
 
@@ -50,8 +51,8 @@ export class SidenavComponent implements OnInit {
     }
   }
 
-  newFolderReq(form: NgForm) {
-    this.data.newFolder(form.value.foldername).subscribe(
+  newFolderReq(foldername) {
+    this.data.newFolder(foldername).subscribe(
       (payload) => {
         if (payload['success']) {
           this.folder = payload['data'];
