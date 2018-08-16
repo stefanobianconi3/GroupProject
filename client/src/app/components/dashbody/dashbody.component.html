@@ -1,4 +1,4 @@
-<div id="dash">
+<div id="dash" (selezionata3)="showModel($event)">
     <div id="icone">
         <a><i class="fa fa-refresh" aria-hidden="true" title="refresh" id="refresh"></i></a>
         <a><i class="fa fa-soccer-ball-o" aria-hidden="true" title="bla bla bla" id="bla"></i></a>
@@ -10,6 +10,9 @@
     </div>
         <div id="body">
           <div id="content">
+            {{models | json}}
           </div>
         </div>
+
+        
 </div>

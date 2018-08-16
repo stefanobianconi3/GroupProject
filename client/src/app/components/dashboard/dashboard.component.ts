@@ -10,7 +10,7 @@ import { Folder } from '../../classes/Folder'
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-
+  private models: any;
 
   constructor(private http: HttpClientModule, private data: DataService) { }
 
@@ -18,7 +18,10 @@ export class DashboardComponent implements OnInit {
     this.data.checkToken();
   }
 
-
+  select(f){
+    this.models = f;
+   
+  }
   ngOnInit() {
     this.checkTokenValidity();
   }

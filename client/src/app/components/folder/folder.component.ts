@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Folder } from 'src/app/classes/Folder';
 
 @Component({
@@ -9,6 +9,7 @@ import { Folder } from 'src/app/classes/Folder';
 export class FolderComponent implements OnInit {
 
   @Input('folder') folder: Array<Object>;
+  @Output('folderSelected') folderSelected = new EventEmitter();
   private selected;
 
   constructor() { }
@@ -27,6 +28,7 @@ export class FolderComponent implements OnInit {
   select(cartella: Folder) {
     cartella.selected = true;
     this.selected = cartella;
+    this.folderSelected.emit(cartella);
   }
 
 }

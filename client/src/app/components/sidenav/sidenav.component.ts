@@ -1,8 +1,8 @@
-import { Component, OnInit, ElementRef, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { DataService } from 'src/app/services/data.service';
 import { NgForm } from '@angular/forms';
-import { Folder } from '../../classes/Folder'
+import { Folder } from '../../classes/Folder';
 
 @Component({
   selector: 'app-sidenav',
@@ -14,7 +14,7 @@ export class SidenavComponent implements OnInit {
   private folder = [];
   private side: boolean = true;
   @Input() folderName;
-
+  @Output() selezionata2 = new EventEmitter();
   constructor(private http: HttpClientModule, private data: DataService) { }
 
   ngOnInit() {
@@ -49,6 +49,11 @@ export class SidenavComponent implements OnInit {
     } else {
       this.closeNav();
     }
+  }
+
+  selezionata(f){
+    this.selezionata2.emit(f);
+    
   }
 
   newFolderReq(foldername) {
