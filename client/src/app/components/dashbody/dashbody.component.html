@@ -1,4 +1,4 @@
-<div id="dash" (selezionata3)="showModel($event)">
+<div id="dash">
     <div id="icone">
         <a><i class="fa fa-refresh" aria-hidden="true" title="refresh" id="refresh"></i></a>
         <a><i class="fa fa-soccer-ball-o" aria-hidden="true" title="bla bla bla" id="bla"></i></a>
@@ -10,7 +10,15 @@
     </div>
         <div id="body">
           <div id="content">
-            {{models | json}}
+            <table class="table">
+              <tbody *ngFor="let f of models['children']">
+                <tr>
+                  <a>
+                  <th *ngIf="f['type']=='model'" scope="row">{{f.name}}</th>
+                  </a>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
 
