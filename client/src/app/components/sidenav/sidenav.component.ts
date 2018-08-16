@@ -16,6 +16,10 @@ export class SidenavComponent implements OnInit {
   @Input() folderName;
   @Output() selezionata2 = new EventEmitter();
   constructor(private http: HttpClientModule, private data: DataService) { }
+  private selected;
+  private selctedbool=false;
+  private msgerror=false;
+  private modifica=false;
 
   ngOnInit() {
     let el: HTMLElement = this.mylabel.nativeElement as HTMLElement;
@@ -53,8 +57,36 @@ export class SidenavComponent implements OnInit {
 
   selezionata(f){
     this.selezionata2.emit(f);
+    this.selected=f;
+    this.selctedbool=true;
+    this.msgerror=false;
     
   }
+
+  modifyFolder(){
+    if(this.selctedbool){
+      this.modifica=true;
+  }
+    else {
+      this.msgerror=true;
+
+    }
+  }
+
+  modifyFolderReq(newFolderName){
+    this.data.modifyFolder(this.selected.name, newFolderName).subscribe(
+      (payload) => {
+        if (payload['success']) {
+          alert('modificata correttamente')
+        } else {
+          console.log(payload['error'])
+        }
+      }
+    )
+
+  }
+
+
 
   newFolderReq(foldername) {
     this.data.newFolder(foldername).subscribe(
