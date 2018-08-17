@@ -9,9 +9,11 @@ export class DashbodyComponent implements OnInit {
 
   @Input() models;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
+    this.models = [];
   }
 
 }

@@ -1,8 +1,10 @@
 <div id="nesting">
-    <ul>
-      <li *ngFor="let f of folder">
+  <ul>
+    <li *ngFor="let f of folder">
       <a *ngIf="isDir(f)" (click)="select(f)" id="elemento"><i class="fa fa-folder-o" aria-hidden="true"></i> {{f.name}}</a>
-      <app-folder *ngIf="selected == f && f['children'].length" [folder]="f['children']" id="children"></app-folder>
-      </li>
-    </ul>
+      <div *ngIf="f.selected">
+        <app-folder [folder]="f['children']" id="children"></app-folder>
+      </div>
+    </li>
+  </ul>
 </div>

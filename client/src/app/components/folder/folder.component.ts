@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Folder } from 'src/app/classes/Folder';
+import { Folder } from '../../classes/Folder';
 
 @Component({
   selector: 'app-folder',
@@ -18,7 +18,7 @@ export class FolderComponent implements OnInit {
   }
 
   isDir(folder) {
-    if (folder['type'] == "dir") {
+    if (folder['type'] === "dir") {
       return true
     } else {
       return false
@@ -26,9 +26,8 @@ export class FolderComponent implements OnInit {
   }
 
   select(cartella: Folder) {
-    cartella.selected = true;
+    cartella.selected = !cartella.selected;
     this.selected = cartella;
-    this.folderSelected.emit(cartella);
+    this.folderSelected.emit(this.selected);
   }
-
 }
