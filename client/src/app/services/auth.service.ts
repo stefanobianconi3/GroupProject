@@ -22,9 +22,9 @@ constructor(private http: HttpClient, private route: Router) { }
     return !!localStorage.getItem('token');
   }
 
-  signIn(firstname:string, lastname:string,userDate:string, email:string, password:string){
+  signIn(firstname:string, lastname:string,userDate:string, email:string, password:string, affiliation:string){
     let date=userDate["day"]+'/'+userDate["month"]+'/'+userDate["year"];
-    this.http.post(this.APIAUTHURL+'/signin', {firstname, lastname, date, email, password,}).subscribe(
+    this.http.post(this.APIAUTHURL+'/signin', {firstname, lastname, date, email, password, affiliation}).subscribe(
       (payload:any) => {
         if(payload.success){
         localStorage.setItem('token', payload.token);
