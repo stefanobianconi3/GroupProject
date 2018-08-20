@@ -16,9 +16,16 @@ export class FolderComponent implements OnInit {
   ngOnInit() {
   }
 
-  createFolders(folders) {
-    for (let i = 0; i < folders.length; i++) {
-      folders[i]
+  searchFolder(arrayFolder, name) {
+    for (let i = 0; i < arrayFolder.length; i++) {
+      if (arrayFolder[i]['name'] == name) {
+        console.log('trovato');
+        console.log(arrayFolder[i]['name']);
+      } else {
+        if (arrayFolder[i]['children'] && arrayFolder[i]['children'].length > 0) {
+          this.searchFolder(arrayFolder[i]['children'], name);
+        }
+      }
     }
   }
 
@@ -31,6 +38,7 @@ export class FolderComponent implements OnInit {
   }
 
   select(event, cartella: Folder) {
+    this.searchFolder(this.folder, cartella.name);
     cartella.selected = !cartella.selected;
     this.folderSelected.emit(cartella);
     event.stopPropagation();
