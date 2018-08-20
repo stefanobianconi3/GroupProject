@@ -4,17 +4,22 @@ import { Folder } from '../../classes/Folder';
 @Component({
   selector: 'app-folder',
   templateUrl: './folder.component.html',
-  styleUrls: ['./folder.component.scss']
+  styleUrls: ['./folder.component.scss'],
 })
 export class FolderComponent implements OnInit {
 
-  @Input('folder') folder: Array<Object>;
+  @Input('folder') folder;
   @Output('folderSelected') folderSelected = new EventEmitter();
-  private selected;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  createFolders(folders) {
+    for (let i = 0; i < folders.length; i++) {
+      folders[i]
+    }
   }
 
   isDir(folder) {
@@ -25,9 +30,10 @@ export class FolderComponent implements OnInit {
     }
   }
 
-  select(cartella: Folder) {
+  select(event, cartella: Folder) {
     cartella.selected = !cartella.selected;
-    this.selected = cartella;
-    this.folderSelected.emit(this.selected);
+    this.folderSelected.emit(cartella);
+    event.stopPropagation();
+    console.log(cartella);
   }
 }
