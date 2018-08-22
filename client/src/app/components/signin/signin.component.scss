@@ -1,7 +1,7 @@
 #wrap{
 margin-top: 5px;
 height: 100%;
-background-image: linear-gradient(to bottom, #FFFFFF 0%, rgb(103, 206, 99) 100%);
+background-image: linear-gradient(to bottom, #FFFFFF 0%, rgba(183, 228, 181, 0.993) 100%);
 background-repeat: repeat;
 }
 
@@ -56,5 +56,10 @@ background-repeat: repeat;
 
 #submit {
 	position: relative;
-  top: 70px;
+    top: 18px;
+}
+
+.help-block {
+	position: relative;
+	top: 3px;
 }

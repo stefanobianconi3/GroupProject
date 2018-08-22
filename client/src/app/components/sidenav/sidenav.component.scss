@@ -20,7 +20,7 @@
     -moz-transition: left 0.3s;
     transition: left 0.3s;
     /* indichiamo il colore dello sfondo del panello */
-    background: #272c33;
+    background: #03bb93;
     /* indichiamo che sara sopra tutti gli altri elementi della pagina  */
     z-index: 2000;
   }
@@ -54,6 +54,10 @@
     left: 205px;
     color: white;
   }
+
+  #creaCartella:hover {
+    color: #000000;
+  }
   
   #modificaCartella {
     font-size: 25px;
@@ -62,6 +66,11 @@
     left: 235px;
     color: white;
   }
+
+  #modificaCartella:hover {
+    color: #000000;
+  }
+
   
   #eliminaCartella {
     font-size: 25px;
@@ -69,6 +78,10 @@
     top: 20px;
     left: 265px;
     color: white;
+  }
+
+  #eliminaCartella:hover {
+    color: #000000;
   }
   
   input[type=search] {
@@ -120,7 +133,7 @@
   /* colore del testo al hover  */
   
   .nav-toggle:hover {
-    color: #f4f4f4;
+    color: #000000;
   }
   
   /**

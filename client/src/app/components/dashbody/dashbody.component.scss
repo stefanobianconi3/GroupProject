@@ -1,14 +1,14 @@
 
 #dash {
-  border-collapse: collapse;
+  border-collapse: collapse;  
 }
 
 #icone {
-  position: fixed;
-  border: none; 
-  color: #272c33; 
-  font-size: 30px; /* Set a font size */
-  cursor: pointer; /* Mouse pointer on hover */   
+  position: relative;
+  border: solid;
+  border-color: rgb(0, 0, 0); 
+  color: #000000; 
+  font-size: 25px; /* Set a font size */
 }
 
 #refresh {
@@ -46,10 +46,10 @@
   left: 160px;
 }
 
+/** BODY **/
   
 #body {
   position: relative;
-  top: 40px;
   padding: 5px;
   background-color: white;
   margin-left: -15px;
@@ -57,8 +57,8 @@
 }
 
 #content {
-  width: 100%;
+  margin-left: 10px;
+  margin-right: 10px;
   height: 100%;
   overflow-y: auto;
 }
-
