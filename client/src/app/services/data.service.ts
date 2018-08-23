@@ -45,4 +45,8 @@ export class DataService {
     }
   }
 
+  getModel(path, version) {
+    return this.http.post(this.APIURL+"/model/open", {modelName: path, version: version}, { headers: this.headers });
+  }
+
 }
