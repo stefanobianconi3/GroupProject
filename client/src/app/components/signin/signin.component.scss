@@ -1,8 +1,8 @@
 #wrap{
-margin-top: 5px;  
-background-image: linear-gradient(to bottom, #FFFFFF 0%, rgb(103, 206, 99) 100%);
-background-repeat: no-repeat;
-background-attachment: fixed;
+margin-top: 5px;
+height: 100%;
+background-image: linear-gradient(to bottom, #FFFFFF 0%, rgba(183, 228, 181, 0.993) 100%);
+background-repeat: repeat;
 }
 
 #identità {
@@ -56,92 +56,10 @@ background-attachment: fixed;
 
 #submit {
 	position: relative;
-	top: -50px;
+    top: 18px;
 }
 
-.funkyradio {
+.help-block {
 	position: relative;
-	left: -13px;
-	clear: both;
-	overflow: hidden;
-  }
-  
-  .funkyradio label {
-	width: 50%;
-	border-radius: 3px;
-	border: 1px solid black;
-	font-weight: normal;
-  }
-  
-  .funkyradio input[type="radio"]:empty,
-  .funkyradio input[type="checkbox"]:empty {
-	display: none;
-  }
-  
-  .funkyradio input[type="radio"]:empty ~ label,
-  .funkyradio input[type="checkbox"]:empty ~ label {
-	position: relative;
-	line-height: 2.5em;
-	text-indent: 3.25em;
-	margin-top: 2em;
-	cursor: pointer;
-	-webkit-user-select: none;
-	   -moz-user-select: none;
-		-ms-user-select: none;
-			user-select: none;
-  }
-  
-  .funkyradio input[type="radio"]:empty ~ label:before,
-  .funkyradio input[type="checkbox"]:empty ~ label:before {
-	position: absolute;
-	display: block;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	content: '';
-	width: 2.5em;
-	background: #04c052;
-	border-radius: 3px 0 0 3px;
-  }
-  
-  .funkyradio input[type="radio"]:hover:not(:checked) ~ label,
-  .funkyradio input[type="checkbox"]:hover:not(:checked) ~ label {
-	color: rgb(0, 0, 0);
-  }
-  
-  .funkyradio input[type="radio"]:hover:not(:checked) ~ label:before,
-  .funkyradio input[type="checkbox"]:hover:not(:checked) ~ label:before {
-	content: '\2714';
-	text-indent: .9em;
-	color: rgb(71, 71, 71);
-  }
-  
-  .funkyradio input[type="radio"]:checked ~ label,
-  .funkyradio input[type="checkbox"]:checked ~ label {
-	color: rgb(0, 0, 0);
-  }
-  
-  .funkyradio input[type="radio"]:checked ~ label:before,
-  .funkyradio input[type="checkbox"]:checked ~ label:before {
-	content: '\2714';
-	text-indent: .9em;
-	color: rgb(0, 0, 0);
-	background-color: #ccc;
-  }
-  
- .funkyradio-default-1 {
-	 position: relative;
-	 top: 10px;
-	 left: 0px;
- }
-
- .funkyradio-default-2 {
-	position: relative;
-	top: -25px;
+	top: 3px;
 }
-
-.funkyradio-default-3 {
-	position: relative;
-	top: -60px;
-}
-

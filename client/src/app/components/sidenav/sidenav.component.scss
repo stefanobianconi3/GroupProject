@@ -1,0 +1,193 @@
+/**
+ * Panello laterale autouscente con navigazione
+ * che esce al clic da sinistra
+ */
+ .nav {
+    width: 320px;
+    min-width: 320px;
+    /* fissiamo e indichiamo l'altezza massima  */
+    height: 100%;
+    position: fixed;
+    top: 50px;
+    bottom: 0;
+    margin: 0;
+    /*La Sidenav deve stare nascosta all'inizio*/
+    left: -320px;
+    /* spazzi interni */
+    padding: 15px 20px;
+    /* regoliamo la uscita del panello  */
+    -webkit-transition: left 0.3s;
+    -moz-transition: left 0.3s;
+    transition: left 0.3s;
+    /* indichiamo il colore dello sfondo del panello */
+    background: #03bb93;
+    /* indichiamo che sara sopra tutti gli altri elementi della pagina  */
+    z-index: 2000;
+  }
+  
+  /* ricerca */
+  input[type=search]::-webkit-search-cancel-button,
+    input[type=search]::-webkit-search-decoration,
+    input[type=search]::-webkit-search-results-button,
+    input[type=search]::-webkit-search-results-decoration {
+    -webkit-appearance:none;
+  }
+  
+  #foldername {
+    padding: 0;
+    position: absolute;
+    top: 25px;
+    left: 20px;
+    width: 55%;
+  }
+  
+  /* modifico icone */
+  .fa-plus-square {
+    font-size: 40px;
+    padding: 1px;
+  }
+  
+  #creaCartella {
+    font-size: 25px;
+    position: absolute;
+    top: 22px;
+    left: 205px;
+    color: white;
+  }
+
+  #creaCartella:hover {
+    color: #000000;
+  }
+  
+  #modificaCartella {
+    font-size: 25px;
+    position: absolute;
+    top: 22px;
+    left: 235px;
+    color: white;
+  }
+
+  #modificaCartella:hover {
+    color: #000000;
+  }
+
+  
+  #eliminaCartella {
+    font-size: 25px;
+    position: absolute;
+    top: 20px;
+    left: 265px;
+    color: white;
+  }
+
+  #eliminaCartella:hover {
+    color: #000000;
+  }
+  
+  input[type=search] {
+    -webkit-appearance:textfield;
+   }
+  
+   
+  /**
+  * Bottone interruttore del pannello 
+  * tag <label>
+  */
+  
+  .nav-toggle {
+    /* posizionamento assoluto*/
+    position: absolute;
+    /* rispetto bordo sinistro del pannello  */
+    left: 320px;
+    /* rispetto bordo superiore  */
+    top: -45px;
+    /* spazzi interni  */
+    padding: 0.5em;
+    /* indichiamo il colore dello sfondo del interruttore
+     * di solito corrisponde al colore del pannello 
+    */
+    background: inherit;
+    border-color: white;
+    /* colore del testo */
+    color: #dadada;
+    /* tipo del cursore */
+    cursor: pointer;
+    /* altezza del font */
+    font-size: 1.2em;
+    line-height: 1;
+    /* animazione del colore del testo al hover */
+    -webkit-transition: color .25s ease-in-out;
+    -moz-transition: color .25s ease-in-out;
+    transition: color .25s ease-in-out;
+  }
+  
+  /* identifichiamo il testo del bottone interruttore 
+  * simbolo Unicode (TRIGRAM FOR HEAVEN)
+  */
+  
+  .nav-toggle:after {
+    content: '\2630';
+    text-decoration: none;
+  }
+  
+  /* colore del testo al hover  */
+  
+  .nav-toggle:hover {
+    color: #000000;
+  }
+  
+  /**
+  * Checkbox nascosto invisibile e inaccessibile  :)
+  * nome del selettore del attributo del checkbox
+  */
+  
+  [id='nav-toggle'] {
+    position: absolute;
+    display: none;
+  }
+  
+  /**
+  * cambiamento della posizione del iterruttore  
+  * in caso di dispositivi mobili
+  * quando pannello aperto si trova al interno del pannello */
+  
+  [id='nav-toggle']:checked ~ .nav > .nav-toggle {
+    left: auto;
+    right: 2px;
+    top: 1em;
+  }
+  
+  /**
+  * Quando checkbox selezionato, aprire pannello 
+  * usiamo pseudo-classe :checked
+  */
+  
+  [id='nav-toggle']:checked ~ .nav {
+    left: 0;
+    box-shadow:4px 0px 20px 0px rgba(0,0,0, 0.5);
+    -moz-box-shadow:4px 0px 20px 0px rgba(0,0,0, 0.5);
+    -webkit-box-shadow:4px 0px 20px 0px rgba(0,0,0, 0.5);
+    overflow-y: auto;
+  }
+  
+  
+  /*
+  * cambio del simbolo del bottone interruttore ,
+  * solita croce  (MULTIPLICATION X), 
+  */
+  
+  [id='nav-toggle']:checked ~ .nav > .nav-toggle:after {
+    content: '\2715';
+    position: absolute;
+    top: -19px;
+    left: 3px;
+  }
+  
+  
+
+
+
+  
+  
+  
+  

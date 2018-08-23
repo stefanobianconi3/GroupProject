@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 
 @Component({
   selector: 'app-dashbody',
@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashbodyComponent implements OnInit {
 
-  constructor() { }
+  @Input() models;
+
+  constructor() {
+  }
 
   ngOnInit() {
+    this.models = [];
   }
 
 }

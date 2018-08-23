@@ -26,7 +26,9 @@ export class DataService {
   newFolder(folderName) {
     return this.http.post(this.APIURL + '/folder', { folderName: folderName }, { headers: this.headers })
   }
-
+  modifyFolder(folderName, folderNewName) {
+    return this.http.put(this.APIURL + '/folder', { folderName: folderName, folderNewName:folderNewName }, { headers: this.headers })
+  }
   checkToken() {
     if (localStorage.getItem('token')) {
       this.http.get(ServerLocation.URL + 'api/auth/checkToken', { headers: this.headers }).subscribe(

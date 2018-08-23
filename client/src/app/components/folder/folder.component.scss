@@ -1,0 +1,20 @@
+  /** CARTELLE */
+  
+#elemento {
+  color: white;
+}
+
+#elemento:hover {
+  color: #000000;
+}
+
+ul {
+  position: relative;
+  top: 50px;
+  left: -25px;
+}
+
+#children {
+  position: relative;
+  top: -50px;
+}

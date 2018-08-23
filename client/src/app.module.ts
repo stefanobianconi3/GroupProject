@@ -14,6 +14,8 @@ import {HttpClientModule} from '@angular/common/http';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { ModelerComponent } from 'src/app/components/modeler/modeler.component';
 import { DashbodyComponent } from 'src/app/components/dashbody/dashbody.component';
+import { FolderComponent } from 'src/app/components/folder/folder.component';
+import { SidenavComponent } from 'src/app/components/sidenav/sidenav.component';
 
 @NgModule({
   declarations: [
@@ -23,8 +25,9 @@ import { DashbodyComponent } from 'src/app/components/dashbody/dashbody.componen
     DashboardComponent,
     SigninComponent,
     ModelerComponent,
-    DashbodyComponent
-  
+    DashbodyComponent,
+    FolderComponent,
+    SidenavComponent
   ],
 
   imports: [

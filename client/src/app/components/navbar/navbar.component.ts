@@ -10,6 +10,7 @@ import { DataService } from '../../services/data.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+private nome = localStorage.getItem('nome') ;
 private isLogged:boolean =false;
 private fail : boolean = false;
   private errore: String;
