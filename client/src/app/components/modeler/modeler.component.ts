@@ -101,8 +101,21 @@ export class ModelerComponent implements OnInit {
     }
   }
 
-  save(): void {
-    this.modeler.saveXML((err: any, xml: any) => console.log('Result of saving XML: ', err, xml));
+  save(version): void {
+    this.modeler.saveXML(
+      (err: any, xml: any) => {
+        if(err){
+          console.log(err);
+        } else {
+          this.data.saveModel(this.path, version, xml).subscribe(
+            (payload) => {
+              if(payload['success']){
+                console.log(payload['data']);
+              }
+            }
+          )
+        }
+      });
   }
 }
 
