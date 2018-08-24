@@ -3,7 +3,7 @@
     <li *ngFor="let f of folder">
       <a (click)="select($event, f)" id="elemento"><i class="fa fa-folder-o" aria-hidden="true"></i> {{f.name}}</a>
       <div *ngIf="f.selected">
-        <app-folder [folder] = "f.children" id="children"></app-folder>
+        <app-folder [folder] = "f.children" [maxFolder]="maxFolder" id="children"></app-folder>
       </div>
     </li>
   </ul>

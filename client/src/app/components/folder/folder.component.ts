@@ -9,7 +9,9 @@ import { Folder } from '../../classes/Folder';
 export class FolderComponent implements OnInit {
 
   @Input('folder') folder;
+  @Input('maxFolder') maxFolder;
   @Output('folderSelected') folderSelected = new EventEmitter();
+  private path = "";
 
   constructor() { }
 
@@ -17,12 +19,18 @@ export class FolderComponent implements OnInit {
   }
 
   searchFolder(arrayFolder, name) {
+    console.log(arrayFolder);
     for (let i = 0; i < arrayFolder.length; i++) {
-      if (arrayFolder[i]['name'] == name) {
+      if (arrayFolder[i]['name'] === name) {
+        this.path = this.path + arrayFolder[i]['name'];
         console.log('trovato');
         console.log(arrayFolder[i]['name']);
+        console.log("Path: "+this.path);
+        this.path="";
+        break;
       } else {
-        if (arrayFolder[i]['children'] && arrayFolder[i]['children'].length > 0) {
+        if (arrayFolder[i]['children'] && arrayFolder[i]['children'].length > 0 && !(arrayFolder[i]['type'] == "model")) {
+          this.path = this.path + arrayFolder[i]['name'] + "\\"+"\\";
           this.searchFolder(arrayFolder[i]['children'], name);
         }
       }
@@ -38,7 +46,7 @@ export class FolderComponent implements OnInit {
   }
 
   select(event, cartella: Folder) {
-    this.searchFolder(this.folder, cartella.name);
+    this.searchFolder(this.maxFolder, cartella.name);
     cartella.selected = !cartella.selected;
     this.folderSelected.emit(cartella);
     event.stopPropagation();
