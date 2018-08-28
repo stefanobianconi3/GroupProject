@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Folder } from '../../classes/Folder';
+import { isNullOrUndefined } from 'util';
 
 @Component({
   selector: 'app-folder',
@@ -21,25 +22,29 @@ export class FolderComponent implements OnInit {
 
   searchFolder(arrayFolder, name, pointer=0) {
     while(this.stop === false){
-      if (arrayFolder[pointer]['name'] == name){
-        console.log("Sono dentro al controllo e l'ho superato");
-        this.path = this.path + arrayFolder[pointer]['name'];
-        console.log(this.path);
-        this.stop = true;
-        return true;
-      } else {
-        if (arrayFolder[pointer]['children'] && arrayFolder[pointer]['children'].length > 0 && !(arrayFolder[pointer]['type'] == "model")) {
-          console.log("Vado dentro al figlio di "+arrayFolder[pointer]['name']);
-          this.path = this.path + arrayFolder[pointer]['name'] + "\\"+"\\";
+      if(!isNullOrUndefined(arrayFolder[pointer])){
+        if (arrayFolder[pointer]['name'] == name){
+          console.log("Sono dentro al controllo e l'ho superato");
+          this.path = this.path + arrayFolder[pointer]['name'];
           console.log(this.path);
-          this.searchFolder(arrayFolder[pointer]['children'], name);
-          if(this.stop === false){
-            this.path="";
-            pointer++;
-          }
+          this.stop = true;
+          return true;
         } else {
-          break;
+          if (arrayFolder[pointer]['children'] && arrayFolder[pointer]['children'].length > 0 && !(arrayFolder[pointer]['type'] == "model")) {
+            console.log("Vado dentro al figlio di "+arrayFolder[pointer]['name']);
+            this.path = this.path + arrayFolder[pointer]['name'] + "\\"+"\\";
+            console.log(this.path);
+            this.searchFolder(arrayFolder[pointer]['children'], name);
+            if(this.stop === false){
+              this.path="";
+              pointer++;
+            }
+          } else {
+            break;
+          }
         }
+      } else {
+        break;
       }
     }
     return false;
