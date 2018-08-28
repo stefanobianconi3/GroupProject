@@ -58,11 +58,15 @@ export class FolderComponent implements OnInit {
     }
   }
 
-  select(event, cartella: Folder) {
+  select(cartella: Folder) {
     this.searchFolder(this.maxFolder, cartella.name);
     console.log("Path: "+this.path);
     cartella.selected = !cartella.selected;
-    this.folderSelected.emit(cartella);
-    event.stopPropagation();
+    this.folderSelected.emit(
+      {
+        cartella: cartella,
+        path: this.path
+      }
+    );
   }
 }

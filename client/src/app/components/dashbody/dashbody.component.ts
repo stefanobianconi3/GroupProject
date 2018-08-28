@@ -8,12 +8,17 @@ import { Component, OnInit,Input } from '@angular/core';
 export class DashbodyComponent implements OnInit {
 
   @Input() models;
+  @Input() modelsPath;
 
   constructor() {
   }
 
   ngOnInit() {
     this.models = [];
+  }
+
+  generatePath(name){
+    return this.modelsPath + "\\" + "\\" + name;
   }
 
 }

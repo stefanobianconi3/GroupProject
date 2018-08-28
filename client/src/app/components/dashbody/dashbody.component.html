@@ -20,9 +20,11 @@
             </thead>
             <tbody *ngFor="let f of models['children']">
               <tr>
-                <td><a *ngIf="f['type']=='model'" scope="row">{{f.name}}</a></td>
-                <td>ci mettiamo bottone?</td>
-                <td>gg/mm/aaaa 00:00</td>
+                <a *ngIf="f['type']=='model'" scope="row" target="_blank" routerLink="/modeler/{{modelsPath}}\\{{f.name}}">
+                  <td>{{f.name}}</td>
+                  <td>ci mettiamo bottone?</td>
+                  <td>gg/mm/aaaa 00:00</td>
+                </a>
               </tr>
             </tbody>
           </table>
