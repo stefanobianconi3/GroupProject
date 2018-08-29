@@ -10,26 +10,33 @@
     
   <div id="body">
     <div id="content">
-        <input type="text" [(ngModel)]="modelName" id="modelName" name="modelName">
+      
+      <input type="text" [(ngModel)]="modelName" id="modelName" name="modelName">
       <button (click)="createNewModel(modelName)">new model</button>
-     
-        <table class="table table-sm">
-            <thead>
-              <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Latest Version</th>
-                <th scope="col">Ultima Modifica</th>
-              </tr>
-            </thead>
-            <tbody *ngFor="let f of models['children']">
-              <tr>
-                <a *ngIf="f['type']=='model'" scope="row" target="_blank" routerLink="/modeler/{{modelsPath}}\\{{f.name}}">
-                  <td>{{f.name}}</td></a>
-                  <td>{{getVersion(f)}}</td>
-                  <td>gg/mm/aaaa 00:00</td>
-              </tr>
-            </tbody>
-          </table>
+      
+      <div class="container">
+        <table class="table table-lg">
+          <thead id="tHead">
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Latest Version</th>
+              <th scope="col">Ultima Modifica</th>
+            </tr>
+          </thead>
+          
+          <tbody *ngFor="let f of models['children']">
+            
+            <tr>
+              <a *ngIf="f['type']=='model'" scope="row" target="_blank" routerLink="/modeler/{{modelsPath}}\\{{f.name}}">
+                <td>{{f.name}}</td></a>
+                <td>{{getVersion(f)}}</td>
+                <td>gg/mm/aaaa 00:00</td>
+            </tr>
+            
+          </tbody>
+          
+        </table>
+      </div>
     </div>
   </div>
 </div>
