@@ -65,7 +65,13 @@ function createFile(path, name, content) {
     }
 }
 
+
+
 module.exports = {
+
+    recalcPath: function(path){
+        return path.replace(/\\/g,"/");
+    },
 
     readDirectory: function (id) {
         if (!fs.existsSync(dataLocation)) {
