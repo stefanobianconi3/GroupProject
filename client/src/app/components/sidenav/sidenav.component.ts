@@ -17,6 +17,7 @@ export class SidenavComponent implements OnInit {
   @Output() selezionata2 = new EventEmitter();
   constructor(private http: HttpClientModule, private data: DataService) { }
   private selected;
+  private selectedPath;
   private selctedbool=false;
   private msgerror=false;
   private modifica=false;
@@ -57,7 +58,8 @@ export class SidenavComponent implements OnInit {
 
   selezionata(f){
     this.selezionata2.emit(f);
-    this.selected=f;
+    this.selected=f.cartella;
+    this.selectedPath=f.path;
     this.selctedbool=true;
     this.msgerror=false;
     

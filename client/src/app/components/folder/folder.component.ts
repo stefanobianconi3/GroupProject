@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Folder } from '../../classes/Folder';
+import { isNullOrUndefined } from 'util';
 
 @Component({
   selector: 'app-folder',
@@ -9,24 +10,44 @@ import { Folder } from '../../classes/Folder';
 export class FolderComponent implements OnInit {
 
   @Input('folder') folder;
+  @Input('maxFolder') maxFolder;
   @Output('folderSelected') folderSelected = new EventEmitter();
+  private path = "";
+  private stop = false;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  searchFolder(arrayFolder, name) {
-    for (let i = 0; i < arrayFolder.length; i++) {
-      if (arrayFolder[i]['name'] == name) {
-        console.log('trovato');
-        console.log(arrayFolder[i]['name']);
-      } else {
-        if (arrayFolder[i]['children'] && arrayFolder[i]['children'].length > 0) {
-          this.searchFolder(arrayFolder[i]['children'], name);
+  searchFolder(arrayFolder, name, pointer=0) {
+    while(this.stop === false){
+      if(!isNullOrUndefined(arrayFolder[pointer])){
+        if (arrayFolder[pointer]['name'] == name){
+          console.log("Sono dentro al controllo e l'ho superato");
+          this.path = this.path + arrayFolder[pointer]['name'];
+          console.log(this.path);
+          this.stop = true;
+          return true;
+        } else {
+          if (arrayFolder[pointer]['children'] && arrayFolder[pointer]['children'].length > 0 && !(arrayFolder[pointer]['type'] == "model")) {
+            console.log("Vado dentro al figlio di "+arrayFolder[pointer]['name']);
+            this.path = this.path + arrayFolder[pointer]['name'] + "\\"+"\\";
+            console.log(this.path);
+            this.searchFolder(arrayFolder[pointer]['children'], name);
+            if(this.stop === false){
+              this.path="";
+              pointer++;
+            }
+          } else {
+            break;
+          }
         }
+      } else {
+        break;
       }
     }
+    return false;
   }
 
   isDir(folder) {
@@ -37,11 +58,15 @@ export class FolderComponent implements OnInit {
     }
   }
 
-  select(event, cartella: Folder) {
-    this.searchFolder(this.folder, cartella.name);
+  select(cartella: Folder) {
+    this.searchFolder(this.maxFolder, cartella.name);
+    console.log("Path: "+this.path);
     cartella.selected = !cartella.selected;
-    this.folderSelected.emit(cartella);
-    event.stopPropagation();
-    console.log(cartella);
+    this.folderSelected.emit(
+      {
+        cartella: cartella,
+        path: this.path
+      }
+    );
   }
 }

@@ -1,44 +1,42 @@
 <div id="dash">
   <div id="icone">
-      <a><i class="fa fa-refresh" aria-hidden="true" title="refresh" id="refresh"></i></a>
-      <a><i class="fa fa-soccer-ball-o" aria-hidden="true" title="bla bla bla" id="bla"></i></a>
-      <a><i class="fa fa-smile-o" aria-hidden="true" title="bla bla bla" id="bla1"></i></a>
-      <a><i class="fa fa-cab" aria-hidden="true" title="bla bla bla" id="bla2"></i></a>
-      <a><i class="fa fa-vcard" aria-hidden="true" title="bla bla bla" id="bla3"></i></a>
-      <a><i class="fa fa-key" aria-hidden="true" title="security" id="security"></i></a>
+      <button mdbBtn type="button" class="btn btn-sm" title="Refresh" color="green" mdbWavesEffect><mdb-icon icon="refresh" size="2x"></mdb-icon></button>
+      <button mdbBtn type="button" class="btn btn-sm" title="bla bla bla" color="green" mdbWavesEffect><mdb-icon icon="soccer-ball-o" size="2x"></mdb-icon></button>
+      <button mdbBtn type="button" class="btn btn-sm" title="bla bla bla" color="green" mdbWavesEffect><mdb-icon icon="smile-o" size="2x"></mdb-icon></button>
+      <button mdbBtn type="button" class="btn btn-sm" title="bla bla bla" color="green" mdbWavesEffect><mdb-icon icon="cab" size="2x"></mdb-icon></button>
+      <button mdbBtn type="button" class="btn btn-sm" title="bla bla bla" color="green" mdbWavesEffect><mdb-icon icon="vcard" size="2x"></mdb-icon></button>
+      <button mdbBtn type="button" class="btn btn-sm" title="Security" color="green" mdbWavesEffect><mdb-icon icon="key" size="2x"></mdb-icon></button>
   </div>
     
   <div id="body">
     <div id="content">
-        <table class="table table-sm">
-            <thead>
-              <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Latest Version</th>
-                <th scope="col">Ultima Modifica</th>
-              </tr>
-            </thead>
-            <tbody *ngFor="let f of models['children']">
-              <tr>
-                <td><a *ngIf="f['type']=='model'" scope="row">{{f.name}}</a></td>
-                <td>ci mettiamo bottone?</td>
+      
+      <input type="text" [(ngModel)]="modelName" id="modelName" name="modelName">
+      <button (click)="createNewModel(modelName)">new model</button>
+      
+      <div class="container">
+        <table class="table table-lg">
+          <thead id="tHead">
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Latest Version</th>
+              <th scope="col">Ultima Modifica</th>
+            </tr>
+          </thead>
+          
+          <tbody *ngFor="let f of models['children']">
+            
+            <tr>
+              <a *ngIf="f['type']=='model'" scope="row" target="_blank" routerLink="/modeler/{{modelsPath}}\\{{f.name}}">
+                <td>{{f.name}}</td></a>
+                <td>{{getVersion(f)}}</td>
                 <td>gg/mm/aaaa 00:00</td>
-              </tr>
-            </tbody>
-          </table>
+            </tr>
+            
+          </tbody>
           
-          
-      <!-- 
-      <table class="table">
-        <tbody *ngFor="let f of models['children']">
-
-          <a *ngIf="f['type']=='model'" scope="row" id="card">{{f.name}}</a> 
-  
-        </tbody>
-      </table>
-      -->
+        </table>
+      </div>
     </div>
   </div>
-
-        
 </div>

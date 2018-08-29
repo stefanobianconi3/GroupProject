@@ -5,8 +5,7 @@
 
 #icone {
   position: relative;
-  border: solid;
-  border-color: rgb(0, 0, 0); 
+  left: -6px;
   color: #000000; 
   font-size: 25px; /* Set a font size */
 }
@@ -47,7 +46,8 @@
 }
 
 /** BODY **/
-  
+
+
 #body {
   position: relative;
   padding: 5px;
@@ -60,5 +60,15 @@
   margin-left: 10px;
   margin-right: 10px;
   height: 100%;
-  overflow-y: auto;
 }
+
+.container {
+  overflow-y: auto;
+  border-style: none;
+  height: 28.5em;
+  width: 100%;
+  position: relative;
+  left: -14px;
+}
+
+

@@ -11,6 +11,7 @@ import { Folder } from '../../classes/Folder'
 })
 export class DashboardComponent implements OnInit {
   private models: any;
+  private modelsPath: any;
 
   constructor(private http: HttpClientModule, private data: DataService) { }
 
@@ -19,7 +20,8 @@ export class DashboardComponent implements OnInit {
   }
 
   select(f){
-    this.models = f;
+    this.models = f.cartella;
+    this.modelsPath = f.path;
    
   }
   ngOnInit() {

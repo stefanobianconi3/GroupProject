@@ -10,6 +10,6 @@
         <a class="alert-danger" *ngIf="msgerror">Please select one folder</a>
         <input *ngIf="modifica" required type="text" class="form-control" [(ngModel)]="newFolderName" id="newFolderName" name="newFolderName" placeholder="{{selected.name}}">
         <a *ngIf="modifica" (click)="modifyFolderReq(newFolderName)"  title="Modifica cartella"> <i class="fa fa-pencil-square-o" aria-hidden="true" ></i></a>
-    <app-folder [folder]="folder" (folderSelected)="selezionata($event)"></app-folder>
+    <app-folder [folder]="folder" [maxFolder]="folder" (folderSelected)="selezionata($event)"></app-folder>
     
 </nav>
