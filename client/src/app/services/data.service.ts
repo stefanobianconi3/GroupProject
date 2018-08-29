@@ -53,4 +53,8 @@ export class DataService {
     return this.http.post(this.APIURL+"/model/save", {modelName: path, version: version, content: content}, { headers: this.headers });
   }
 
+  createModel(path){
+    return this.http.post(this.APIURL+"/model", {modelName: path}, { headers: this.headers } );
+  }
+
 }
