@@ -34,4 +34,9 @@ export class DashbodyComponent implements OnInit {
     )
   }
 
+  getVersion(model){
+    let i = model['children'].length-1;
+    return model['children'][i].name.replace(".xml", "");
+  }
+
 }
