@@ -11,10 +11,15 @@ function defineDataLocation(dirname) {
     return location.replace('method', '')
 }
 
-function dirTree(filename) {
+function removeIdFromPath(id, file) {
+    return file.slice(2)
+}
+
+function dirTree(filename, id) {
     var stats = fs.lstatSync(filename),
         info = {
-            name: path.basename(filename)
+            name: path.basename(filename),
+            path: removeIdFromPath(id, path.relative(dataLocation, filename))
         }
     if (stats.isDirectory()) {
         info.type = 'dir'
@@ -80,7 +85,7 @@ module.exports = {
         if (!fs.existsSync(dataLocation + id)) {
             fs.mkdirSync(dataLocation + id)
         }
-        return dirTree(dataLocation + id)['children']
+        return dirTree(dataLocation + id, id)['children']
     },
 
     createFolder: function (name, id) {
