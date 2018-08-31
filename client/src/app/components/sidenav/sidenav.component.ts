@@ -89,15 +89,26 @@ export class SidenavComponent implements OnInit {
 
 
   newFolderReq(foldername) {
-    this.data.newFolder(foldername).subscribe(
-      (payload) => {
-        if (payload['success']) {
-          this.folder = payload['data'];
-        } else {
-          console.log(payload['error'])
+    if (this.selected) {
+      this.data.newFolder(this.selected.path + "\\" + "\\" + foldername).subscribe(
+        (payload) => {
+          if (payload['success']) {
+            this.folder = payload['data'];
+          } else {
+            console.log(payload['error'])
+          }
+        });
+    } else {
+      this.data.newFolder(foldername).subscribe(
+        (payload) => {
+          if (payload['success']) {
+            this.folder = payload['data'];
+          } else {
+            console.log(payload['error'])
+          }
         }
-      }
-    );
+      );
+    }
   }
 
 }
