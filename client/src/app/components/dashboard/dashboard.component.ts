@@ -20,9 +20,7 @@ export class DashboardComponent implements OnInit {
   }
 
   select(f){
-    this.models = f.cartella;
-    this.modelsPath = f.path;
-   
+    this.models = f;
   }
   ngOnInit() {
     this.checkTokenValidity();

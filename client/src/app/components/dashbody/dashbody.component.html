@@ -26,8 +26,8 @@
           
           <tbody *ngFor="let f of models['children']">
             
-            <tr>
-              <a *ngIf="f['type']=='model'" scope="row" target="_blank" routerLink="/modeler/{{modelsPath}}\\{{f.name}}">
+            <tr *ngIf="f['type']=='model'">
+              <a scope="row" target="_blank" routerLink="/modeler/{{f.path}}">
                 <td>{{f.name}}</td></a>
                 <td>{{getVersion(f)}}</td>
                 <td>gg/mm/aaaa 00:00</td>

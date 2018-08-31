@@ -9,7 +9,6 @@ import { DataService } from '../../services/data.service';
 export class DashbodyComponent implements OnInit {
 
   @Input() models;
-  @Input() modelsPath;
 
   constructor(private data: DataService) {
   }
@@ -18,12 +17,8 @@ export class DashbodyComponent implements OnInit {
     this.models = [];
   }
 
-  generatePath(name){
-    return this.modelsPath + "\\" + "\\" + name;
-  }
-
   createNewModel(modelname){
-    this.data.createModel(this.modelsPath+"//"+"//"+modelname).subscribe(
+    this.data.createModel(modelname).subscribe(
       (payload) => {
         if (payload['success']) {
           console.log('nuovo model creato')
