@@ -17,9 +17,9 @@ export class SidenavComponent implements OnInit {
   @Output() selezionata2 = new EventEmitter();
   constructor(private http: HttpClientModule, private data: DataService) { }
   private selected;
-  private selctedbool=false;
-  private msgerror=false;
-  private modifica=false;
+  private selctedbool = false;
+  private msgerror = false;
+  private modifica = false;
 
   ngOnInit() {
     let el: HTMLElement = this.mylabel.nativeElement as HTMLElement;
@@ -55,35 +55,35 @@ export class SidenavComponent implements OnInit {
     }
   }
 
-  selezionata(f){
+  selezionata(f) {
     this.selezionata2.emit(f);
-    this.selected=f;
-    this.selctedbool=true;
-    this.msgerror=false;
-    
+    this.selected = f;
+    this.selctedbool = true;
+    this.msgerror = false;
+
   }
 
-  modifyFolder(){
-    if(this.selctedbool){
-      this.modifica=true;
-  }
-    else {
-      this.msgerror=true;
-
-    }
+  private generateNewPath(oldPath: string, newName) {
+    let array = oldPath.split("\\");
+    array[array.length - 1] = newName;
+    return array.join("\\");
   }
 
-  modifyFolderReq(newFolderName){
-    this.data.modifyFolder(this.selected.name, newFolderName).subscribe(
-      (payload) => {
-        if (payload['success']) {
-          alert('modificata correttamente')
-        } else {
-          console.log(payload['error'])
+  modifyFolder(newFolderName) {
+    if (this.selected) {
+      this.msgerror = false;
+      this.data.modifyFolder(this.selected.path, this.generateNewPath(this.selected.path, newFolderName)).subscribe(
+        (payload) => {
+          if (payload['success']) {
+            this.folder = payload['data'];
+          } else {
+            console.log(payload['error'])
+          }
         }
-      }
-    )
-
+      )
+    } else {
+      this.msgerror = true;
+    }
   }
 
 
