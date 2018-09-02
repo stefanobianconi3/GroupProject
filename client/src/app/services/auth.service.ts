@@ -52,12 +52,13 @@ constructor(private http: HttpClient, private route: Router) { }
     this.http.post(this.APIAUTHURL+'/login', {email: email, password: password}).subscribe(
       (payload: any) => {
         if(payload.success){
+          this.route.navigate(['dashboard']);
           let userData = payload.data[0]
           localStorage.setItem('token', payload.token);
           localStorage.setItem('id',userData.id);
           localStorage.setItem('nome',userData.firstname);
           this.outLogin.emit();
-          this.route.navigate(['dashboard']);
+          
         } else {
           this.errorLogin.emit(payload.error);
           
