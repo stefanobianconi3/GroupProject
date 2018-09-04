@@ -26,13 +26,39 @@
           
           <tbody *ngFor="let f of models['children']">
             
-            <tr *ngIf="f['type']=='model'">
-              <a scope="row" target="_blank" routerLink="/modeler/{{f.path}}">
+            <tr *ngIf="f['type']=='model'" data-toggle="modal" data-target="#versionModal" (click)="chooseVersion(f)">
+              <a scope="row" >
                 <td>{{f.name}}</td></a>
                 <td>{{getVersion(f)}}</td>
                 <td>gg/mm/aaaa 00:00</td>
             </tr>
             
+          <!-- Modal -->
+          <div class="modal fade" *ngIf="multipleVersion" id="versionModal" tabindex="-1" role="dialog" aria-labelledby="versionLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="versionLabel">Version</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <span>What version would you open? </span>
+                  <select class="selectpicker" [(ngModel)]="versionNumber">
+                    <option *ngFor="let n of model['children']">
+                      {{n.name[0]}}
+                    </option>
+                  </select>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" (click)="openModel(undefined, versionNumber)">Open Model</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
           </tbody>
           
         </table>
