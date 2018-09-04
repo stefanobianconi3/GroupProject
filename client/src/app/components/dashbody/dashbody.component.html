@@ -1,19 +1,35 @@
 <div id="dash">
   <div id="icone">
-      <button mdbBtn type="button" class="btn btn-sm" title="Refresh" color="green" mdbWavesEffect><mdb-icon icon="refresh" size="2x"></mdb-icon></button>
-      <button mdbBtn type="button" class="btn btn-sm" title="bla bla bla" color="green" mdbWavesEffect><mdb-icon icon="soccer-ball-o" size="2x"></mdb-icon></button>
-      <button mdbBtn type="button" class="btn btn-sm" title="bla bla bla" color="green" mdbWavesEffect><mdb-icon icon="smile-o" size="2x"></mdb-icon></button>
-      <button mdbBtn type="button" class="btn btn-sm" title="bla bla bla" color="green" mdbWavesEffect><mdb-icon icon="cab" size="2x"></mdb-icon></button>
-      <button mdbBtn type="button" class="btn btn-sm" title="bla bla bla" color="green" mdbWavesEffect><mdb-icon icon="vcard" size="2x"></mdb-icon></button>
-      <button mdbBtn type="button" class="btn btn-sm" title="Security" color="green" mdbWavesEffect><mdb-icon icon="key" size="2x"></mdb-icon></button>
+      <button mdbBtn type="button" class="btn btn-sm" title="Refresh" id="provaColore" mdbWavesEffect><mdb-icon icon="refresh" size="2x"></mdb-icon></button>
+      <button mdbBtn type="button" class="btn btn-sm" title="bla bla bla" id="provaColore" mdbWavesEffect><mdb-icon icon="smile-o" size="2x"></mdb-icon></button>
+      <button mdbBtn type="button" class="btn btn-sm" title="bla bla bla" id="provaColore" mdbWavesEffect><mdb-icon icon="cab" size="2x"></mdb-icon></button>
+      <button mdbBtn type="button" class="btn btn-sm" title="bla bla bla" id="provaColore" mdbWavesEffect><mdb-icon icon="vcard" size="2x"></mdb-icon></button>
+      <button mdbBtn type="button" class="btn btn-sm" title="Security" id="provaColore" mdbWavesEffect><mdb-icon icon="key" size="2x"></mdb-icon></button>
+      <button mdbBtn type="button" class="btn btn-sm" (click)="createNewModel(modelName)" title="New model" id="newModel" mdbWavesEffect><mdb-icon icon="file-o" size="2x"></mdb-icon></button>
+
+      <div class="md-form form-sm" id="modello" >
+        <input mdbInputDirective type="text" id="form1" class="form-control" >
+        <label for="form1" class="">nome modello</label>
+      </div>
+
+     
+
+      <!--
+      <input type="text" class="form-control col-3 form-control-sm" [(ngModel)]="modelName" id="modelName" name="modelName" placeholder="nome modello">
+      <button mdbBtn type="button" class="btn btn-sm" (click)="createNewModel(modelName)" title="New model" id="newModel" mdbWavesEffect><mdb-icon icon="file-o" size="2x"></mdb-icon></button>
+      
+      
+      <input mdbInputDirective type="text" class="form-control form-control-sm" [(ngModel)]="modelName" id="modelName" name="modelName" >
+      <button mdbBtn type="button" class="btn btn-sm" (click)="createNewModel(modelName)" title="New model" color="green" mdbWavesEffect><mdb-icon icon="file-o" size="2x"></mdb-icon></button>
+      -->  
   </div>
     
   <div id="body">
     <div id="content">
-      
-      <input type="text" [(ngModel)]="modelName" id="modelName" name="modelName">
-      <button (click)="createNewModel(modelName)">new model</button>
-      
+      <!--
+      <input type="text" [(ngModel)]="modelName" id="modelName" name="modelName"> 
+      <button (click)="createNewModel(modelName)">new model</button> 
+      -->
       <div class="container">
         <table class="table table-lg">
           <thead id="tHead">
