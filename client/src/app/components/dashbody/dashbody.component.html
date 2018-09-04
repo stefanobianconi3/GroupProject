@@ -8,28 +8,14 @@
       <button mdbBtn type="button" class="btn btn-sm" (click)="createNewModel(modelName)" title="New model" id="newModel" mdbWavesEffect><mdb-icon icon="file-o" size="2x"></mdb-icon></button>
 
       <div class="md-form form-sm" id="modello" >
-        <input mdbInputDirective type="text" id="form1" class="form-control" >
+        <input mdbInputDirective type="text" id="form1" class="form-control" [(ngModel)]="modelName">
         <label for="form1" class="">nome modello</label>
       </div>
-
-     
-
-      <!--
-      <input type="text" class="form-control col-3 form-control-sm" [(ngModel)]="modelName" id="modelName" name="modelName" placeholder="nome modello">
-      <button mdbBtn type="button" class="btn btn-sm" (click)="createNewModel(modelName)" title="New model" id="newModel" mdbWavesEffect><mdb-icon icon="file-o" size="2x"></mdb-icon></button>
-      
-      
-      <input mdbInputDirective type="text" class="form-control form-control-sm" [(ngModel)]="modelName" id="modelName" name="modelName" >
-      <button mdbBtn type="button" class="btn btn-sm" (click)="createNewModel(modelName)" title="New model" color="green" mdbWavesEffect><mdb-icon icon="file-o" size="2x"></mdb-icon></button>
-      -->  
+ 
   </div>
     
   <div id="body">
     <div id="content">
-      <!--
-      <input type="text" [(ngModel)]="modelName" id="modelName" name="modelName"> 
-      <button (click)="createNewModel(modelName)">new model</button> 
-      -->
       <div class="container">
         <table class="table table-lg">
           <thead id="tHead">
