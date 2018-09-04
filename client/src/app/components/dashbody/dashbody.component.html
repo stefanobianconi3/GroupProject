@@ -42,8 +42,8 @@
           
           <tbody *ngFor="let f of models['children']">
             
-            <tr *ngIf="f['type']=='model'" data-toggle="modal" data-target="#versionModal" (click)="chooseVersion(f)">
-              <a scope="row" >
+            <tr *ngIf="f['type']=='model'">
+              <a scope="row" (click)="chooseVersion(f)" data-toggle="modal" data-target="#versionModal">
                 <td>{{f.name}}</td></a>
                 <td>{{getVersion(f)}}</td>
                 <td>gg/mm/aaaa 00:00</td>
