@@ -35,7 +35,8 @@
               "./node_modules/bpmn-js/dist/assets/bpmn-font/css/bpmn.css",
               "./node_modules/bpmn-js/dist/assets/diagram-js.css",
               "./node_modules/angular-bootstrap-md/scss/mdb-free.scss",
-              "./node_modules/font-awesome/scss/font-awesome.scss"
+              "./node_modules/font-awesome/scss/font-awesome.scss",
+              "./node_modules/angular-tree-component/dist/angular-tree-component.css"
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.min.js",

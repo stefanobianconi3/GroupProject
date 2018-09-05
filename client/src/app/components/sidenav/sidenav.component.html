@@ -6,6 +6,6 @@
         <a id="eliminaCartella" title="Elimina cartella"> <i class="fa fa-trash-o" aria-hidden="true" ></i></a>
         <a (click)="modifyFolder(fname)" id="modificaCartella" title="Modifica cartella"> <i class="fa fa-pencil-square-o" aria-hidden="true" ></i></a>
         <a class="alert-danger" *ngIf="msgerror">Please select one folder</a>
-    <app-folder [folder]="folder" [maxFolder]="folder" (folderSelected)="selezionata($event)"></app-folder>
+    <app-folder [folder]="folder" (folderSelected)="selezionata($event)"></app-folder>
     
 </nav>
