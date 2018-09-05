@@ -38,14 +38,14 @@ export class DashbodyComponent implements OnInit {
 
   openModel(model?, version?){
     if(model){
-      let path = model.path.replace(/\//g, "%5C%5C");
+      let path = model.path.replace(/\//g, "%5C").replace(/\\/, "%5C");
       if(version){
         window.open("/modeler/"+path+"/"+version, '_blank');
       } else {
         window.open("/modeler/"+path, '_blank');
       }
     } else {
-      let path = this.model.path.replace(/\//g, "%5C%5C");
+      let path = this.model.path.replace(/\//g, "%5C").replace(/\\/, "%5C");
       if(version){
         window.open("/modeler/"+path+"/"+version, '_blank');
       } else {
