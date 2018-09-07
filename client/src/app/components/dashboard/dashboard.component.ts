@@ -19,7 +19,8 @@ export class DashboardComponent implements OnInit {
     this.data.checkToken();
   }
 
-  select(f){
+  select(f) {
+    console.log(f)
     this.models = f;
   }
   ngOnInit() {

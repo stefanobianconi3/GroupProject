@@ -19,16 +19,20 @@ export class DashbodyComponent implements OnInit {
     this.models = [];
   }
 
-  createNewModel(modelname){
-    this.data.createModel(modelname).subscribe(
-      (payload) => {
-        if (payload['success']) {
-          console.log('nuovo model creato')
-        } else {
-          console.log(payload['error'])
+  createNewModel(modelname) {
+    if (this.models.path) {
+      this.data.createModel(this.models.path + "\\" + modelname).subscribe(
+        (payload) => {
+          if (payload['success']) {
+            console.log('nuovo model creato')
+          } else {
+            console.log(payload['error'])
+          }
         }
-      }
-    )
+      )
+    } else {
+      alert("Impossibile creare nella cartella di root")
+    }
   }
 
   getVersion(model){

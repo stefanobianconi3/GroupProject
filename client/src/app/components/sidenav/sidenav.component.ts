@@ -56,14 +56,13 @@ export class SidenavComponent implements OnInit {
     }
   }
 
-  selezionata(f:Folder) {
+  selezionata(f: Folder) {
+    console.log(f);
     this.selezionata2.emit(f);
     this.selected = f;
     this.nameSelected=f.name
     this.selctedbool = true;
     this.msgerror = false;
-    console.log(this.selected);
-
   }
 
   private generateNewPath(oldPath: string, newName) {
