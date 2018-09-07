@@ -31,7 +31,7 @@ router.post('/folder', async (req, res) => {
     }
 })
 
-router.delete('/folder', async (req, res) => {
+router.post('/folder/delete', async (req, res) => {
     if (dataMethods.deleteFolder(dataMethods.recalcPath(req.body.folderName), req.headers.id)) {
         res.send({
             success: true,
@@ -87,7 +87,7 @@ router.put('/model', async (req, res) => {
     }
 })
 
-router.delete('/model', async (req, res) => {
+router.post('/model/delete', async (req, res) => {
     if (dataMethods.deleteModel(dataMethods.recalcPath(req.body.modelName), req.headers.id)) {
         res.send({
             success: true,
