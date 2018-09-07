@@ -89,7 +89,22 @@ export class SidenavComponent implements OnInit {
     }
   }
 
-
+  deleteFolder() {
+    if (this.selected) {
+      this.msgerror = false;
+      this.data.deleteFolder(this.selected.path).subscribe(
+        (payload) => {
+          if (payload['success']) {
+            this.folder = payload['data'];
+          } else {
+            console.log(payload['error'])
+          }
+        }
+      )
+    } else {
+      this.msgerror = true;
+    }
+  }
 
   newFolderReq(foldername) {
     if (this.selected) {
