@@ -44,13 +44,13 @@
 </header>
 <!-- Qua sotto la navbar per quando è loggato -->
 <ng-template #logged>
-	<body>
+	<body id="bodyNav">
 		<div class="navbar navbar-default navbar-fixed-top">
 			<div class="row">
 				
 				<h2 class="logo2">Welcome {{nome}}</h2>
 				
-				<div class="d-flex ">
+				<div class="d-flex animated fadeInRightBig">
 					<div class="btn-group" id="file" mdbDropdown>
 						<button mdbDropdownToggle type="button" mdbBtn color="light" outline="true" size="sm" class="dropdown-toggle waves-light" mdbWavesEffect>
 							File

@@ -7,7 +7,6 @@ body{
     font-family: 'Open Sans', sans-serif;
 }
 
-
 .logo{
 	color: white;
 	margin-top: -17px;
@@ -59,7 +58,6 @@ header .btn-header-login{
 /* navbar dopo il login */
 
 .navbar{
-	
 	height: 50px;
 	background:  teal;
 	border-bottom-color: rgb(104, 231, 0);
@@ -90,6 +88,7 @@ header .btn-header-login{
 	left: 285px;
 	top: 11px;
 	height: 32px;
+	z-index: 999;
 }
 
 #file {

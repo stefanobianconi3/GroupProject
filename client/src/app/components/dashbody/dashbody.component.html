@@ -1,5 +1,5 @@
 <div id="dash">
-  <div id="icone">
+  <div id="icone" class="animated zoomIn">
       <button mdbBtn type="button" class="btn btn-sm" title="Refresh" id="provaColore" mdbWavesEffect><mdb-icon icon="refresh" size="2x"></mdb-icon></button>
       <button mdbBtn type="button" class="btn btn-sm" title="bla bla bla" id="provaColore" mdbWavesEffect><mdb-icon icon="smile-o" size="2x"></mdb-icon></button>
       <button mdbBtn type="button" class="btn btn-sm" title="bla bla bla" id="provaColore" mdbWavesEffect><mdb-icon icon="cab" size="2x"></mdb-icon></button>
@@ -8,14 +8,15 @@
       <button mdbBtn type="button" class="btn btn-sm" (click)="createNewModel(modelName)" title="New model" id="newModel" mdbWavesEffect><mdb-icon icon="file-o" size="2x"></mdb-icon></button>
 
       <div class="md-form form-sm" id="modello" >
-        <input mdbInputDirective type="text" id="form1" class="form-control" [(ngModel)]="modelName">
-        <label for="form1" class="">nome modello</label>
+        <input type="text" id="form1" class="form-control" [(ngModel)]="modelName">
+        <label for="form1">nome modello</label>
       </div>
  
   </div>
     
   <div id="body">
     <div id="content">
+      
       <div class="container">
         <table class="table table-lg">
           <thead id="tHead">
@@ -26,7 +27,7 @@
             </tr>
           </thead>
           
-          <tbody *ngFor="let f of models['children']">
+          <tbody *ngFor="let f of models['children']" id="tBody">
             
             <tr *ngIf="f['type']=='model'">
               <a scope="row" (click)="chooseVersion(f)" data-toggle="modal" data-target="#versionModal">
