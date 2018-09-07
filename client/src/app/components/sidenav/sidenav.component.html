@@ -1,7 +1,7 @@
 <input type="checkbox" id="nav-toggle"> 
 <nav class="nav" id="miaNav">
     <label #mylabel for="nav-toggle" class="nav-toggle" id="label-nav" (click)="clickNav()" ></label> 
-        <input required type="text" class="form-control" [(ngModel)]="fname" id="foldername" name="foldername" placeholder="nome cartella">  
+        <input required type="text" class="form-control" [(ngModel)]="fname" id="foldername" name="foldername" placeholder="{{nameSelected}}">  
         <a (click)="newFolderReq(fname)" id="creaCartella" title="crea cartella"> <i class="fa fa-plus-square-o" aria-hidden="true" ></i> </a>
         <a id="eliminaCartella" title="Elimina cartella"> <i class="fa fa-trash-o" aria-hidden="true" ></i></a>
         <a (click)="modifyFolder(fname)" id="modificaCartella" title="Modifica cartella"> <i class="fa fa-pencil-square-o" aria-hidden="true" ></i></a>
