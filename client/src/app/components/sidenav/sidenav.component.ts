@@ -16,7 +16,7 @@ export class SidenavComponent implements OnInit {
   @Input() folderName;
   @Output() selezionata2 = new EventEmitter();
   constructor(private http: HttpClientModule, private data: DataService) { }
-  private selected;
+  private selected:Folder;
   private nameSelected;
   private selctedbool = false;
   private msgerror = false;
@@ -65,7 +65,7 @@ export class SidenavComponent implements OnInit {
     this.msgerror = false;
   }
 
-  private generateNewPath(oldPath: string, newName) {
+  private generateNewPath(oldPath: String, newName) {
     let array = oldPath.split("\\");
     array[array.length - 1] = newName;
     return array.join("\\");
