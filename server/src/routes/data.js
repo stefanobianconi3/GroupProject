@@ -46,7 +46,7 @@ router.delete('/folder', async (req, res) => {
 })
 
 router.put('/folder', async (req, res) => {
-    if (dataMethods.updateFolder(dataMethods.recalcPath(req.body.folderName), req.headers.id, req.body.folderNewName)) {
+    if (dataMethods.updateFolder(dataMethods.recalcPath(req.body.folderName), req.headers.id, dataMethods.recalcPath(req.body.folderNewName))) {
         res.send({
             success: true,
             data: dataMethods.readDirectory(req.headers.id)
@@ -74,7 +74,7 @@ router.post('/model', async (req, res) => {
 })
 
 router.put('/model', async (req, res) => {
-    if (dataMethods.updateModel(dataMethods.recalcPath(req.body.modelName), req.headers.id, req.body.newModelName)) {
+    if (dataMethods.updateModel(dataMethods.recalcPath(req.body.modelName), req.headers.id, dataMethods.recalcPath(req.body.newModelName))) {
         res.send({
             success: true,
             data: dataMethods.readDirectory(req.headers.id)
