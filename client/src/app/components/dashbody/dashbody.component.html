@@ -12,11 +12,7 @@
         <label for="form1">nome modello</label>
       </div>
  
-  </div>
-  <!--  
-  <div id="body">
-    <div id="content">
-    -->    
+  </div>   
       <div class="table-responsive">
         <table class="table table-hover table-lg" >
           <thead id="tHead">
@@ -56,7 +52,7 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary" (click)="openModel(undefined, versionNumber)">Open Model</button>
+                  <button type="button" class="btn btn-primary" (click)="openModel(undefined, versionNumber)" onclick="$('.modal').modal('hide')">Open Model</button>
                 </div>
               </div>
             </div>
@@ -66,8 +62,4 @@
           
         </table>
       </div>
-  <!--
-    </div>
-  </div>
--->
 </div>
