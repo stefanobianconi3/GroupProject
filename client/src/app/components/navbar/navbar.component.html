@@ -26,7 +26,7 @@
 								<div *ngIf="password.dirty && password.touched && password.invalid" >
 										<div class="alert-danger" *ngIf="password.errors.required">Password Required</div>
 								</div>
-								<div  class="login-bottom-text hidden-sm"> Forgot your password?  </div>
+								
 						</div>
 					</div>
 					<div class="col-sm-2">
@@ -124,11 +124,13 @@
 							<a class="dropdown-item" href="#">Separated link</a>
 						</div>
 					</div>
+
+					<div class="logout-button">
+						<button *ngIf="isLogged" type="button" value="Logout" class="btn btn-outline-dark btn-sm" (click)="logout($event)">Logout</button>
+					</div>
 				</div>
 				
-				<div class="logout-button">
-					<button *ngIf="isLogged" type="button" value="Logout" class="btn btn-outline-dark btn-sm" (click)="logout($event)">Logout</button>
-				</div>
+				
 			</div>
 		</div>
 	</body>
