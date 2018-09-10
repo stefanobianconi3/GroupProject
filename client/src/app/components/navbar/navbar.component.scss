@@ -52,7 +52,21 @@ header .btn-header-login{
 
 #allerta {
 	position: absolute;
-	top: 35px;
+	top: 5px;
+	right: 250px;
+	width: 78%;
+	color: red;
+	background-color: white;
+	border-style: solid;
+	border-color: red;
+}
+
+.alert-danger {
+	color: white;
+	background: none;
+	position: relative;
+	top: -2px;
+	left: 5px;
 }
 
 /* navbar dopo il login */
@@ -76,13 +90,13 @@ header .btn-header-login{
 .nav-link dropdown-toggle{
 	color: white;
 }
-
+/*
 .logout-button{
 	position: absolute;
 	right:5px;
 	top:3px;
 }
-
+*/
 .d-flex{
 	position: absolute;
 	left: 285px;
@@ -118,6 +132,12 @@ header .btn-header-login{
 #monitor {
 	position: relative;
 	left: -200px;
+}
+
+.logout-button {
+	position: relative;
+	left: -260px;
+	top: -9px;
 }
 
 /**
