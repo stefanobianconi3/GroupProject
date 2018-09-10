@@ -5,7 +5,6 @@
 
 #icone {
   position: relative;
-  left: -6px;
   top: 8px;
   color: #000000; 
   font-size: 25px; /* Set a font size */
@@ -54,30 +53,34 @@
 
 /** BODY **/
 
-
+/**
 #body {
   position: relative;
   width: 100%;
   padding: 5px;
   margin-left: 10px;
   margin-right: -15px;
+  border-style: solid;
+  border-color: #f57c00;
 }
 
 #content {
-  width: 90%;
-  margin-left: 10px;
-  margin-right: 10px;
-  height: 100%;
-}
-
-.container {
-  overflow-y: auto;
-  border-style: none;
-  height: 28.5em;
   width: 100%;
   position: relative;
-  left: -14px;
+  margin-left: -10px;
+  margin-right: 10px;
+  height: 100%;
+  border-style: solid;
+  border-color: red;
+}
+*/
+.table-responsive {
+  height: 30.5em;
+  width: 100%;
+  position: relative;
   top: -80px;
+  right: -7px;
+  overflow-y: auto;
 }
 
 
