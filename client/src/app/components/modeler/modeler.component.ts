@@ -114,6 +114,7 @@ export class ModelerComponent implements OnInit {
     if(this.newVersion == this.version){
       this.overwrite = true;
     } else {
+      this.overwrite = false;
       this.save(version);
     }
   }
