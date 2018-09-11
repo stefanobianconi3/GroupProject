@@ -51,3 +51,13 @@
       </div>
     </div>
   </div>
+
+  <div class="alert alert-success alert-dismissible" *ngIf="alerts && success">
+    <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Model saved successfully</strong>
+  </div>
+
+  <div class="alert alert-danger alert-dismissible" *ngIf="alerts && !success">
+      <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>There was a problem on saving the model. Please retry!</strong>
+  </div>
