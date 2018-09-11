@@ -44,6 +44,8 @@ export class ModelerComponent implements OnInit {
   private overwrite = false;
   private modeler;
   private bpmnXML;
+  private alerts = false; 
+  private success = true;
 
   constructor(private http: HttpClient, private parameters: ActivatedRoute, private data: DataService) { 
     
@@ -126,7 +128,11 @@ export class ModelerComponent implements OnInit {
           this.data.saveModel(this.path, version, xml).subscribe(
             (payload) => {
               if(payload['success']){
-                console.log(payload['data']);
+                this.alerts = true;
+                this.success = true;
+              } else {
+                this.alerts = true;
+                this.success = false;
               }
             }
           )
