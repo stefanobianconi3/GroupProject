@@ -40,8 +40,10 @@ const customModdle = {
 export class ModelerComponent implements OnInit {
   private path;
   private version;
-  modeler;
-  bpmnXML;
+  private newVersion;
+  private overwrite = false;
+  private modeler;
+  private bpmnXML;
 
   constructor(private http: HttpClient, private parameters: ActivatedRoute, private data: DataService) { 
     
@@ -90,7 +92,11 @@ export class ModelerComponent implements OnInit {
     this.parameters.paramMap.subscribe(
       (params) => {
         this.path = params.get("path");
-        this.version = params.get("version");
+        if(params.get("version")){
+          this.version = params.get("version");
+        } else {
+          this.version = 0;
+        }
       }
   );
   }
@@ -101,7 +107,17 @@ export class ModelerComponent implements OnInit {
     }
   }
 
+  checkOverwrite(version){
+    this.newVersion = version;
+    if(this.newVersion == this.version){
+      this.overwrite = true;
+    } else {
+      this.save(version);
+    }
+  }
+
   save(version): void {
+    this.overwrite = false;
     this.modeler.saveXML(
       (err: any, xml: any) => {
         if(err){
