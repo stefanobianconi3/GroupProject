@@ -44,7 +44,7 @@ export class DataService {
             localStorage.removeItem('id');
             localStorage.removeItem('nome');
             this.outLogout.emit();
-            this.router.navigate(['homepage']);
+            window.location.reload(true);
           }
         }
       );
