@@ -25,14 +25,14 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#checkOver" (click)="chekOverwrite(versionNumber)" onclick="$('.modal').modal('hide')">Save changes</button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#checkOver" (click)="checkOverwrite(versionNumber)" onclick="$('.modal').modal('hide')">Save changes</button>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Modal -->
-  <div class="modal fade" id="checkOver" tabindex="-1" role="dialog" aria-labelledby="versionLabel" aria-hidden="true">
+  <div class="modal fade" *ngIf="overwrite" id="checkOver" tabindex="-1" role="dialog" aria-labelledby="versionLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
