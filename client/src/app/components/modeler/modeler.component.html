@@ -42,7 +42,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <span>Are you sure? You are going to overwrite the existing version. This action cannot be undone!</span>
+          <span>Are you sure? You are going to overwrite {{previous ? previousMessage : currentMessage}}. This action cannot be undone!</span>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

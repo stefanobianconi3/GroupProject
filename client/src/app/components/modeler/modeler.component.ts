@@ -46,6 +46,9 @@ export class ModelerComponent implements OnInit {
   private bpmnXML;
   private alerts = false; 
   private success = true;
+  private previous = false;
+  private previousMessage = "a previous version";
+  private currentMessage = "the existing version";
 
   constructor(private http: HttpClient, private parameters: ActivatedRoute, private data: DataService) { 
     
@@ -113,7 +116,12 @@ export class ModelerComponent implements OnInit {
     this.newVersion = version;
     if(this.newVersion == this.version){
       this.overwrite = true;
-    } else {
+      this.previous = false;
+    } else if (this.newVersion < this.version){
+      this.overwrite = true;
+      this.previous = true;
+    }
+    else {
       this.overwrite = false;
       this.save(version);
     }
