@@ -1,21 +1,20 @@
 <div id="dash">
-  <div id="icone">
-      <button mdbBtn type="button" class="btn btn-sm" title="Refresh" color="green" mdbWavesEffect><mdb-icon icon="refresh" size="2x"></mdb-icon></button>
-      <button mdbBtn type="button" class="btn btn-sm" title="bla bla bla" color="green" mdbWavesEffect><mdb-icon icon="soccer-ball-o" size="2x"></mdb-icon></button>
-      <button mdbBtn type="button" class="btn btn-sm" title="bla bla bla" color="green" mdbWavesEffect><mdb-icon icon="smile-o" size="2x"></mdb-icon></button>
-      <button mdbBtn type="button" class="btn btn-sm" title="bla bla bla" color="green" mdbWavesEffect><mdb-icon icon="cab" size="2x"></mdb-icon></button>
-      <button mdbBtn type="button" class="btn btn-sm" title="bla bla bla" color="green" mdbWavesEffect><mdb-icon icon="vcard" size="2x"></mdb-icon></button>
-      <button mdbBtn type="button" class="btn btn-sm" title="Security" color="green" mdbWavesEffect><mdb-icon icon="key" size="2x"></mdb-icon></button>
-  </div>
-    
-  <div id="body">
-    <div id="content">
-      
-      <input type="text" [(ngModel)]="modelName" id="modelName" name="modelName">
-      <button (click)="createNewModel(modelName)">new model</button>
-      
-      <div class="container">
-        <table class="table table-lg">
+  <div id="icone" class="animated zoomIn">
+      <button mdbBtn type="button" class="btn btn-sm" title="Refresh" id="provaColore" mdbWavesEffect><mdb-icon icon="refresh" size="2x"></mdb-icon></button>
+      <button mdbBtn type="button" class="btn btn-sm" title="bla bla bla" id="provaColore" mdbWavesEffect><mdb-icon icon="smile-o" size="2x"></mdb-icon></button>
+      <button mdbBtn type="button" class="btn btn-sm" title="bla bla bla" id="provaColore" mdbWavesEffect><mdb-icon icon="cab" size="2x"></mdb-icon></button>
+      <button mdbBtn type="button" class="btn btn-sm" title="bla bla bla" id="provaColore" mdbWavesEffect><mdb-icon icon="vcard" size="2x"></mdb-icon></button>
+      <button mdbBtn type="button" class="btn btn-sm" title="Security" id="provaColore" mdbWavesEffect><mdb-icon icon="key" size="2x"></mdb-icon></button>
+      <button mdbBtn type="button" class="btn btn-sm" (click)="createNewModel(modelName)" title="New model" id="newModel" mdbWavesEffect><mdb-icon icon="file-o" size="2x"></mdb-icon></button>
+
+      <div class="md-form form-sm" id="modello" >
+        <input type="text" id="form1" class="form-control" [(ngModel)]="modelName" placeholder="  nome modello">
+        
+      </div>
+ 
+  </div>   
+      <div class="table-responsive">
+        <table class="table table-hover table-lg" >
           <thead id="tHead">
             <tr>
               <th scope="col">Name</th>
@@ -24,19 +23,43 @@
             </tr>
           </thead>
           
-          <tbody *ngFor="let f of models['children']">
+          <tbody *ngFor="let f of models['children']" id="tBody">
             
-            <tr>
-              <a *ngIf="f['type']=='model'" scope="row" target="_blank" routerLink="/modeler/{{modelsPath}}\\{{f.name}}">
+            <tr *ngIf="f['type']=='model'">
+              <a scope="row" (click)="chooseVersion(f)" data-toggle="modal" data-target="#versionModal">
                 <td>{{f.name}}</td></a>
                 <td>{{getVersion(f)}}</td>
                 <td>gg/mm/aaaa 00:00</td>
             </tr>
             
+          <!-- Modal -->
+          <div class="modal fade" *ngIf="multipleVersion" id="versionModal" tabindex="-1" role="dialog" aria-labelledby="versionLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="versionLabel">Version</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <span>What version would you open? </span>
+                  <select class="selectpicker" [(ngModel)]="versionNumber">
+                    <option *ngFor="let n of model['children']">
+                      {{n.name.replace('.xml', '')}}
+                    </option>
+                  </select>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" (click)="openModel(undefined, versionNumber)" onclick="$('.modal').modal('hide')">Open Model</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
           </tbody>
           
         </table>
       </div>
-    </div>
-  </div>
 </div>

@@ -40,8 +40,15 @@ const customModdle = {
 export class ModelerComponent implements OnInit {
   private path;
   private version;
-  modeler;
-  bpmnXML;
+  private newVersion;
+  private overwrite = false;
+  private modeler;
+  private bpmnXML;
+  private alerts = false; 
+  private success = true;
+  private previous = false;
+  private previousMessage = "a previous version";
+  private currentMessage = "the existing version";
 
   constructor(private http: HttpClient, private parameters: ActivatedRoute, private data: DataService) { 
     
@@ -90,7 +97,11 @@ export class ModelerComponent implements OnInit {
     this.parameters.paramMap.subscribe(
       (params) => {
         this.path = params.get("path");
-        this.version = params.get("version");
+        if(params.get("version")){
+          this.version = params.get("version");
+        } else {
+          this.version = 0;
+        }
       }
   );
   }
@@ -101,7 +112,23 @@ export class ModelerComponent implements OnInit {
     }
   }
 
+  checkOverwrite(version){
+    this.newVersion = version;
+    if(this.newVersion == this.version){
+      this.overwrite = true;
+      this.previous = false;
+    } else if (this.newVersion < this.version){
+      this.overwrite = true;
+      this.previous = true;
+    }
+    else {
+      this.overwrite = false;
+      this.save(version);
+    }
+  }
+
   save(version): void {
+    this.overwrite = false;
     this.modeler.saveXML(
       (err: any, xml: any) => {
         if(err){
@@ -110,7 +137,11 @@ export class ModelerComponent implements OnInit {
           this.data.saveModel(this.path, version, xml).subscribe(
             (payload) => {
               if(payload['success']){
-                console.log(payload['data']);
+                this.alerts = true;
+                this.success = true;
+              } else {
+                this.alerts = true;
+                this.success = false;
               }
             }
           )

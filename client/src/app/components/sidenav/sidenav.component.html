@@ -1,15 +1,25 @@
 <input type="checkbox" id="nav-toggle"> 
 <nav class="nav" id="miaNav">
     <label #mylabel for="nav-toggle" class="nav-toggle" id="label-nav" (click)="clickNav()" ></label> 
-        <input *ngIf="!modifica" required type="text" class="form-control" [(ngModel)]="fname" id="foldername" name="foldername" placeholder="nome cartella">  
+        <input required type="text" class="form-control" [(ngModel)]="fname" id="foldername" name="foldername" value="{{nameSelected}}">  
         <a (click)="newFolderReq(fname)" id="creaCartella" title="crea cartella"> <i class="fa fa-plus-square-o" aria-hidden="true" ></i> </a>
-    
-        <a id="eliminaCartella" title="Elimina cartella"> <i class="fa fa-trash-o" aria-hidden="true" ></i></a>
-
-        <a (click)="modifyFolder()" id="modificaCartella" title="Modifica cartella"> <i class="fa fa-pencil-square-o" aria-hidden="true" ></i></a>
-        <a class="alert-danger" *ngIf="msgerror">Please select one folder</a>
-        <input *ngIf="modifica" required type="text" class="form-control" [(ngModel)]="newFolderName" id="newFolderName" name="newFolderName" placeholder="{{selected.name}}">
-        <a *ngIf="modifica" (click)="modifyFolderReq(newFolderName)"  title="Modifica cartella"> <i class="fa fa-pencil-square-o" aria-hidden="true" ></i></a>
-    <app-folder [folder]="folder" [maxFolder]="folder" (folderSelected)="selezionata($event)"></app-folder>
-    
+        <a  id="eliminaCartella" title="Elimina cartella" data-toggle="modal" data-target="#deleteModal"> <i class="fa fa-trash-o" aria-hidden="true" ></i></a>
+        <a (click)="modifyFolder(fname)" id="modificaCartella" title="Modifica cartella"> <i class="fa fa-pencil-square-o" aria-hidden="true" ></i></a>
+        <div class="alert-danger" *ngIf="msgerror">Select one folder to continue</div>
+     
+  <!-- Modal -->
+  <div class="modal" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete <strong>{{nameSelected}}</strong> ? This action cannot be undone</h5>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger" (click)="deleteFolder()" onclick="$('.modal').modal('hide')">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <app-folder [folder]="folder" (folderSelected)="selezionata($event)"></app-folder>
 </nav>

@@ -5,11 +5,13 @@ export class Folder implements IFolder {
   type: String;
   children: Array<JSON>;
   selected: boolean;
+  path:String;
 
   constructor(name?: string, type?: string, children?: Array<any>) {
     this.name = name || '';
     this.type = type || '';
     this.children = children || [];
     this.selected = false;
+    this.path='';
   }
 }

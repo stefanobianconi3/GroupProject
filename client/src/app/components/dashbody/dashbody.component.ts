@@ -9,7 +9,8 @@ import { DataService } from '../../services/data.service';
 export class DashbodyComponent implements OnInit {
 
   @Input() models;
-  @Input() modelsPath;
+  private multipleVersion = false;
+  private model;
 
   constructor(private data: DataService) {
   }
@@ -18,25 +19,53 @@ export class DashbodyComponent implements OnInit {
     this.models = [];
   }
 
-  generatePath(name){
-    return this.modelsPath + "\\" + "\\" + name;
-  }
-
-  createNewModel(modelname){
-    this.data.createModel(this.modelsPath+"//"+"//"+modelname).subscribe(
-      (payload) => {
-        if (payload['success']) {
-          console.log('nuovo model creato')
-        } else {
-          console.log(payload['error'])
+  createNewModel(modelname) {
+    if (this.models.path) {
+      this.data.createModel(this.models.path + "\\" + modelname).subscribe(
+        (payload) => {
+          if (payload['success']) {
+            console.log('nuovo model creato')
+          } else {
+            console.log(payload['error'])
+          }
         }
-      }
-    )
+      )
+    } else {
+      alert("Impossibile creare nella cartella di root")
+    }
   }
 
   getVersion(model){
     let i = model['children'].length-1;
     return model['children'][i].name.replace(".xml", "");
+  }
+
+  openModel(model?, version?){
+    if(model){
+      let path = model.path.replace(/\//g, "%5C").replace(/\\/, "%5C");
+      if(version){
+        window.open("/modeler/"+path+"/"+version, '_blank');
+      } else {
+        window.open("/modeler/"+path, '_blank');
+      }
+    } else {
+      let path = this.model.path.replace(/\//g, "%5C").replace(/\\/, "%5C");
+      if(version){
+        window.open("/modeler/"+path+"/"+version, '_blank');
+      } else {
+        window.open("/modeler/"+path, '_blank');
+      }
+    }
+  }
+
+  chooseVersion(model){
+    if(model.children.length == 1){
+      this.openModel(model);
+      this.multipleVersion = false;
+    } else {
+      this.model = model;
+      this.multipleVersion = true;
+    }
   }
 
 }

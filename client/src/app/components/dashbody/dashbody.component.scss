@@ -5,7 +5,7 @@
 
 #icone {
   position: relative;
-  left: -6px;
+  top: 8px;
   color: #000000; 
   font-size: 25px; /* Set a font size */
 }
@@ -15,60 +15,52 @@
   left: 50px;
 }
 
-#bla {
-  position: relative;
-  left: 70px;
+#provaColore {
+  background-color:  teal;
 }
 
-#bla1 {
+#modelName {
   position: relative;
-  left: 90px;
+  top: -40px;
+  left: 425px;
 }
 
-#bla2 {
+#modello {
+  width: 20%; 
   position: relative;
-  left: 110px;
+  top: -68px;
+  left: 495px; 
 }
 
-#bla3 {
-  position: relative;
-  left: 130px;
+#newModel {
+  background-color: #f57c00;
 }
 
-#bla4 {
-  position: relative;
-  left: 150px;
-}
+.md-form input[type=text]:focus:not([readonly]) + label { 
+  color: #f57c00;
+ }
 
-#security {
-  position: relative;
-  left: 160px;
+ input[type=date]:focus:not([readonly]), input[type=datetime-local]:focus:not([readonly]), 
+ input[type=email]:focus:not([readonly]), input[type=number]:focus:not([readonly]), 
+ input[type=password]:focus:not([readonly]), input[type=search-md]:focus:not([readonly]), 
+ input[type=search]:focus:not([readonly]), input[type=tel]:focus:not([readonly]), 
+ input[type=text]:focus:not([readonly]), input[type=time]:focus:not([readonly]), 
+ input[type=url]:focus:not([readonly]), textarea.md-textarea:focus:not([readonly]) 
+ {
+  border-bottom: 1px solid #f57c00;
+  box-shadow: 0 1px 0 0 #f57c00;
 }
 
 /** BODY **/
 
-
-#body {
-  position: relative;
-  padding: 5px;
-  background-color: white;
-  margin-left: -15px;
-  margin-right: -15px;
-}
-
-#content {
-  margin-left: 10px;
-  margin-right: 10px;
-  height: 100%;
-}
-
-.container {
-  overflow-y: auto;
-  border-style: none;
-  height: 28.5em;
+.table-responsive {
+  height: 30.5em;
   width: 100%;
   position: relative;
-  left: -14px;
+  top: -80px;
+  right: -7px;
+  overflow-y: auto;
 }
+
 
 

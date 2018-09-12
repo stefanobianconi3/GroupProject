@@ -16,11 +16,11 @@ export class SidenavComponent implements OnInit {
   @Input() folderName;
   @Output() selezionata2 = new EventEmitter();
   constructor(private http: HttpClientModule, private data: DataService) { }
-  private selected;
-  private selectedPath;
-  private selctedbool=false;
-  private msgerror=false;
-  private modifica=false;
+  private selected:Folder;
+  private nameSelected;
+  private selctedbool = false;
+  private msgerror = false;
+  private modifica = false;
 
   ngOnInit() {
     let el: HTMLElement = this.mylabel.nativeElement as HTMLElement;
@@ -56,50 +56,75 @@ export class SidenavComponent implements OnInit {
     }
   }
 
-  selezionata(f){
+  selezionata(f: Folder) {
     this.selezionata2.emit(f);
-    this.selected=f.cartella;
-    this.selectedPath=f.path;
-    this.selctedbool=true;
-    this.msgerror=false;
-    
+    this.selected = f;
+    this.nameSelected=f.name
+    this.selctedbool = true;
+    this.msgerror = false;
   }
 
-  modifyFolder(){
-    if(this.selctedbool){
-      this.modifica=true;
+  private generateNewPath(oldPath: String, newName) {
+    let array = oldPath.split("\\");
+    array[array.length - 1] = newName;
+    return array.join("\\");
   }
-    else {
-      this.msgerror=true;
 
+  modifyFolder(newFolderName) {
+    if (this.selected) {
+      this.msgerror = false;
+      this.data.modifyFolder(this.selected.path, this.generateNewPath(this.selected.path, newFolderName)).subscribe(
+        (payload) => {
+          if (payload['success']) {
+            this.folder = payload['data'];
+          } else {
+            console.log(payload['error'])
+          }
+        }
+      )
+    } else {
+      this.msgerror = true;
     }
   }
 
-  modifyFolderReq(newFolderName){
-    this.data.modifyFolder(this.selected.name, newFolderName).subscribe(
-      (payload) => {
-        if (payload['success']) {
-          alert('modificata correttamente')
-        } else {
-          console.log(payload['error'])
+  deleteFolder() {
+    if (this.selected) {
+      this.msgerror = false;
+      this.data.deleteFolder(this.selected.path).subscribe(
+        (payload) => {
+          if (payload['success']) {
+            this.folder = payload['data'];
+          } else {
+            console.log(payload['error'])
+          }
         }
-      }
-    )
-
+      )
+    } else {
+      this.msgerror = true;
+    }
   }
 
-
-
   newFolderReq(foldername) {
-    this.data.newFolder(foldername).subscribe(
-      (payload) => {
-        if (payload['success']) {
-          this.folder = payload['data'];
-        } else {
-          console.log(payload['error'])
+    if (this.selected) {
+      this.data.newFolder(this.selected.path + "\\" + "\\" + foldername).subscribe(
+        (payload) => {
+          if (payload['success']) {
+            this.folder = payload['data'];
+          } else {
+            console.log(payload['error'])
+          }
+        });
+    } else {
+      this.data.newFolder(foldername).subscribe(
+        (payload) => {
+          if (payload['success']) {
+            this.folder = payload['data'];
+          } else {
+            console.log(payload['error'])
+          }
         }
-      }
-    );
+      );
+    }
   }
 
 }

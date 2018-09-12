@@ -12,6 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { NgForm, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { TreeModule } from 'angular-tree-component';
 import { ModelerComponent } from 'src/app/components/modeler/modeler.component';
 import { DashbodyComponent } from 'src/app/components/dashbody/dashbody.component';
 import { FolderComponent } from 'src/app/components/folder/folder.component';
@@ -37,7 +38,8 @@ import { SidenavComponent } from 'src/app/components/sidenav/sidenav.component';
     NgbModule.forRoot(),
     ReactiveFormsModule,
     HttpClientModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    TreeModule.forRoot()
   ],
 
   providers: [AuthService],
