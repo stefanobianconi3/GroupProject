@@ -57,7 +57,6 @@ export class SidenavComponent implements OnInit {
   }
 
   selezionata(f: Folder) {
-    console.log(f);
     this.selezionata2.emit(f);
     this.selected = f;
     this.nameSelected=f.name

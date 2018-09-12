@@ -20,7 +20,6 @@ export class DashboardComponent implements OnInit {
   }
 
   select(f) {
-    console.log(f)
     this.models = f;
   }
   ngOnInit() {
