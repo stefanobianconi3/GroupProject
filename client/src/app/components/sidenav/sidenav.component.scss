@@ -71,6 +71,13 @@
     color: #000000;
   }
 
+  .alert-danger {
+    position: absolute;
+    top: 55px;
+    height: 30px;
+    color: white;
+    background-color: teal;
+  }
   
   #eliminaCartella {
     font-size: 25px;

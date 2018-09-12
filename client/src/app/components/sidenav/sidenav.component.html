@@ -5,7 +5,7 @@
         <a (click)="newFolderReq(fname)" id="creaCartella" title="crea cartella"> <i class="fa fa-plus-square-o" aria-hidden="true" ></i> </a>
         <a  id="eliminaCartella" title="Elimina cartella" data-toggle="modal" data-target="#deleteModal"> <i class="fa fa-trash-o" aria-hidden="true" ></i></a>
         <a (click)="modifyFolder(fname)" id="modificaCartella" title="Modifica cartella"> <i class="fa fa-pencil-square-o" aria-hidden="true" ></i></a>
-        <div class="myError" *ngIf="msgerror">Select one folder to continue</div>
+        <div class="alert-danger" *ngIf="msgerror">Select one folder to continue</div>
      
   <!-- Modal -->
   <div class="modal" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
