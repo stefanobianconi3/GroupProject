@@ -72,6 +72,8 @@ header .btn-header-login{
 /* navbar dopo il login */
 
 .navbar{
+	position: relative;
+	min-width: 175%;
 	height: 50px;
 	background:  teal;
 	border-bottom-color: rgb(104, 231, 0);
