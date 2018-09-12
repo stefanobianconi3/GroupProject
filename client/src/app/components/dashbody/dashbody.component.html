@@ -46,7 +46,7 @@
                   <span>What version would you open? </span>
                   <select class="selectpicker" [(ngModel)]="versionNumber">
                     <option *ngFor="let n of model['children']">
-                      {{n.name[0]}}
+                      {{n.name.replace('.xml', '')}}
                     </option>
                   </select>
                 </div>
