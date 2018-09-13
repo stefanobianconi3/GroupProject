@@ -64,3 +64,17 @@ Qui sarà presente una lista bug. Premessa: il sito non è responsive al 100%. P
 * La modifica di una cartella non funziona correttamente (ambiente Linux)
 * I modelli vengono mostrati nella sidenav
 * Non viene mostrato correttamente il messaggio di corretto salvataggio del modello nel Modeler
+
+# TODO #
+
+* Ridimensionare i bottoni per la creazione, modifica e cancellazione di una cartella/modello: utilizzare i dialog
+* Mostrare il path della cartella selezionata, a posto dell'input
+* Un modello appena creato apre direttamente l'editor
+* Posizionamento dei tasti
+* Sistemare il signin: un utente appena registrato deve fare il login
+* Aggiornamento automatico delle informazioni nella pagina quando si crea un modello
+* Import/Export modello ('.bpmn'). Sovrascrittura modello con ultima versione + 1 oppure rinomina modello [import]
+* Replicare i bottoni nei menù della navbar
+* Cartella root con il nome dell'utente (lato client)
+* Cambiare schermata iniziale
+* Integrazione webservice
