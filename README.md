@@ -78,3 +78,9 @@ Qui sarà presente una lista bug. Premessa: il sito non è responsive al 100%. P
 * Cartella root con il nome dell'utente (lato client)
 * Cambiare schermata iniziale
 * Integrazione webservice
+
+# Future Work (Ideas) #
+
+* Aggiungere una funzionalità che permetta di avere una miniatura in anteprima del modello (quando si sceglie la versione del modello da selezionare)
+* Menù con disposizione bottoni personalizzabile (possibilità di cambiare la disposizione dei bottoni)
+* Permettere gestione altri file, non solo .bpmn (xes, xes.gz, mxml, mxml.gz, zip, aml, bpmn, epml, yawl, xpdl, pnml)
