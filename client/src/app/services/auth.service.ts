@@ -27,8 +27,6 @@ constructor(private http: HttpClient, private route: Router) { }
     this.http.post(this.APIAUTHURL+'/signin', {firstname, lastname, date, email, password, affiliation}).subscribe(
       (payload:any) => {
         if(payload.success){
-        localStorage.setItem('token', payload.token);
-        localStorage.setItem('nome', firstname);
         this.outSignin.emit();
       }
         else{

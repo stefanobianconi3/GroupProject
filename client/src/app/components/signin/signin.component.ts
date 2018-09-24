@@ -24,6 +24,7 @@ private errore:String;
     if(!form.valid){
       return false;
     }
+    this.route.navigate(['homepage']);
     this.auth.signIn(form.value.firstname, form.value.lastname, form.value.date, form.value.email, form.value.password, form.value.affiliation);
 }
   

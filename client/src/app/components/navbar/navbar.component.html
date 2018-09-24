@@ -5,6 +5,7 @@
 			<div class="col-sm-6">
 				<div class="logo">ProsChain</div>
 			</div>
+			
 			<div class="col-sm-6 hidden-xs">
 				<form  name="loginForm" #f="ngForm" (ngSubmit)="logIn(f)" >
 				<div class="row">
@@ -36,7 +37,8 @@
 						</div>
 					</div>
 				</div>	
-			    </form>
+				</form>
+				<div *ngIf="newUser">Account create, please do your login</div>
 		    </div>
 			
 		</div>	

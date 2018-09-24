@@ -13,7 +13,8 @@ export class NavbarComponent implements OnInit {
 private nome = localStorage.getItem('nome') ;
 private isLogged:boolean =false;
 private fail : boolean = false;
-  private errore: String;
+private errore: String;
+private newUser:boolean=false;
   constructor(private route: Router, private auth: AuthService, private data: DataService) { 
     auth.outLogin.subscribe(
       () => {
@@ -21,7 +22,7 @@ private fail : boolean = false;
     });
     auth.outSignin.subscribe(
       () => {
-        this.isLogged=true;
+        this.newUser=true;
     });
     auth.outLogout.subscribe(
       () => {

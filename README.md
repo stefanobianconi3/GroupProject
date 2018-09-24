@@ -71,7 +71,7 @@ Qui sarà presente una lista bug. Premessa: il sito non è responsive al 100%. P
 * Mostrare il path della cartella selezionata, a posto dell'input
 * Un modello appena creato apre direttamente l'editor
 * Posizionamento dei tasti
-* Sistemare il signin: un utente appena registrato deve fare il login
+* Sistemare il signin: un utente appena registrato deve fare il login v
 * Aggiornamento automatico delle informazioni nella pagina quando si crea un modello
 * Import/Export modello ('.bpmn'). Sovrascrittura modello con ultima versione + 1 oppure rinomina modello [import]
 * Replicare i bottoni nei menù della navbar
