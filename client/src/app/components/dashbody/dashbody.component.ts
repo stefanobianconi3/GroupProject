@@ -24,7 +24,7 @@ export class DashbodyComponent implements OnInit {
       this.data.createModel(this.models.path + "\\" + modelname).subscribe(
         (payload) => {
           if (payload['success']) {
-            console.log('nuovo model creato')
+            window.open("/modeler/"+this.models.path + "%5C" + modelname, '_blank');
           } else {
             console.log(payload['error'])
           }
