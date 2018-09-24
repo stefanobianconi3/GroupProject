@@ -105,7 +105,6 @@ export class SidenavComponent implements OnInit {
           if (payload['success']) {
             this.generateNewTree(payload['data']);
             this.nameSelected = "";
-            this.selected = undefined;
           } else {
             console.log(payload['error'])
           }
