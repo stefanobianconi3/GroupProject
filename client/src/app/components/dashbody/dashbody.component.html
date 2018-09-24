@@ -1,16 +1,16 @@
 <div id="dash">
   <div id="icone" class="animated zoomIn">
-      <button mdbBtn type="button" class="btn btn-sm" title="Refresh" id="provaColore" mdbWavesEffect><mdb-icon icon="refresh" size="2x"></mdb-icon></button>
-      <button mdbBtn type="button" class="btn btn-sm" title="bla bla bla" id="provaColore" mdbWavesEffect><mdb-icon icon="smile-o" size="2x"></mdb-icon></button>
-      <button mdbBtn type="button" class="btn btn-sm" title="bla bla bla" id="provaColore" mdbWavesEffect><mdb-icon icon="cab" size="2x"></mdb-icon></button>
-      <button mdbBtn type="button" class="btn btn-sm" title="bla bla bla" id="provaColore" mdbWavesEffect><mdb-icon icon="vcard" size="2x"></mdb-icon></button>
-      <button mdbBtn type="button" class="btn btn-sm" title="Security" id="provaColore" mdbWavesEffect><mdb-icon icon="key" size="2x"></mdb-icon></button>
-      <button mdbBtn type="button" class="btn btn-sm" (click)="createNewModel(modelName)" title="New model" id="newModel" mdbWavesEffect><mdb-icon icon="file-o" size="2x"></mdb-icon></button>
-
-      <div class="md-form form-sm" id="modello" >
-        <input type="text" id="form1" class="form-control" [(ngModel)]="modelName" placeholder="  nome modello">
-        
-      </div>
+    <button mdbBtn type="button" class="btn btn-sm" (click)="createNewModel(modelName)" title="New" id="newModel" mdbWavesEffect><mdb-icon icon="plus-square-o" size="2x" id="plus-square"></mdb-icon></button>
+    <button mdbBtn type="button" class="btn btn-sm" title="Edit" id="provaColore" mdbWavesEffect><mdb-icon icon="pencil-square-o" size="2x" id="pencil"></mdb-icon></button>
+    <button mdbBtn type="button" class="btn btn-sm" title="Delete" id="provaColore" mdbWavesEffect><mdb-icon icon="trash-o" size="2x"></mdb-icon></button>
+    <button mdbBtn type="button" class="btn btn-sm" title="bla bla bla" id="provaColore" mdbWavesEffect><mdb-icon icon="vcard" size="2x"></mdb-icon></button>
+    <button mdbBtn type="button" class="btn btn-sm" title="Security" id="provaColore" mdbWavesEffect><mdb-icon icon="key" size="2x"></mdb-icon></button>
+    <!--
+    <button mdbBtn type="button" class="btn btn-sm" title="Refresh" id="provaColore" mdbWavesEffect><mdb-icon icon="refresh" size="2x"></mdb-icon></button>
+    -->
+    <div class="md-form form-sm" id="modello" >
+      <input type="text" id="form1" class="form-control" [(ngModel)]="modelName" placeholder="  Model name">  
+    </div>   
  
   </div>   
       <div class="table-responsive">
@@ -19,7 +19,7 @@
             <tr>
               <th scope="col">Name</th>
               <th scope="col">Latest Version</th>
-              <th scope="col">Ultima Modifica</th>
+              <th scope="col">Last Edit</th>
             </tr>
           </thead>
           

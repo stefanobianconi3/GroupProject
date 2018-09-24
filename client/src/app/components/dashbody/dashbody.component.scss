@@ -4,10 +4,24 @@
 }
 
 #icone {
+  width: 100%;
   position: relative;
   top: 8px;
   color: #000000; 
   font-size: 25px; /* Set a font size */
+}
+
+/* ICONE */
+
+#pencil {
+  position: relative;
+  left: 2px;
+  top: 1px;
+}
+
+#plus-square {
+  position: relative;
+  top: 1px;
 }
 
 #refresh {
@@ -16,20 +30,16 @@
 }
 
 #provaColore {
+  position: relative;
+  left: 200px;
   background-color:  teal;
 }
 
-#modelName {
-  position: relative;
-  top: -40px;
-  left: 425px;
-}
-
 #modello {
-  width: 20%; 
+  width: 200px; 
   position: relative;
   top: -68px;
-  left: 495px; 
+  left: 77px; 
 }
 
 #newModel {

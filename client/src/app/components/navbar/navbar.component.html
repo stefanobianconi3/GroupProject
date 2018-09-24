@@ -38,7 +38,12 @@
 					</div>
 				</div>	
 				</form>
-				<div *ngIf="newUser">Account create, please do your login</div>
+
+				<div *ngIf="newUser" class="alert alert-success" role="alert" id="alert">Account create, please do your login
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
 		    </div>
 			
 		</div>	
@@ -59,11 +64,12 @@
 						</button>
 					
 						<div class="dropdown-menu dropdown-primary">
-							<a class="dropdown-item" href="#">Action</a>
-							<a class="dropdown-item" href="#">Another action</a>
-							<a class="dropdown-item" href="#">Something else here</a>
+							<a class="dropdown-item" href="#">New</a>
+							<a class="dropdown-item" href="#">Edit</a>
+							<a class="dropdown-item" href="#">Delete</a>
 							<div class="divider dropdown-divider"></div>
-							<a class="dropdown-item" href="#">Separated link</a>
+							<a class="dropdown-item" href="#">Import</a>
+							<a class="dropdown-item" href="#">Export</a>
 						</div>
 					</div>
 					<div class="btn-group" id="discover" mdbDropdown>
