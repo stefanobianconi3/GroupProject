@@ -73,7 +73,7 @@ export class SidenavComponent implements OnInit {
   private generateNewTree(data) {
     let root = [{
       name: localStorage.getItem('nome'),
-      path: "",
+      path: "/",
       type: "dir",
       children: data
     }];
@@ -117,7 +117,7 @@ export class SidenavComponent implements OnInit {
   }
 
   newFolderReq(foldername) {
-    if (this.selected.path != "") {
+    if (this.selected.path != "/") {
       this.data.newFolder(this.selected.path + "\\" + "\\" + foldername).subscribe(
         (payload) => {
           if (payload['success']) {

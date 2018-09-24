@@ -8,7 +8,7 @@
         <div class="alert-danger" *ngIf="msgerror">Select one folder to continue</div>
      
   <!-- Modal -->
-  <div class="modal" *ngIf="selected && selected.path != ''" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal" *ngIf="selected && selected.path != '/'" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -45,7 +45,7 @@
   </div>
 
   <!-- Modal -->
-  <div class="modal" *ngIf="selected && selected.path != ''" id="modifyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal" *ngIf="selected && selected.path != '/'" id="modifyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
