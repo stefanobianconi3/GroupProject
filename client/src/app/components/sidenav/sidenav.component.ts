@@ -94,6 +94,7 @@ export class SidenavComponent implements OnInit {
         (payload) => {
           if (payload['success']) {
             this.folder = payload['data'];
+            this.nameSelected= "";
           } else {
             console.log(payload['error'])
           }
