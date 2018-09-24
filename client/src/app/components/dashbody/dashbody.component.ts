@@ -19,7 +19,7 @@ export class DashbodyComponent implements OnInit {
     this.models = [];
   }
 
-  createNewModel(modelname) {
+  newModelReq(modelname) {
     if (this.models.path) {
       this.data.createModel(this.models.path + "\\" + modelname).subscribe(
         (payload) => {

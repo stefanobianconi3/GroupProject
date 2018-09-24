@@ -1,16 +1,10 @@
 <div id="dash">
   <div id="icone" class="animated zoomIn">
-    <button mdbBtn type="button" class="btn btn-sm" (click)="createNewModel(modelName)" title="New" id="newModel" mdbWavesEffect><mdb-icon icon="plus-square-o" size="2x" id="plus-square"></mdb-icon></button>
-    <button mdbBtn type="button" class="btn btn-sm" title="Edit" id="provaColore" mdbWavesEffect><mdb-icon icon="pencil-square-o" size="2x" id="pencil"></mdb-icon></button>
-    <button mdbBtn type="button" class="btn btn-sm" title="Delete" id="provaColore" mdbWavesEffect><mdb-icon icon="trash-o" size="2x"></mdb-icon></button>
-    <button mdbBtn type="button" class="btn btn-sm" title="bla bla bla" id="provaColore" mdbWavesEffect><mdb-icon icon="vcard" size="2x"></mdb-icon></button>
-    <button mdbBtn type="button" class="btn btn-sm" title="Security" id="provaColore" mdbWavesEffect><mdb-icon icon="key" size="2x"></mdb-icon></button>
-    <!--
-    <button mdbBtn type="button" class="btn btn-sm" title="Refresh" id="provaColore" mdbWavesEffect><mdb-icon icon="refresh" size="2x"></mdb-icon></button>
-    -->
-    <div class="md-form form-sm" id="modello" >
-      <input type="text" id="form1" class="form-control" [(ngModel)]="modelName" placeholder="  Model name">  
-    </div>   
+    <button mdbBtn type="button" class="btn btn-sm" title="New" id="newModel" data-toggle="modal" data-target="#createModel" mdbWavesEffect><mdb-icon icon="plus-square-o" size="2x" id="plus-square"></mdb-icon></button>
+    <button mdbBtn type="button" class="btn btn-sm" title="Edit" id="standard" mdbWavesEffect><mdb-icon icon="pencil-square-o" size="2x" id="pencil"></mdb-icon></button>
+    <button mdbBtn type="button" class="btn btn-sm" title="Delete" id="standard" mdbWavesEffect><mdb-icon icon="trash-o" size="2x"></mdb-icon></button>
+    <button mdbBtn type="button" class="btn btn-sm" title="bla bla bla" id="standard" mdbWavesEffect><mdb-icon icon="vcard" size="2x"></mdb-icon></button>
+    <button mdbBtn type="button" class="btn btn-sm" title="Security" id="standard" mdbWavesEffect><mdb-icon icon="key" size="2x"></mdb-icon></button>   
  
   </div>   
       <div class="table-responsive">
@@ -62,4 +56,26 @@
           
         </table>
       </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" *ngIf="models.path.length > 1"  id="createModel" tabindex="-1" role="dialog" aria-labelledby="versionLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="versionLabel">Create Model</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <span>You are going to create a new model into this path <strong><br>{{models.path}}<br></strong></span>
+        <input type="text" id="newModel" [(ngModel)]="newModel" />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="newModelReq(newModel)" onclick="$('.modal').modal('hide')">Save Changes</button>
+      </div>
+    </div>
+  </div>
 </div>

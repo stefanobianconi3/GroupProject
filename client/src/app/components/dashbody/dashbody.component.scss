@@ -7,58 +7,19 @@
   width: 100%;
   position: relative;
   top: 8px;
-  color: #000000; 
-  font-size: 25px; /* Set a font size */
+  color: #000000;
+  font-size: 25px; 
+  left: 5px;
 }
 
 /* ICONE */
 
-#pencil {
-  position: relative;
-  left: 2px;
-  top: 1px;
-}
-
-#plus-square {
-  position: relative;
-  top: 1px;
-}
-
-#refresh {
-  position: relative;
-  left: 50px;
-}
-
-#provaColore {
-  position: relative;
-  left: 200px;
+#standard {
   background-color:  teal;
-}
-
-#modello {
-  width: 200px; 
-  position: relative;
-  top: -68px;
-  left: 77px; 
 }
 
 #newModel {
   background-color: #f57c00;
-}
-
-.md-form input[type=text]:focus:not([readonly]) + label { 
-  color: #f57c00;
- }
-
- input[type=date]:focus:not([readonly]), input[type=datetime-local]:focus:not([readonly]), 
- input[type=email]:focus:not([readonly]), input[type=number]:focus:not([readonly]), 
- input[type=password]:focus:not([readonly]), input[type=search-md]:focus:not([readonly]), 
- input[type=search]:focus:not([readonly]), input[type=tel]:focus:not([readonly]), 
- input[type=text]:focus:not([readonly]), input[type=time]:focus:not([readonly]), 
- input[type=url]:focus:not([readonly]), textarea.md-textarea:focus:not([readonly]) 
- {
-  border-bottom: 1px solid #f57c00;
-  box-shadow: 0 1px 0 0 #f57c00;
 }
 
 /** BODY **/
@@ -67,7 +28,6 @@
   height: 30.5em;
   width: 100%;
   position: relative;
-  top: -80px;
   right: -7px;
   overflow-y: auto;
 }
