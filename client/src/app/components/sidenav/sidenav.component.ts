@@ -80,7 +80,7 @@ export class SidenavComponent implements OnInit {
     this.folder = root;
   }
 
-  modifyFolder(newFolderName) {
+  modifyFolderReq(newFolderName) {
     if (this.selected) {
       this.msgerror = false;
       this.data.modifyFolder(this.selected.path, this.generateNewPath(this.selected.path, newFolderName)).subscribe(
@@ -97,7 +97,7 @@ export class SidenavComponent implements OnInit {
     }
   }
 
-  deleteFolder() {
+  deleteFolderReq() {
     if (this.selected) {
       this.msgerror = false;
       this.data.deleteFolder(this.selected.path).subscribe(
@@ -117,7 +117,7 @@ export class SidenavComponent implements OnInit {
   }
 
   newFolderReq(foldername) {
-    if (this.selected) {
+    if (this.selected.path != "") {
       this.data.newFolder(this.selected.path + "\\" + "\\" + foldername).subscribe(
         (payload) => {
           if (payload['success']) {
