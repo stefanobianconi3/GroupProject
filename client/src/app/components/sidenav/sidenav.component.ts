@@ -28,7 +28,7 @@ export class SidenavComponent implements OnInit {
     this.data.getFolder().subscribe(
       (payload) => {
         if (payload['success']) {
-          this.folder = payload['data'];
+          this.generateNewTree(payload['data'])
         } else {
           console.log(payload['error'])
         }
@@ -70,13 +70,23 @@ export class SidenavComponent implements OnInit {
     return array.join("\\");
   }
 
+  private generateNewTree(data) {
+    let root = [{
+      name: localStorage.getItem('nome'),
+      path: "",
+      type: "dir",
+      children: data
+    }];
+    this.folder = root;
+  }
+
   modifyFolder(newFolderName) {
     if (this.selected) {
       this.msgerror = false;
       this.data.modifyFolder(this.selected.path, this.generateNewPath(this.selected.path, newFolderName)).subscribe(
         (payload) => {
           if (payload['success']) {
-            this.folder = payload['data'];
+            this.generateNewTree(payload['data']);
           } else {
             console.log(payload['error'])
           }
@@ -93,8 +103,9 @@ export class SidenavComponent implements OnInit {
       this.data.deleteFolder(this.selected.path).subscribe(
         (payload) => {
           if (payload['success']) {
-            this.folder = payload['data'];
-            this.nameSelected= "";
+            this.generateNewTree(payload['data']);
+            this.nameSelected = "";
+            this.selected = undefined;
           } else {
             console.log(payload['error'])
           }
@@ -110,7 +121,7 @@ export class SidenavComponent implements OnInit {
       this.data.newFolder(this.selected.path + "\\" + "\\" + foldername).subscribe(
         (payload) => {
           if (payload['success']) {
-            this.folder = payload['data'];
+            this.generateNewTree(payload['data']);
           } else {
             console.log(payload['error'])
           }
@@ -119,7 +130,7 @@ export class SidenavComponent implements OnInit {
       this.data.newFolder(foldername).subscribe(
         (payload) => {
           if (payload['success']) {
-            this.folder = payload['data'];
+            this.generateNewTree(payload['data']);
           } else {
             console.log(payload['error'])
           }

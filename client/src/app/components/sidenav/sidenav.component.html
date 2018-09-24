@@ -1,12 +1,11 @@
 <input type="checkbox" id="nav-toggle"> 
 <nav class="nav" id="miaNav">
-
-  <label #mylabel for="nav-toggle" class="nav-toggle" id="label-nav" (click)="clickNav()" ></label> 
-      <input required type="text" class="form-control" [(ngModel)]="fname" id="foldername" name="foldername" value="{{nameSelected}}">  
-      <a (click)="newFolderReq(fname)" id="creaCartella" title="New"> <i class="fa fa-plus-square-o" aria-hidden="true" ></i> </a>
-      <a  id="eliminaCartella" title="Delete" data-toggle="modal" data-target="#deleteModal"> <i class="fa fa-trash-o" aria-hidden="true" ></i></a>
-      <a (click)="modifyFolder(fname)" id="modificaCartella" title="Edit"> <i class="fa fa-pencil-square-o" aria-hidden="true" ></i></a>
-      <div class="alert-danger" *ngIf="msgerror">Select one folder to continue</div>
+    <label #mylabel for="nav-toggle" class="nav-toggle" id="label-nav" (click)="clickNav()" ></label> 
+        <input required type="text" class="form-control" [(ngModel)]="fname" id="foldername" name="foldername" value="{{nameSelected}}">  
+        <a  id="creaCartella" title="New" data-toggle="modal" data-target="#creationModal"> <i class="fa fa-plus-square-o" aria-hidden="true" ></i> </a>
+        <a  id="eliminaCartella" title="Delete" data-toggle="modal" data-target="#deleteModal"> <i class="fa fa-trash-o" aria-hidden="true" ></i></a>
+        <a  id="modificaCartella" title="Modify" data-toggle="modal" data-target="#modifyModal"> <i class="fa fa-pencil-square-o" aria-hidden="true" ></i></a>
+        <div class="alert-danger" *ngIf="msgerror">Select one folder to continue</div>
      
   <!-- Modal -->
   <div class="modal" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -18,6 +17,36 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
           <button type="button" class="btn btn-danger" (click)="deleteFolder()" onclick="$('.modal').modal('hide')">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" id="creationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Create Modal</h5>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger" onclick="$('.modal').modal('hide')">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" id="modifyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modify Modal</h5>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger" onclick="$('.modal').modal('hide')">Save changes</button>
         </div>
       </div>
     </div>
