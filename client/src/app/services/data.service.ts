@@ -63,4 +63,8 @@ export class DataService {
     return this.http.post(this.APIURL+"/model", {modelName: path}, { headers: this.headers } );
   }
 
+  deleteModel(path){
+    return this.http.post(this.APIURL+"/model/delete", {modelName: path}, { headers: this.headers });
+  }
+
 }

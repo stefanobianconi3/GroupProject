@@ -1,8 +1,8 @@
 <div id="dash">
   <div id="icone" class="animated zoomIn">
-    <button mdbBtn type="button" class="btn btn-sm" title="New" id="newModel" data-toggle="modal" data-target="#createModel" mdbWavesEffect><mdb-icon icon="plus-square-o" size="2x" id="plus-square"></mdb-icon></button>
+    <button mdbBtn type="button" class="btn btn-sm" title="New" id="working" data-toggle="modal" data-target="#createModel" mdbWavesEffect><mdb-icon icon="plus-square-o" size="2x" id="plus-square"></mdb-icon></button>
     <button mdbBtn type="button" class="btn btn-sm" title="Edit" id="standard" mdbWavesEffect><mdb-icon icon="pencil-square-o" size="2x" id="pencil"></mdb-icon></button>
-    <button mdbBtn type="button" class="btn btn-sm" title="Delete" id="standard" mdbWavesEffect><mdb-icon icon="trash-o" size="2x"></mdb-icon></button>
+    <button mdbBtn type="button" class="btn btn-sm" title="Delete" id="working" data-toggle="modal" data-target="#deleteModel" mdbWavesEffect><mdb-icon icon="trash-o" size="2x"></mdb-icon></button>
     <button mdbBtn type="button" class="btn btn-sm" title="bla bla bla" id="standard" mdbWavesEffect><mdb-icon icon="vcard" size="2x"></mdb-icon></button>
     <button mdbBtn type="button" class="btn btn-sm" title="Security" id="standard" mdbWavesEffect><mdb-icon icon="key" size="2x"></mdb-icon></button>   
  
@@ -75,6 +75,27 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary" (click)="newModelReq(newModel)" onclick="$('.modal').modal('hide')">Save Changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" *ngIf="modelSelected" id="deleteModel" tabindex="-1" role="dialog" aria-labelledby="versionLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="versionLabel">Delete Model</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <span>Are you sure you want to delete <strong>{{modelSelected.name}}</strong>? This action cannot be undone</span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="deleteModelReq()" onclick="$('.modal').modal('hide')">Save Changes</button>
       </div>
     </div>
   </div>

@@ -40,6 +40,24 @@ export class DashbodyComponent implements OnInit {
     }
   }
 
+  modifyModelReq(newModelName){
+
+  }
+
+  deleteModelReq(){
+    if(this.modelSelected){
+      this.data.deleteModel(this.modelSelected.path).subscribe(
+        (payload) => {
+          if(payload['success']){
+            window.location.reload(true);
+          } else {
+            console.log(payload['error'])
+          }
+        }
+      )
+    }
+  }
+
   getVersion(model){
     let i = model['children'].length-1;
     return model['children'][i].name.replace(".xml", "");
