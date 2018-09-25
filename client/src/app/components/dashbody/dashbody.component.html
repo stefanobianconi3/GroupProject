@@ -22,8 +22,8 @@
             <tr *ngIf="f['type']=='model'">
               <a scope="row" (click)="chooseVersion(f)" data-toggle="modal" data-target="#versionModal">
                 <td>{{f.name}}</td></a>
-                <td>{{getVersion(f)}}</td>
-                <td>gg/mm/aaaa 00:00</td>
+                <td (click)="selectModel(f)">{{getVersion(f)}}</td>
+                <td (click)="selectModel(f)">gg/mm/aaaa 00:00</td>
             </tr>
             
           <!-- Modal -->
@@ -39,7 +39,7 @@
                 <div class="modal-body">
                   <span>What version would you open? </span>
                   <select class="selectpicker" [(ngModel)]="versionNumber">
-                    <option *ngFor="let n of model['children']">
+                    <option *ngFor="let n of modelToOpen['children']">
                       {{n.name.replace('.xml', '')}}
                     </option>
                   </select>

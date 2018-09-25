@@ -10,13 +10,18 @@ export class DashbodyComponent implements OnInit {
 
   @Input() models;
   private multipleVersion = false;
-  private model;
+  private modelToOpen;
+  private modelSelected;
 
   constructor(private data: DataService) {
   }
 
   ngOnInit() {
     this.models = [];
+  }
+
+  selectModel(model){
+    this.modelSelected = model;
   }
 
   newModelReq(modelname) {
@@ -49,7 +54,7 @@ export class DashbodyComponent implements OnInit {
         window.open("/modeler/"+path, '_blank');
       }
     } else {
-      let path = this.model.path.replace(/\//g, "%5C").replace(/\\/, "%5C");
+      let path = this.modelToOpen.path.replace(/\//g, "%5C").replace(/\\/, "%5C");
       if(version){
         window.open("/modeler/"+path+"/"+version, '_blank');
       } else {
@@ -63,7 +68,7 @@ export class DashbodyComponent implements OnInit {
       this.openModel(model);
       this.multipleVersion = false;
     } else {
-      this.model = model;
+      this.modelToOpen = model;
       this.multipleVersion = true;
     }
   }
