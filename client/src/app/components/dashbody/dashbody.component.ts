@@ -20,6 +20,12 @@ export class DashbodyComponent implements OnInit {
     this.models = [];
   }
 
+  private generateNewPath(oldPath: String, newName) {
+    let array = oldPath.split("\\");
+    array[array.length - 1] = newName;
+    return array.join("\\");
+  }
+
   selectModel(model){
     if(this.modelSelected){
       document.getElementById(this.modelSelected.name).style.backgroundColor = "#FFFFFF";
@@ -45,7 +51,17 @@ export class DashbodyComponent implements OnInit {
   }
 
   modifyModelReq(newModelName){
-
+    if(this.modelSelected){
+      this.data.modifyModel(this.modelSelected.path, this.generateNewPath(this.modelSelected.path, newModelName)).subscribe(
+        (payload) => {
+          if(payload['success']){
+            window.location.reload(true);
+          } else {
+            console.log(payload['error'])
+          }
+        }
+      )
+    }
   }
 
   deleteModelReq(){
