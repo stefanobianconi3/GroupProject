@@ -13,7 +13,6 @@ export class SidenavComponent implements OnInit {
   @ViewChild('mylabel') mylabel: ElementRef
   private folder = [];
   private side: boolean = true;
-  @Input() folderName;
   @Output() selezionata2 = new EventEmitter();
   constructor(private http: HttpClientModule, private data: DataService) { }
   private selected:Folder = new Folder();
