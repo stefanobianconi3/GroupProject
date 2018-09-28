@@ -20,8 +20,8 @@
           <tbody *ngFor="let f of models['children']" id="tBody">
             
             <tr *ngIf="f['type']=='model'" id="{{f.name}}">
-              <a scope="row" (click)="chooseVersion(f)" data-toggle="modal" data-target="#versionModal">
-                <td>{{f.name}}</td></a>
+              <td (click)="selectModel(f)"><a scope="row" (click)="chooseVersion(f)" data-toggle="modal" data-target="#versionModal">
+                {{f.name}}</a></td>
                 <td (click)="selectModel(f)">{{getVersion(f)}}</td>
                 <td (click)="selectModel(f)">gg/mm/aaaa 00:00</td>
             </tr>
