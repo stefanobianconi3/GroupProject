@@ -1,6 +1,6 @@
 <body>
-        <app-sidenav (selezionata2)="select($event)"></app-sidenav>
+        <app-sidenav [folder]="folder" (selezionata2)="select($event)"></app-sidenav>
         <div class="container-fluid" id="miaDash">
-                <app-dashbody [models] = "models"></app-dashbody>
+                <app-dashbody (modelChanged) = "modelChanged($event)" [models] = "models"></app-dashbody>
         </div> 
 </body>

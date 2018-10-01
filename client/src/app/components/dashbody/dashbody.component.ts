@@ -1,4 +1,4 @@
-import { Component, OnInit,Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { DataService } from '../../services/data.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { DataService } from '../../services/data.service';
 export class DashbodyComponent implements OnInit {
 
   @Input() models;
-  @Output() modelChanged;
+  @Output() modelChanged = new EventEmitter();
   private multipleVersion = false;
   private modelToOpen;
   private modelSelected;
@@ -40,6 +40,12 @@ export class DashbodyComponent implements OnInit {
     return newPath;
   }
 
+  private emitChanges(data) {
+    this.modelChanged.emit(data);
+    this.models = [];
+    this.modelSelected = undefined;
+  }
+
   selectModel(model){
     if(this.modelSelected){
       document.getElementById(this.modelSelected.name).style.backgroundColor = "#FFFFFF";
@@ -55,6 +61,7 @@ export class DashbodyComponent implements OnInit {
           if (payload['success']) {
             let path = this.changeSlash(this.models.path);
             window.open("/modeler/" + path + "%5C" + modelname, '_blank');
+            this.emitChanges(payload['data']);
           } else {
             console.log(payload['error'])
           }
@@ -70,7 +77,7 @@ export class DashbodyComponent implements OnInit {
       this.data.modifyModel(this.modelSelected.path, this.generateNewPath(this.modelSelected.path, newModelName)).subscribe(
         (payload) => {
           if(payload['success']){
-            window.location.reload(true);
+            this.emitChanges(payload['data']);
           } else {
             console.log(payload['error'])
           }
@@ -84,7 +91,7 @@ export class DashbodyComponent implements OnInit {
       this.data.deleteModel(this.modelSelected.path).subscribe(
         (payload) => {
           if(payload['success']){
-            window.location.reload(true);
+            this.emitChanges(payload['data']);
           } else {
             console.log(payload['error'])
           }

@@ -11,7 +11,7 @@ import { Folder } from '../../classes/Folder';
 })
 export class SidenavComponent implements OnInit {
   @ViewChild('mylabel') mylabel: ElementRef
-  private folder = [];
+  @Input() folder = [];
   private side: boolean = true;
   @Output() selezionata2 = new EventEmitter();
   constructor(private http: HttpClientModule, private data: DataService) { }

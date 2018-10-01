@@ -12,6 +12,7 @@ import { Folder } from '../../classes/Folder'
 export class DashboardComponent implements OnInit {
   private models: any;
   private modelsPath: any;
+  private folder: any;
 
   constructor(private http: HttpClientModule, private data: DataService) { }
 
@@ -22,6 +23,16 @@ export class DashboardComponent implements OnInit {
   select(f) {
     this.models = f;
   }
+
+  modelChanged(data) {
+    this.folder = [{
+      name: localStorage.getItem('nome'),
+      path: "/",
+      type: "dir",
+      children: data
+    }];
+  }
+
   ngOnInit() {
     this.checkTokenValidity();
   }
