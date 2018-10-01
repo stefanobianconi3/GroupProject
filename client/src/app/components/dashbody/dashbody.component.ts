@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { saveAs } from 'file-saver/dist/FileSaver';
 import { DataService } from '../../services/data.service';
 
 @Component({
@@ -46,8 +47,8 @@ export class DashbodyComponent implements OnInit {
     this.modelSelected = undefined;
   }
 
-  selectModel(model){
-    if(this.modelSelected){
+  selectModel(model) {
+    if (this.modelSelected) {
       document.getElementById(this.modelSelected.name).style.backgroundColor = "#FFFFFF";
     }
     this.modelSelected = model;
@@ -72,11 +73,11 @@ export class DashbodyComponent implements OnInit {
     }
   }
 
-  modifyModelReq(newModelName){
-    if(this.modelSelected){
+  modifyModelReq(newModelName) {
+    if (this.modelSelected) {
       this.data.modifyModel(this.modelSelected.path, this.generateNewPath(this.modelSelected.path, newModelName)).subscribe(
         (payload) => {
-          if(payload['success']){
+          if (payload['success']) {
             this.emitChanges(payload['data']);
           } else {
             console.log(payload['error'])
@@ -86,11 +87,11 @@ export class DashbodyComponent implements OnInit {
     }
   }
 
-  deleteModelReq(){
-    if(this.modelSelected){
+  deleteModelReq() {
+    if (this.modelSelected) {
       this.data.deleteModel(this.modelSelected.path).subscribe(
         (payload) => {
-          if(payload['success']){
+          if (payload['success']) {
             this.emitChanges(payload['data']);
           } else {
             console.log(payload['error'])
@@ -100,31 +101,43 @@ export class DashbodyComponent implements OnInit {
     }
   }
 
-  getVersion(model){
-    let i = model['children'].length-1;
+  export() {
+    if (this.modelSelected) {
+      this.data.getModel(this.modelSelected.path, this.getVersion(this.modelSelected)).subscribe(
+        (payload) => {
+          const content = JSON.stringify(payload['data']);
+          const blob = new Blob([JSON.stringify(payload['data'])], { type: 'text/bpmn' });
+          saveAs(blob, this.modelSelected.name+'.bpmn');
+        }
+      )
+    }
+  }
+
+  getVersion(model) {
+    let i = model['children'].length - 1;
     return model['children'][i].name.replace(".xml", "");
   }
 
-  openModel(model?, version?){
+  openModel(model?, version?) {
     if (model) {
       let path = this.changeSlash(model.path);
-      if(version){
-        window.open("/modeler/"+path+"/"+version, '_blank');
+      if (version) {
+        window.open("/modeler/" + path + "/" + version, '_blank');
       } else {
-        window.open("/modeler/"+path, '_blank');
+        window.open("/modeler/" + path, '_blank');
       }
     } else {
       let path = this.changeSlash(this.modelToOpen.path);
-      if(version){
-        window.open("/modeler/"+path+"/"+version, '_blank');
+      if (version) {
+        window.open("/modeler/" + path + "/" + version, '_blank');
       } else {
-        window.open("/modeler/"+path, '_blank');
+        window.open("/modeler/" + path, '_blank');
       }
     }
   }
 
-  chooseVersion(model){
-    if(model.children.length == 1){
+  chooseVersion(model) {
+    if (model.children.length == 1) {
       this.openModel(model);
       this.multipleVersion = false;
     } else {
