@@ -103,6 +103,7 @@ export class SidenavComponent implements OnInit {
         (payload) => {
           if (payload['success']) {
             this.generateNewTree(payload['data']);
+            this.selected = new Folder("root", "dir", "/", this.folder['children']);
             this.nameSelected = "";
           } else {
             console.log(payload['error'])

@@ -7,11 +7,11 @@ export class Folder implements IFolder {
   selected: boolean;
   path:String;
 
-  constructor(name?: string, type?: string, children?: Array<any>) {
+  constructor(name?: string, type?: string, path?: string, children?: Array<any>) {
     this.name = name || '';
     this.type = type || '';
     this.children = children || [];
     this.selected = false;
-    this.path='';
+    this.path= path || '';
   }
 }
