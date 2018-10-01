@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit,Input, Output } from '@angular/core';
 import { DataService } from '../../services/data.service';
 
 @Component({
@@ -9,6 +9,7 @@ import { DataService } from '../../services/data.service';
 export class DashbodyComponent implements OnInit {
 
   @Input() models;
+  @Output() modelChanged;
   private multipleVersion = false;
   private modelToOpen;
   private modelSelected;
@@ -26,6 +27,19 @@ export class DashbodyComponent implements OnInit {
     return array.join("\\");
   }
 
+  private changeSlash(path) {
+    console.log(path);
+    let newPath = "";
+    for (let i = 0; i < path.length; i++) {
+      if (path[i] == "\\") {
+        newPath = newPath + "%5C";
+      } else {
+        newPath = newPath + path[i];
+      }
+    }
+    return newPath;
+  }
+
   selectModel(model){
     if(this.modelSelected){
       document.getElementById(this.modelSelected.name).style.backgroundColor = "#FFFFFF";
@@ -39,7 +53,8 @@ export class DashbodyComponent implements OnInit {
       this.data.createModel(this.models.path + "\\" + modelname).subscribe(
         (payload) => {
           if (payload['success']) {
-            window.open("/modeler/"+this.models.path + "%5C" + modelname, '_blank');
+            let path = this.changeSlash(this.models.path);
+            window.open("/modeler/" + path + "%5C" + modelname, '_blank');
           } else {
             console.log(payload['error'])
           }
@@ -84,15 +99,15 @@ export class DashbodyComponent implements OnInit {
   }
 
   openModel(model?, version?){
-    if(model){
-      let path = model.path.replace(/\//g, "%5C").replace(/\\/, "%5C");
+    if (model) {
+      let path = this.changeSlash(model.path);
       if(version){
         window.open("/modeler/"+path+"/"+version, '_blank');
       } else {
         window.open("/modeler/"+path, '_blank');
       }
     } else {
-      let path = this.modelToOpen.path.replace(/\//g, "%5C").replace(/\\/, "%5C");
+      let path = this.changeSlash(this.modelToOpen.path);
       if(version){
         window.open("/modeler/"+path+"/"+version, '_blank');
       } else {
