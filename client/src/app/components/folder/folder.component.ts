@@ -13,6 +13,7 @@ export class FolderComponent implements OnInit {
   @ViewChild('tree') tree;
   @Input('folder') folder;
   @Output('folderSelected') folderSelected = new EventEmitter();
+  private nodeSelected;
   
 
   private options : ITreeOptions = {
@@ -21,7 +22,14 @@ export class FolderComponent implements OnInit {
         click: (tree, node, $event) => {
           this.select(node.data);
           node.expand();
- 
+          if(this.nodeSelected){
+            try{
+              document.getElementById(this.nodeSelected.data.name).style.backgroundColor="#008080";
+            } catch (err) {
+            }
+          }
+          this.nodeSelected = node;
+          document.getElementById(node.data.name).style.backgroundColor="#f57c00";
         }
       }
     }
