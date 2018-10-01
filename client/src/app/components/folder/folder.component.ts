@@ -21,7 +21,7 @@ export class FolderComponent implements OnInit {
         click: (tree, node, $event) => {
           this.select(node.data);
           node.expand();
-          
+ 
         }
       }
     }
@@ -36,7 +36,7 @@ export class FolderComponent implements OnInit {
   }
 
   isDir(folder) {
-    if (folder['type'] === "dir") {
+    if (folder['type'] == "dir") {
       return true
     } else {
       return false
@@ -45,5 +45,11 @@ export class FolderComponent implements OnInit {
 
   select(cartella: Folder) {
     this.folderSelected.emit(cartella);
+  }
+
+  hideNode(node){
+    if(node.data.type != 'dir'){
+      node.hide();
+    }
   }
 }
