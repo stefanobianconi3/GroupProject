@@ -3,59 +3,63 @@
     <button mdbBtn type="button" class="btn btn-sm" title="New" id="working" data-toggle="modal" data-target="#createModel" mdbWavesEffect><mdb-icon icon="plus-square-o" size="2x" id="plus-square"></mdb-icon></button>
     <button mdbBtn type="button" class="btn btn-sm" title="Edit" id="working" data-toggle="modal" data-target="#modifyModel" mdbWavesEffect><mdb-icon icon="pencil-square-o" size="2x" id="pencil"></mdb-icon></button>
     <button mdbBtn type="button" class="btn btn-sm" title="Delete" id="working" data-toggle="modal" data-target="#deleteModel" mdbWavesEffect><mdb-icon icon="trash-o" size="2x"></mdb-icon></button>
-    <button mdbBtn type="button" class="btn btn-sm" title="Export" id="working" (click)="export()" mdbWavesEffect><mdb-icon icon="cloud-download" size="2x"></mdb-icon></button>
-    <button mdbBtn type="button" class="btn btn-sm" title="Security" id="standard" mdbWavesEffect><mdb-icon icon="key" size="2x"></mdb-icon></button>
+    <button mdbBtn type="button" class="btn btn-sm" title="Export" id="working" (click)="export()" mdbWavesEffect><mdb-icon icon="download" size="2x"></mdb-icon></button>
+    <button mdbBtn type="button" class="btn btn-sm" title="Import" id="working" (click)="import()" mdbWavesEffect><mdb-icon icon="upload" size="2x"></mdb-icon></button>
+    <input type="file" accept=".bpmn" id="upload" (change)="handleFileInput($event.target.files)" hidden />
 
-  </div>   
-      <div class="table-responsive">
-        <table class="table table-hover table-lg" >
-          <thead id="tHead">
-            <tr>
-              <th scope="col">Name</th>
-              <th scope="col">Latest Version</th>
-              <th scope="col">Last Edit</th>
-            </tr>
-          </thead>
-          
-          <tbody *ngFor="let f of models['children']" id="tBody">
-            
-            <tr *ngIf="f['type']=='model'" id="{{f.name}}">
-              <td (click)="selectModel(f)"><a scope="row" (click)="chooseVersion(f)" data-toggle="modal" data-target="#versionModal">
-                {{f.name}}</a></td>
-                <td (click)="selectModel(f)">{{getVersion(f)}}</td>
-                <td (click)="selectModel(f)">gg/mm/aaaa 00:00</td>
-            </tr>
-            
-          <!-- Modal -->
-          <div class="modal fade" *ngIf="multipleVersion" id="versionModal" tabindex="-1" role="dialog" aria-labelledby="versionLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="versionLabel">Version</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <span>What version would you open? </span>
-                  <select class="selectpicker" [(ngModel)]="versionNumber">
-                    <option *ngFor="let n of modelToOpen['children']">
-                      {{n.name.replace('.xml', '')}}
-                    </option>
-                  </select>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary" (click)="openModel(undefined, versionNumber)" onclick="$('.modal').modal('hide')">Open Model</button>
-                </div>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-hover table-lg">
+      <thead id="tHead">
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Latest Version</th>
+          <th scope="col">Last Edit</th>
+        </tr>
+      </thead>
+
+      <tbody *ngFor="let f of models['children']" id="tBody">
+
+        <tr *ngIf="f['type']=='model'" id="{{f.name}}">
+          <td (click)="selectModel(f)">
+            <a scope="row" (click)="chooseVersion(f)" data-toggle="modal" data-target="#versionModal">
+              {{f.name}}
+            </a>
+          </td>
+          <td (click)="selectModel(f)">{{getVersion(f)}}</td>
+          <td (click)="selectModel(f)">gg/mm/aaaa 00:00</td>
+        </tr>
+
+        <!-- Modal -->
+        <div class="modal fade" *ngIf="multipleVersion" id="versionModal" tabindex="-1" role="dialog" aria-labelledby="versionLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="versionLabel">Version</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <span>What version would you open? </span>
+                <select class="selectpicker" [(ngModel)]="versionNumber">
+                  <option *ngFor="let n of modelToOpen['children']">
+                    {{n.name.replace('.xml', '')}}
+                  </option>
+                </select>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="openModel(undefined, versionNumber)" onclick="$('.modal').modal('hide')">Open Model</button>
               </div>
             </div>
           </div>
+        </div>
 
-          </tbody>
-          
-        </table>
-      </div>
+      </tbody>
+
+    </table>
+  </div>
 </div>
 
 <!-- Modal -->

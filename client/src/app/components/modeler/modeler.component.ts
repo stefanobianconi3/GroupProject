@@ -131,6 +131,7 @@ export class ModelerComponent implements OnInit {
     this.overwrite = false;
     this.modeler.saveXML(
       (err: any, xml: any) => {
+        console.log(xml);
         if(err){
           console.log(err);
         } else {

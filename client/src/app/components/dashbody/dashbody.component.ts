@@ -14,6 +14,10 @@ export class DashbodyComponent implements OnInit {
   private multipleVersion = false;
   private modelToOpen;
   private modelSelected;
+  private uploadModelDuplicated = false;
+  private file;
+  private fileName;
+  private fileContent;
 
   constructor(private data: DataService) {
   }
@@ -29,7 +33,6 @@ export class DashbodyComponent implements OnInit {
   }
 
   private changeSlash(path) {
-    console.log(path);
     let newPath = "";
     for (let i = 0; i < path.length; i++) {
       if (path[i] == "\\") {
@@ -45,6 +48,21 @@ export class DashbodyComponent implements OnInit {
     this.modelChanged.emit(data);
     this.models = [];
     this.modelSelected = undefined;
+  }
+
+  private uploadModel() {
+    this.data.createModel(this.models.path + "\\" + this.fileName).subscribe(
+      (payload) => {
+        if (payload['success']) {
+          this.data.saveModel(this.models.path + "\\" + this.fileName, 0, this.fileContent).subscribe(
+            (data) => {
+              this.emitChanges(payload['data']);
+              //window.location.reload(true);
+            }
+          );
+        }
+      }
+    );
   }
 
   selectModel(model) {
@@ -105,12 +123,42 @@ export class DashbodyComponent implements OnInit {
     if (this.modelSelected) {
       this.data.getModel(this.modelSelected.path, this.getVersion(this.modelSelected)).subscribe(
         (payload) => {
-          const content = JSON.stringify(payload['data']);
-          const blob = new Blob([JSON.stringify(payload['data'])], { type: 'text/bpmn' });
+          const content = payload['data'];
+          const blob = new Blob([payload['data']], { type: 'text/bpmn' });
           saveAs(blob, this.modelSelected.name+'.bpmn');
         }
       )
     }
+  }
+
+  import() {
+    if (this.models.path) {
+      document.getElementById("upload").click();
+    }
+  }
+
+  handleFileInput(files: FileList) {
+    let starter = false;
+    this.uploadModelDuplicated = false;
+    this.file = files[0];
+    this.fileName = this.file.name.replace('.bpmn', '');
+    let fileReader = new FileReader();
+    fileReader.onloadend = (e) => {
+      //Il file è pronto
+      this.fileContent = e['explicitOriginalTarget'].result;
+      for (let i = 0; i < this.models['children'].length; i++) {
+        if (this.models['children'][i].name == this.fileName) {
+          this.uploadModelDuplicated = true;
+          break;
+        }
+      }
+      if (this.uploadModelDuplicated) {
+        alert("Cannot upload model. Another model with the same name found");
+      } else {
+        this.uploadModel();
+      }
+    }
+    fileReader.readAsText(this.file);
   }
 
   getVersion(model) {
