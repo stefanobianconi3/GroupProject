@@ -150,7 +150,7 @@ export class DashbodyComponent implements OnInit {
     let fileReader = new FileReader();
     fileReader.onloadend = (e) => {
       //Il file è pronto
-      this.fileContent = e['explicitOriginalTarget']['result'];
+      this.fileContent = e['srcElement']['result'];
       if (this.checkModelDuplicates()) {
         alert("Cannot upload model. Another model with the same name found");
       } else {
