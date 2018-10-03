@@ -12,7 +12,7 @@ function defineDataLocation(dirname) {
 }
 
 function removeIdFromPath(id, file) {
-    return file.split("\\").pop()
+    return file.substring(file.indexOf("\\") + 1);
 }
 
 function dirTree(filename, id) {
