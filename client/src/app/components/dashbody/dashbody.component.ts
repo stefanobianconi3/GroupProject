@@ -14,7 +14,6 @@ export class DashbodyComponent implements OnInit {
   private multipleVersion = false;
   private modelToOpen;
   private modelSelected;
-  private uploadModelDuplicated = false;
   private file;
   private fileName;
   private fileContent;
@@ -57,12 +56,20 @@ export class DashbodyComponent implements OnInit {
           this.data.saveModel(this.models.path + "\\" + this.fileName, 0, this.fileContent).subscribe(
             (data) => {
               this.emitChanges(payload['data']);
-              //window.location.reload(true);
             }
           );
         }
       }
     );
+  }
+
+  private checkModelDuplicates() {
+    for (let i = 0; i < this.models['children'].length; i++) {
+      if (this.models['children'][i].name == this.fileName) {
+        return true;
+      }
+    }
+    return false;
   }
 
   selectModel(model) {
@@ -138,21 +145,13 @@ export class DashbodyComponent implements OnInit {
   }
 
   handleFileInput(files: FileList) {
-    let starter = false;
-    this.uploadModelDuplicated = false;
     this.file = files[0];
     this.fileName = this.file.name.replace('.bpmn', '');
     let fileReader = new FileReader();
     fileReader.onloadend = (e) => {
       //Il file è pronto
-      this.fileContent = e['explicitOriginalTarget'].result;
-      for (let i = 0; i < this.models['children'].length; i++) {
-        if (this.models['children'][i].name == this.fileName) {
-          this.uploadModelDuplicated = true;
-          break;
-        }
-      }
-      if (this.uploadModelDuplicated) {
+      this.fileContent = e['explicitOriginalTarget']['result'];
+      if (this.checkModelDuplicates()) {
         alert("Cannot upload model. Another model with the same name found");
       } else {
         this.uploadModel();
