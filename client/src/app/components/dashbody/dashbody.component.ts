@@ -77,7 +77,7 @@ export class DashbodyComponent implements OnInit {
       document.getElementById(this.modelSelected.name).style.backgroundColor = "#FFFFFF";
     }
     this.modelSelected = model;
-    document.getElementById(model.name).style.backgroundColor = "#959191";
+    document.getElementById(model.name).style.backgroundColor = "#7bcfc1";
   }
 
   newModelReq(modelname) {

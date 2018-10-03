@@ -1,25 +1,26 @@
+.body {
+	position: relative;
+    height: 50em;
+    background-image: url(https://towardsmaturity.org/wp-content/uploads/2017/06/Business-processes-TM-article-June-2017-1.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+	background-attachment: local;
+	background-position-y: -50px; 
+	background-blend-mode: initial;
+}
+
 #wrap{
-margin-top: 5px;
-height: 100%;
-background-image: linear-gradient(to bottom, #FFFFFF 0%, rgba(183, 228, 181, 0.993) 100%);
-background-repeat: repeat;
+height: 51%;
+background-image: linear-gradient(to top, rgb(255, 255, 255) 0%, rgb(58, 67, 190) 100%);
+position: relative;
+top: 65px;
+opacity: 0.95;
 }
 
 #identità {
 	margin-left: -30px;
 }
 
-.signin-btn {
-  margin-top: 5px;
-  background: #04c052;
-  border-radius: 4px;
-  font-family: Arial;
-  color: #ffffff;
-  font-size: 20px;
-  padding: 5px 10px 5px 10px;
-  border: solid #000000  1px;
-  text-decoration: none;
-}
 .navbar-default .navbar-brand{
 		color:#fff;
 		font-size:30px;
@@ -33,6 +34,7 @@ background-repeat: repeat;
 	position: absolute;
 	top: 50px;
 	left: 60%;
+	color: white;
 }
 
 .datepicker {
@@ -56,10 +58,16 @@ background-repeat: repeat;
 
 #submit {
 	position: relative;
-    top: 18px;
+	top: 18px;
 }
 
 .help-block {
+	position: relative;
+	top: 3px;
+}
+
+#coloreTitolo {
+	color: white;
 	position: relative;
 	top: 3px;
 }

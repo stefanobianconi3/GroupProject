@@ -9,17 +9,17 @@
   top: 8px;
   color: #000000;
   font-size: 25px; 
-  left: 5px;
+  left: -5px;
 }
 
 /* ICONE */
 
 #standard {
-  background-color:  teal;
+  background-color:  grey;
 }
 
 #working {
-  background-color: #f57c00;
+  background-color: teal;
 }
 
 #plus-square {
@@ -34,13 +34,25 @@
   left: 2px;
 }
 
+#upload {
+  position: relative;
+  top: 2px;
+  left: 2px;
+}
+
+#download {
+  position: relative;
+  top: 1px;
+}
+
 /** BODY **/
 
 .table-responsive {
   height: 30.5em;
   width: 100%;
   position: relative;
-  right: -7px;
+  top: 4px;
+  left: -2px;
   overflow-y: auto;
 }
 
