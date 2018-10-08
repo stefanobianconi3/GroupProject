@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { Folder } from '../../classes/Folder';
-import { TREE_ACTIONS, KEYS, IActionMapping, ITreeOptions} from 'angular-tree-component';
+import { ITreeOptions } from 'angular-tree-component';
 
 @Component({
   
@@ -10,7 +10,6 @@ import { TREE_ACTIONS, KEYS, IActionMapping, ITreeOptions} from 'angular-tree-co
 })
 
 export class FolderComponent implements OnInit {
-  @ViewChild('tree') tree;
   @Input('folder') folder;
   @Output('folderSelected') folderSelected = new EventEmitter();
   private nodeSelected;

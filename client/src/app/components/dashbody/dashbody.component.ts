@@ -31,18 +31,6 @@ export class DashbodyComponent implements OnInit {
     return array.join("\\");
   }
 
-  private changeSlash(path) {
-    let newPath = "";
-    for (let i = 0; i < path.length; i++) {
-      if (path[i] == "\\") {
-        newPath = newPath + "%5C";
-      } else {
-        newPath = newPath + path[i];
-      }
-    }
-    return newPath;
-  }
-
   private emitChanges(data) {
     this.modelChanged.emit(data);
     this.models = [];
@@ -63,6 +51,18 @@ export class DashbodyComponent implements OnInit {
     );
   }
 
+  private changeSlash(path) {
+    let newPath = "";
+    for (let i = 0; i < path.length; i++) {
+      if (path[i] == "\\") {
+        newPath = newPath + "%5C";
+      } else {
+        newPath = newPath + path[i];
+      }
+    }
+    return newPath;
+  }
+
   private checkModelDuplicates() {
     for (let i = 0; i < this.models['children'].length; i++) {
       if (this.models['children'][i].name == this.fileName) {
@@ -78,24 +78,6 @@ export class DashbodyComponent implements OnInit {
     }
     this.modelSelected = model;
     document.getElementById(model.name).style.backgroundColor = "#7bcfc1";
-  }
-
-  newModelReq(modelname) {
-    if (this.models.path) {
-      this.data.createModel(this.models.path + "\\" + modelname).subscribe(
-        (payload) => {
-          if (payload['success']) {
-            let path = this.changeSlash(this.models.path);
-            window.open("/modeler/" + path + "%5C" + modelname, '_blank');
-            this.emitChanges(payload['data']);
-          } else {
-            console.log(payload['error'])
-          }
-        }
-      )
-    } else {
-      alert("Impossibile creare nella cartella di root")
-    }
   }
 
   modifyModelReq(newModelName) {

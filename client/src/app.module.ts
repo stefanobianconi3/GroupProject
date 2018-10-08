@@ -17,6 +17,7 @@ import { ModelerComponent } from 'src/app/components/modeler/modeler.component';
 import { DashbodyComponent } from 'src/app/components/dashbody/dashbody.component';
 import { FolderComponent } from 'src/app/components/folder/folder.component';
 import { SidenavComponent } from 'src/app/components/sidenav/sidenav.component';
+import { SharedFolder } from './app/services/SharedFolder';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,7 @@ import { SidenavComponent } from 'src/app/components/sidenav/sidenav.component';
     TreeModule.forRoot()
   ],
 
-  providers: [AuthService],
+  providers: [AuthService, SharedFolder],
 
   schemas: [ NO_ERRORS_SCHEMA ],
 
