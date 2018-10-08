@@ -12,8 +12,8 @@
       <tbody *ngFor="let f of models['children']">
 
         <tr *ngIf="f['type']=='model'" id="{{f.name}}">
-          <td (click)="selectModel(f)" id="posModello">
-            <a scope="row" (click)="chooseVersion(f)" data-toggle="modal" data-target="#versionModal">
+          <td (click)="chooseVersion(f)"   data-toggle="modal" data-target="#versionModal" id="posModello">
+            <a scope="row">
               {{f.name}}
             </a>
           </td>
