@@ -14,9 +14,6 @@ export class DashbodyComponent implements OnInit {
   private multipleVersion = false;
   private modelToOpen;
   private modelSelected;
-  private file;
-  private fileName;
-  private fileContent;
 
   constructor(private data: DataService) {
   }
@@ -37,20 +34,6 @@ export class DashbodyComponent implements OnInit {
     this.modelSelected = undefined;
   }
 
-  private uploadModel() {
-    this.data.createModel(this.models.path + "\\" + this.fileName).subscribe(
-      (payload) => {
-        if (payload['success']) {
-          this.data.saveModel(this.models.path + "\\" + this.fileName, 0, this.fileContent).subscribe(
-            (data) => {
-              this.emitChanges(payload['data']);
-            }
-          );
-        }
-      }
-    );
-  }
-
   private changeSlash(path) {
     let newPath = "";
     for (let i = 0; i < path.length; i++) {
@@ -61,15 +44,6 @@ export class DashbodyComponent implements OnInit {
       }
     }
     return newPath;
-  }
-
-  private checkModelDuplicates() {
-    for (let i = 0; i < this.models['children'].length; i++) {
-      if (this.models['children'][i].name == this.fileName) {
-        return true;
-      }
-    }
-    return false;
   }
 
   selectModel(model) {
@@ -118,28 +92,6 @@ export class DashbodyComponent implements OnInit {
         }
       )
     }
-  }
-
-  import() {
-    if (this.models.path) {
-      document.getElementById("upload").click();
-    }
-  }
-
-  handleFileInput(files: FileList) {
-    this.file = files[0];
-    this.fileName = this.file.name.replace('.bpmn', '');
-    let fileReader = new FileReader();
-    fileReader.onloadend = (e) => {
-      //Il file è pronto
-      this.fileContent = e['srcElement']['result'];
-      if (this.checkModelDuplicates()) {
-        alert("Cannot upload model. Another model with the same name found");
-      } else {
-        this.uploadModel();
-      }
-    }
-    fileReader.readAsText(this.file);
   }
 
   getVersion(model) {

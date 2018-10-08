@@ -17,6 +17,10 @@ private isLogged:boolean =false;
 private fail : boolean = false;
 private errore: String;
 private newUser:boolean=false;
+private file;
+private fileName;
+private fileContent;
+
   constructor(private route: Router, private auth: AuthService, private data: DataService, private sharedFolder: SharedFolder) { 
     auth.outLogin.subscribe(
       () => {
@@ -55,6 +59,35 @@ private newUser:boolean=false;
     return newPath;
   }
 
+  private checkModelDuplicates() {
+    for (let i = 0; i < this.folderSelect['children'].length; i++) {
+      if (this.folderSelect['children'][i].name == this.fileName) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  private uploadModel() {
+    this.data.createModel(this.folderSelect.path + "\\" + this.fileName).subscribe(
+      (payload) => {
+        if (payload['success']) {
+          this.data.saveModel(this.folderSelect.path + "\\" + this.fileName, 0, this.fileContent).subscribe(
+            (data) => {
+              let folder = [{
+                name: localStorage.getItem('nome'),
+                path: "/",
+                type: "dir",
+                children: payload['data']
+              }];
+              this.sharedFolder.setData(folder);
+            }
+          );
+        }
+      }
+    );
+  }
+
 logIn(form: NgForm){
   this.auth.login(form.value.email, form.value.password);
 }
@@ -87,6 +120,28 @@ newModelReq(model){
       }
     }
   );
+}
+
+import() {
+  if (this.folderSelect.path) {
+    document.getElementById("upload").click();
+  }
+}
+
+handleFileInput(files: FileList) {
+  this.file = files[0];
+  this.fileName = this.file.name.replace('.bpmn', '');
+  let fileReader = new FileReader();
+  fileReader.onloadend = (e) => {
+    //Il file è pronto
+    this.fileContent = e['srcElement']['result'];
+    if (this.checkModelDuplicates()) {
+      alert("Cannot upload model. Another model with the same name found");
+    } else {
+      this.uploadModel();
+    }
+  }
+  fileReader.readAsText(this.file);
 }
 
 ngOnInit() {
