@@ -1,13 +1,44 @@
+<header>
+	<body id="bodyNav">
+		<div class="navbar navbar-default navbar-fixed-top">
+			<div class="row">
+				<div class="d-flex animated fadeInRightBig">
+					<div class="btn-group" id="file" mdbDropdown>
+						<button mdbDropdownToggle type="button" mdbBtn color="light" outline="true" size="sm" class="dropdown-toggle waves-light" mdbWavesEffect>
+							File
+						</button>
+					
+						<div class="dropdown-menu dropdown-primary">
+							<a class="dropdown-item" data-toggle="modal" data-target="#createModel">New</a>
+							<div class="divider dropdown-divider"></div>
+							<a class="dropdown-item" (click)="import()">Import</a>
+              <input type="file" accept=".bpmn" id="upload" (change)="handleFileInput($event.target.files)" hidden />
+              <div class="divider dropdown-divider"></div>
+              <a class="dropdown-item" data-toggle="modal" data-target="#versionModal">Save</a>
+						</div>
+					</div>
+					<div class="btn-group" id="discover" mdbDropdown>
+						<button mdbDropdownToggle mdbBtn color="light" outline="true" size="sm" class="dropdown-toggle waves-light" type="button" mdbWavesEffect>
+							Discover
+						</button>
+						<div class="dropdown-menu">
+							<a class="dropdown-item" href="#">Action</a>
+							<a class="dropdown-item" href="#">Another action</a>
+							<a class="dropdown-item" href="#">Something else here</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#">Separated link</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</header>
+
 <div class="modeler">
     <div id="canvas"></div>
     <div id="properties"></div>
   </div>
-  
-  <!-- Button trigger modal -->
-<button mdbBtn type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#versionModal" id="salva" mdbWavesEffect>
-    <i class="fa fa-save"></i>
-    Save
-</button>
   
   <!-- Modal -->
   <div class="modal fade" id="versionModal" tabindex="-1" role="dialog" aria-labelledby="versionLabel" aria-hidden="true">
@@ -50,6 +81,28 @@
         </div>
       </div>
     </div>
+  </div>
+
+    <!-- Modal -->
+<div class="modal fade" id="createModel" tabindex="-1" role="dialog" aria-labelledby="versionLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="versionLabel">Create Model</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+		  <span>You are going to create a new model into this path: <strong>{{path}}</strong></span>
+		  <input type="text" id="newModel1" [(ngModel)]="newModel" />
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		  <button type="button" class="btn btn-primary" (click)="newModelReq(newModel)" onclick="$('.modal').modal('hide')">Save Changes</button>
+		</div>
+	  </div>
+	</div> 
   </div>
 
   <div class="alert alert-success alert-dismissible" *ngIf="alerts && success" id="save1">

@@ -49,6 +49,8 @@ export class ModelerComponent implements OnInit {
   private previous = false;
   private previousMessage = "a previous version";
   private currentMessage = "the existing version";
+  private nome = localStorage.getItem('nome');
+  private folderPath = "";
 
   constructor(private http: HttpClient, private parameters: ActivatedRoute, private data: DataService) { 
     
@@ -56,6 +58,7 @@ export class ModelerComponent implements OnInit {
 
   ngOnInit() {
     this.getParameters();
+    this.folderPath = this.getFolderPath();
     this.data.getModel(this.path, this.version).subscribe(
       (payload) => {
         if(payload['success']){
@@ -93,6 +96,18 @@ export class ModelerComponent implements OnInit {
     );
   }
 
+  private changeSlash(path) {
+    let newPath = "";
+    for (let i = 0; i < path.length; i++) {
+      if (path[i] == "\\") {
+        newPath = newPath + "%5C";
+      } else {
+        newPath = newPath + path[i];
+      }
+    }
+    return newPath;
+  }
+
   getParameters(){
     this.parameters.paramMap.subscribe(
       (params) => {
@@ -104,6 +119,12 @@ export class ModelerComponent implements OnInit {
         }
       }
   );
+  }
+
+  getFolderPath(){
+    let array = this.path.split("\\");
+    let array2 = array.pop();
+    return array.join("\\");
   }
 
   handleError(err: any) {
@@ -149,5 +170,20 @@ export class ModelerComponent implements OnInit {
         }
       });
   }
-}
 
+  newModelReq(model){
+    /*
+    console.log(model);
+    this.data.createModel(this.folderPath + "\\" + model).subscribe(
+      (payload) => {
+        if(payload['success']){
+          let path = this.changeSlash(this.folderPath);
+          window.open("/modeler/" + path + "%5C" + model, '_blank');
+        } else {
+          alert("There was a problem");
+        }
+      }
+    );
+    */
+  }
+}

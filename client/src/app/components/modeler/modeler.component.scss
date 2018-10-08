@@ -27,3 +27,63 @@
   position: relative;
   top: -200px;
 }
+
+.body{
+	font-family: 'Open Sans', sans-serif;
+	padding-top: 70px;
+}
+
+body{
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* navbar dopo il login */
+
+.navbar{
+	height: 50px;
+	background:  teal;
+	border-bottom-color: rgb(104, 231, 0);
+	border-bottom-style: solid; 
+
+}
+.navbar-brand{
+	color: white;
+}
+
+.nav-link{
+	position: relative;
+	color: white;
+}
+
+.nav-link dropdown-toggle{
+	color: white;
+}
+
+.d-flex{
+	position: absolute;
+	left: 64px;
+	top: 11px;
+	height: 32px;
+	z-index: 999;
+}
+
+#file {
+	position: relative;
+	left: 50px;
+}
+
+#discover {
+  position: relative;
+  left: 150px;
+}
+
+/**
+* Definiamo lo stile del titolo(logo) del pannello  
+*/
+.logo2{
+	color: rgb(255, 255, 255);
+	font-size: 30px;
+	position: absolute;
+	top: 7px;
+	left: 45px;
+}
