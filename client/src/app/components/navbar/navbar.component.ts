@@ -12,6 +12,7 @@ import { SharedFolder } from '../../services/SharedFolder';
 })
 export class NavbarComponent implements OnInit {
   @Input() folderSelect;
+private showNavbar = true;
 private nome = localStorage.getItem('nome') ;
 private isLogged:boolean =false;
 private fail : boolean = false;
@@ -22,6 +23,9 @@ private fileName;
 private fileContent;
 
   constructor(private route: Router, private auth: AuthService, private data: DataService, private sharedFolder: SharedFolder) { 
+    
+    this.checkUrlInstance(window.location.href.split("/"));
+    
     auth.outLogin.subscribe(
       () => {
         this.isLogged=true;
@@ -86,6 +90,15 @@ private fileContent;
         }
       }
     );
+  }
+
+  private checkUrlInstance(urlArray){
+    for(let i=0; i<urlArray.length; i++){
+      if(urlArray[i].includes("modeler")){
+        this.showNavbar = false;
+        break;
+      }
+    }
   }
 
 logIn(form: NgForm){

@@ -51,7 +51,7 @@
 </header>
 <!-- Qua sotto la navbar per quando è loggato -->
 <ng-template #logged>
-	<body id="bodyNav">
+	<body id="bodyNav" *ngIf="showNavbar">
 		<div class="navbar navbar-default navbar-fixed-top">
 			<div class="row">
 				
