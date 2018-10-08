@@ -31,6 +31,7 @@ const routes: Routes = [
   {
   path: 'signin',
   component: SigninComponent,
+  canActivate: [RouteGuardService]
   },
   {
     path: 'modeler/:path/:version',
