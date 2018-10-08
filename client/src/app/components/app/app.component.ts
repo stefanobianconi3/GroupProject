@@ -10,9 +10,13 @@ export class AppComponent {
   private folderSelect;
 
   onActivate(elementRef) {
-    elementRef.folderSelected.subscribe(f => {
+    try{
+      elementRef.folderSelected.subscribe(f => {
         this.folderSelect = f;
     });
+    } catch (e) {
+
+    }
   }
 
 }
