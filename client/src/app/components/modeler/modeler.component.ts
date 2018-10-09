@@ -223,6 +223,23 @@ export class ModelerComponent implements OnInit {
     fileReader.readAsText(this.file);
   }
 
+  runWebService(webService){
+    console.log(webService);
+    this.modeler.saveXML(
+      (err: any, xml: any) => {
+        if(err){
+          console.log(err);
+        } else {
+          this.data.runWebService(webService, xml).subscribe(
+            (payload) => {
+              console.log(payload);
+            },
+          );
+        }
+      }
+    );
+  }
+
   deleteReqModeler(){
     this.data.deleteModel(this.path).subscribe(
       (payload) => {

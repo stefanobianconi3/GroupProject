@@ -71,4 +71,14 @@ export class DataService {
     return this.http.put(this.APIURL+"/model", {modelName: modelName, newModelName: newModelName}, { headers: this.headers });
   }
 
+  runWebService(webService, model){
+    let serviceHeader = new HttpHeaders()
+    .set('Content-Type', 'text/plain');
+    switch(webService){
+      case "s3": {
+        return this.http.post("http://10.0.11.50:8080/S3/rest/BPMN/Verifier", model, {headers: serviceHeader, responseType: 'text'});
+      }
+    }
+  }
+
 }
