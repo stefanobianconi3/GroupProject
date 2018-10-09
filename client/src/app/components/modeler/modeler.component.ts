@@ -49,7 +49,7 @@ export class ModelerComponent implements OnInit {
   private previous = false;
   private previousMessage = "a previous version";
   private currentMessage = "the existing version";
-  private nome = localStorage.getItem('nome');
+  private nome;
   private folderPath = "";
   private file;
   private fileName;
@@ -58,6 +58,7 @@ export class ModelerComponent implements OnInit {
   constructor(private http: HttpClient, private parameters: ActivatedRoute, private data: DataService) { 
     this.getParameters();
     this.folderPath = this.getFolderPath();
+    this.nome = this.getModelName();
   }
 
   ngOnInit() {
@@ -143,6 +144,10 @@ export class ModelerComponent implements OnInit {
     let array = this.path.split("\\");
     let array2 = array.pop();
     return array.join("\\");
+  }
+
+  getModelName(){
+    return this.path.split("\\").pop();
   }
 
   handleError(err: any) {
