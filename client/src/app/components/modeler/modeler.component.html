@@ -9,7 +9,7 @@
 						</button>
 					
 						<div class="dropdown-menu dropdown-primary">
-							<a class="dropdown-item" data-toggle="modal" data-target="#createModel">New</a>
+							<a class="dropdown-item" data-toggle="modal" data-target="#createModelModeler">New</a>
 							<div class="divider dropdown-divider"></div>
 							<a class="dropdown-item" (click)="import()">Import</a>
               <input type="file" accept=".bpmn" id="upload" (change)="handleFileInput($event.target.files)" hidden />
@@ -83,8 +83,18 @@
     </div>
   </div>
 
-    <!-- Modal -->
-<div class="modal fade" id="createModel" tabindex="-1" role="dialog" aria-labelledby="versionLabel" aria-hidden="true">
+  <div class="alert alert-success alert-dismissible" *ngIf="alerts && success" id="save1">
+    <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Model saved successfully</strong>
+  </div>
+
+  <div class="alert alert-danger alert-dismissible" *ngIf="alerts && !success" id="save1">
+      <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>There was a problem on saving the model. Please retry!</strong>
+  </div>
+
+      <!-- Modal -->
+<div class="modal fade" id="createModelModeler" tabindex="-1" role="dialog" aria-labelledby="versionLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 	  <div class="modal-content">
 		<div class="modal-header">
@@ -94,23 +104,13 @@
 		  </button>
 		</div>
 		<div class="modal-body">
-		  <span>You are going to create a new model into this path: <strong>{{path}}</strong></span>
+		  <span>You are going to create a new model into this path: <br><strong>{{folderPath}}</strong><br></span>
 		  <input type="text" id="newModel1" [(ngModel)]="newModel" />
 		</div>
 		<div class="modal-footer">
 		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-		  <button type="button" class="btn btn-primary" (click)="newModelReq(newModel)" onclick="$('.modal').modal('hide')">Save Changes</button>
+		  <button type="button" class="btn btn-primary" (click)="newModelReqModeler(newModel)" onclick="$('.modal').modal('hide')">Save Changes</button>
 		</div>
 	  </div>
 	</div> 
-  </div>
-
-  <div class="alert alert-success alert-dismissible" *ngIf="alerts && success" id="save1">
-    <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Model saved successfully</strong>
-  </div>
-
-  <div class="alert alert-danger alert-dismissible" *ngIf="alerts && !success" id="save1">
-      <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
-      <strong>There was a problem on saving the model. Please retry!</strong>
   </div>

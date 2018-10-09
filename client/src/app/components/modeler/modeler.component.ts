@@ -53,12 +53,11 @@ export class ModelerComponent implements OnInit {
   private folderPath = "";
 
   constructor(private http: HttpClient, private parameters: ActivatedRoute, private data: DataService) { 
-    
+    this.getParameters();
+    this.folderPath = this.getFolderPath();
   }
 
   ngOnInit() {
-    this.getParameters();
-    this.folderPath = this.getFolderPath();
     this.data.getModel(this.path, this.version).subscribe(
       (payload) => {
         if(payload['success']){
@@ -171,9 +170,7 @@ export class ModelerComponent implements OnInit {
       });
   }
 
-  newModelReq(model){
-    /*
-    console.log(model);
+  newModelReqModeler(model){
     this.data.createModel(this.folderPath + "\\" + model).subscribe(
       (payload) => {
         if(payload['success']){
@@ -184,6 +181,5 @@ export class ModelerComponent implements OnInit {
         }
       }
     );
-    */
   }
 }
