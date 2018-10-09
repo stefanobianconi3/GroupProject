@@ -222,4 +222,14 @@ export class ModelerComponent implements OnInit {
     }
     fileReader.readAsText(this.file);
   }
+
+  deleteReqModeler(){
+    this.data.deleteModel(this.path).subscribe(
+      (payload) => {
+        if(payload['success']){
+          window.close();
+        }
+      }
+    )
+  }  
 }
