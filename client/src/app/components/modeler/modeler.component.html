@@ -11,8 +11,8 @@
 						<div class="dropdown-menu dropdown-primary">
 							<a class="dropdown-item" data-toggle="modal" data-target="#createModelModeler">New</a>
 							<div class="divider dropdown-divider"></div>
-							<a class="dropdown-item" (click)="import()">Import</a>
-              <input type="file" accept=".bpmn" id="upload" (change)="handleFileInput($event.target.files)" hidden />
+							<a class="dropdown-item" (click)="importModeler()">Import</a>
+              <input type="file" accept=".bpmn" id="upload" (change)="handleFileInputModeler($event.target.files)" hidden />
               <div class="divider dropdown-divider"></div>
               <a class="dropdown-item" data-toggle="modal" data-target="#versionModal">Save</a>
 						</div>

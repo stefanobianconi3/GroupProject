@@ -51,6 +51,9 @@ export class ModelerComponent implements OnInit {
   private currentMessage = "the existing version";
   private nome = localStorage.getItem('nome');
   private folderPath = "";
+  private file;
+  private fileName;
+  private fileContent;
 
   constructor(private http: HttpClient, private parameters: ActivatedRoute, private data: DataService) { 
     this.getParameters();
@@ -105,6 +108,22 @@ export class ModelerComponent implements OnInit {
       }
     }
     return newPath;
+  }
+
+  private uploadModel() {
+    this.data.createModel(this.folderPath + "\\" + this.fileName).subscribe(
+      (payload) => {
+        if (payload['success']) {
+          this.data.saveModel(this.folderPath + "\\" + this.fileName, 0, this.fileContent).subscribe(
+            (data) => {
+              alert("Successfully imported the model");
+            }
+          );
+        } else {
+          alert("Model with same name found. Cannot import");
+        }
+      }
+    );
   }
 
   getParameters(){
@@ -181,5 +200,21 @@ export class ModelerComponent implements OnInit {
         }
       }
     );
+  }
+
+  importModeler() {
+    document.getElementById("upload").click();
+  }
+
+  handleFileInputModeler(files: FileList) {
+    this.file = files[0];
+    this.fileName = this.file.name.replace('.bpmn', '');
+    let fileReader = new FileReader();
+    fileReader.onloadend = (e) => {
+      //Il file è pronto
+      this.fileContent = e['srcElement']['result'];
+      this.uploadModel();
+    }
+    fileReader.readAsText(this.file);
   }
 }
