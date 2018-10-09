@@ -66,6 +66,10 @@ export class DashbodyComponent implements OnInit {
     }
   }
 
+  modify(model){
+    this.modelSelected = model;
+  }
+
   modifyModelReq(newModelName) {
     if (this.modelSelected) {
       this.data.modifyModel(this.modelSelected.path, this.generateNewPath(this.modelSelected.path, newModelName)).subscribe(
@@ -78,6 +82,10 @@ export class DashbodyComponent implements OnInit {
         }
       )
     }
+  }
+
+  delete(model){
+    this.modelSelected = model;
   }
 
   deleteModelReq() {
@@ -94,16 +102,14 @@ export class DashbodyComponent implements OnInit {
     }
   }
 
-  export() {
-    if (this.modelSelected) {
-      this.data.getModel(this.modelSelected.path, this.getVersion(this.modelSelected)).subscribe(
-        (payload) => {
-          const content = payload['data'];
-          const blob = new Blob([payload['data']], { type: 'text/bpmn' });
-          saveAs(blob, this.modelSelected.name+'.bpmn');
-        }
-      )
-    }
+  export(model) {
+    this.data.getModel(model.path, this.getVersion(model)).subscribe(
+      (payload) => {
+        const content = payload['data'];
+        const blob = new Blob([payload['data']], { type: 'text/bpmn' });
+        saveAs(blob, model.name+'.bpmn');
+      }
+    )
   }
 
   getVersion(model) {
