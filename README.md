@@ -60,13 +60,14 @@ Per poter usare correttamente questo software, occore installare **NodeJS** alla
 
 Qui sarà presente una lista bug. Premessa: il sito non è responsive al 100%. Problemi legati a ciò non saranno elencati. Inoltre, per godere una migliore esperienza con l'applicazione, è consigliato utilizzare Google Chrome come browser.
 
-* Quando si elimina una cartella, la variabile "selected" non viene aggiornata
 * La modifica di una cartella non funziona correttamente (ambiente Linux)
+* Il path delle cartelle e modelli non viene riportato correttamente al client (ambiente Linux)
+
+# DONE #
+
 * I modelli vengono mostrati nella sidenav
 * Non viene mostrato correttamente il messaggio di corretto salvataggio del modello nel Modeler
-
-# TODO #
-
+* Quando si elimina una cartella, la variabile "selected" non viene aggiornata
 * Ridimensionare i bottoni per la creazione, modifica e cancellazione di una cartella/modello: utilizzare i dialog
 * Mostrare il path della cartella selezionata, a posto dell'input
 * Un modello appena creato apre direttamente l'editor
@@ -78,6 +79,12 @@ Qui sarà presente una lista bug. Premessa: il sito non è responsive al 100%. P
 * Cartella root con il nome dell'utente (lato client)
 * Cambiare schermata iniziale
 * Integrazione webservice
+
+# TODO #
+
+* Migliorare integrazione webservice
+* Migliorare bottoni sulla navbar
+* Re-Inserire selezione modello
 
 # Future Work (Ideas) #
 
