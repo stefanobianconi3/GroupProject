@@ -17,8 +17,8 @@
               {{f.name}}
             </a>
           </td>
-          <td id="posVersione">{{getVersion(f)}}</td>
-          <td id="posActions">
+          <td (click)="selectModel(f)" id="posVersione">{{getVersion(f)}}</td>
+          <td (click)="selectModel(f)" id="posActions">
             <button mdbBtn type="button" class="btn btn-sm" title="Rename" id="working" (click)="modify(f)" data-toggle="modal" data-target="#modifyModel" mdbWavesEffect><mdb-icon icon="pencil-square-o" size="2x" id="pencil"></mdb-icon></button>
             <button mdbBtn type="button" class="btn btn-sm" title="Delete" id="working" (click)="delete(f)" data-toggle="modal" data-target="#deleteModel" mdbWavesEffect><mdb-icon icon="trash-o" size="2x"></mdb-icon></button>
             <button mdbBtn type="button" class="btn btn-sm" title="Export" id="working" (click)="export(f)" mdbWavesEffect><mdb-icon icon="download" size="2x"></mdb-icon></button>
