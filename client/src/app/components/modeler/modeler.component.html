@@ -22,7 +22,7 @@
 					<div class="btn-group" id="discover" mdbDropdown>
 						<button mdbDropdownToggle mdbBtn color="light" outline="true" size="sm" class="dropdown-toggle waves-light" type="button" mdbWavesEffect>
 							Discover
-						</button>
+            </button>
 						<div class="dropdown-menu">
 							<a class="dropdown-item" (click)="runWebService('s3')">S3
               </a>
@@ -37,6 +37,12 @@
 <div class="modeler">
     <div id="canvas"></div>
     <div id="properties"></div>
+  </div>
+
+  <img [src]="imageLoad" id="imageLoad"/>
+  <div id="results">
+    <img id="imageSoundness" />
+    <img id="imageSafeness" />
   </div>
   
   <!-- Modal -->

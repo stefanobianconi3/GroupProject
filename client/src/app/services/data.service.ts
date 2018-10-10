@@ -76,7 +76,7 @@ export class DataService {
     .set('Content-Type', 'text/plain');
     switch(webService){
       case "s3": {
-        return this.http.post("http://10.0.11.50:8080/S3/rest/BPMN/Verifier", model, {headers: serviceHeader, responseType: 'text'});
+        return this.http.post("http://pros.unicam.it:8080/S3/rest/BPMN/Verifier", model, {headers: serviceHeader, responseType: 'text'});
       }
     }
   }

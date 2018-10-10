@@ -54,6 +54,10 @@ export class ModelerComponent implements OnInit {
   private file;
   private fileName;
   private fileContent;
+  private imageLoad = require('../../assets/images/load.gif');
+  private imageRed;
+  private imageGreen;
+  private imageYellow;
 
   constructor(private http: HttpClient, private parameters: ActivatedRoute, private data: DataService) { 
     this.getParameters();
@@ -224,7 +228,7 @@ export class ModelerComponent implements OnInit {
   }
 
   runWebService(webService){
-    console.log(webService);
+    document.getElementById('imageLoad').style.visibility="visible";
     this.modeler.saveXML(
       (err: any, xml: any) => {
         if(err){
@@ -232,8 +236,47 @@ export class ModelerComponent implements OnInit {
         } else {
           this.data.runWebService(webService, xml).subscribe(
             (payload) => {
-              console.log(payload);
+              document.getElementById('imageLoad').style.visibility="hidden";
+              let imageSoundness = document.getElementById('imageSoundness')as HTMLImageElement;
+              let imageSafeness = document.getElementById('imageSafeness')as HTMLImageElement;
+              //Controllo il risultato
+              payload.split(" && ").forEach(function (item) {
+                item.split("\n").forEach(function (element) {
+                  if(element=='0'){
+                    //UNSOUND DEAD TOKEN
+                    imageSoundness.src = this.imageRed;
+                    imageSoundness.style.visibility="visible";
+                  }
+                  if(element=='1'){
+                    //PROPER COMPLETION VIOLATED
+                    imageSoundness.src= this.imageRed;
+                    imageSoundness.style.visibility="visible";
+                  }
+                  if(element=='2'){
+                    //RELAXED SOUND
+                    imageSoundness.src= this.imageYellow;
+                    imageSoundness.style.visibility="visible";
+                  }
+                  if(element=='3'){
+                    //SOUND
+                    imageSoundness.src= this.imageGreen;
+                    imageSoundness.style.visibility="visible";
+                  }
+                  if(element=='4'){
+                    imageSafeness.src= this.imageGreen;
+                    imageSafeness.style.visibility="visible";
+                  }
+                  if(element=='5'){
+                    imageSafeness.src= this.imageRed;
+                    imageSafeness.style.visibility="visible";
+                  }
+                });
+              });
             },
+            (error) => {
+              document.getElementById('imageLoad').style.visibility="hidden";
+              console.log(error);
+            }
           );
         }
       }

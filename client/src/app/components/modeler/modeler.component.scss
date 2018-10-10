@@ -87,3 +87,26 @@ body{
 	top: 7px;
 	left: 45px;
 }
+#imageLoad{
+	position: relative;
+	height: 30px;
+	margin-top: -470px; 
+	margin-left: 20px;
+	visibility: hidden;
+}
+
+#imageSoundness{
+	position: relative;
+	height: 30px;
+	margin-top: -470px; 
+	margin-left: 30px;
+	visibility: hidden;
+}
+
+#imageSafeness{
+	position: relative;
+	height: 30px;
+	margin-top: -470px; 
+	margin-left: 40px;
+	visibility: hidden;
+}
