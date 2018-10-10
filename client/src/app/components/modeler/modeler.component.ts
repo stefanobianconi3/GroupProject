@@ -55,9 +55,9 @@ export class ModelerComponent implements OnInit {
   private fileName;
   private fileContent;
   private imageLoad = require('../../assets/images/load.gif');
-  private imageRed;
-  private imageGreen;
-  private imageYellow;
+  private imageRed = require('../../assets/images/red.png');
+  private imageGreen = require('../../assets/images/green.png');
+  private imageYellow = require('../../assets/images/yellow.png');
 
   constructor(private http: HttpClient, private parameters: ActivatedRoute, private data: DataService) { 
     this.getParameters();
