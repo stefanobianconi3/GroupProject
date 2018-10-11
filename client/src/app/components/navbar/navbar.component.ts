@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
 import { NgForm } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 import { DataService } from '../../services/data.service';
 import { SharedFolder } from '../../services/SharedFolder';
 
@@ -10,17 +10,18 @@ import { SharedFolder } from '../../services/SharedFolder';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
+
 export class NavbarComponent implements OnInit {
   @Input() folderSelect;
-private showNavbar = true;
-private nome = localStorage.getItem('nome') ;
-private isLogged:boolean =false;
-private fail : boolean = false;
-private errore: String;
-private newUser:boolean=false;
-private file;
-private fileName;
-private fileContent;
+  private showNavbar = true;
+  private nome = localStorage.getItem('nome') ;
+  private isLogged:boolean =false;
+  private fail : boolean = false;
+  private errore: String;
+  private newUser:boolean=false;
+  private file;
+  private fileName;
+  private fileContent;
 
   constructor(private route: Router, private auth: AuthService, private data: DataService, private sharedFolder: SharedFolder) { 
     
@@ -49,6 +50,11 @@ private fileContent;
         this.isLogged = false;
       }
     )
+  }
+
+  ngOnInit() {
+    this.isLogged=this.auth.isLoggedIn();
+    this.folderSelect = [];
   }
 
   private changeSlash(path) {
@@ -155,11 +161,6 @@ handleFileInput(files: FileList) {
     }
   }
   fileReader.readAsText(this.file);
-}
-
-ngOnInit() {
-  this.isLogged=this.auth.isLoggedIn();
-  this.folderSelect = [];
 }
 
 }

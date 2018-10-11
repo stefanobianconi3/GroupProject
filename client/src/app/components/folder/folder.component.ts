@@ -1,9 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
-import { Folder } from '../../classes/Folder';
 import { ITreeOptions } from 'angular-tree-component';
+import { Folder } from '../../classes/Folder';
 
 @Component({
-  
   selector: 'app-folder',
   templateUrl: './folder.component.html',
   styleUrls: ['./folder.component.scss'],
@@ -13,8 +12,6 @@ export class FolderComponent implements OnInit {
   @Input('folder') folder;
   @Output('folderSelected') folderSelected = new EventEmitter();
   private nodeSelected;
-  
-
   private options : ITreeOptions = {
     actionMapping: {
       mouse: {
@@ -38,8 +35,6 @@ export class FolderComponent implements OnInit {
   }
 
   ngOnInit() {
-
-
   }
 
   isDir(folder) {

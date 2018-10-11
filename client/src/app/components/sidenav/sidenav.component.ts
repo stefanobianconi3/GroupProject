@@ -1,7 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { DataService } from 'src/app/services/data.service';
-import { NgForm } from '@angular/forms';
 import { Folder } from '../../classes/Folder';
 
 @Component({
@@ -12,14 +11,15 @@ import { Folder } from '../../classes/Folder';
 export class SidenavComponent implements OnInit {
   @ViewChild('mylabel') mylabel: ElementRef
   @Input() folder = [];
-  private side: boolean = true;
   @Output() selezionata2 = new EventEmitter();
-  constructor(private http: HttpClientModule, private data: DataService) { }
+  private side: boolean = true;
   private selected:Folder = new Folder();
   private nameSelected;
   private selctedbool = false;
   private msgerror = false;
   private modifica = false;
+
+  constructor(private http: HttpClientModule, private data: DataService) { }
 
   ngOnInit() {
     let el: HTMLElement = this.mylabel.nativeElement as HTMLElement;
@@ -33,6 +33,22 @@ export class SidenavComponent implements OnInit {
         }
       }
     )
+  }
+
+  private generateNewPath(oldPath: String, newName) {
+    let array = oldPath.split("\\");
+    array[array.length - 1] = newName;
+    return array.join("\\");
+  }
+
+  private generateNewTree(data) {
+    let root = [{
+      name: localStorage.getItem('nome'),
+      path: "/",
+      type: "dir",
+      children: data
+    }];
+    this.folder = root;
   }
 
   openNav() {
@@ -61,22 +77,6 @@ export class SidenavComponent implements OnInit {
     this.nameSelected=f.name
     this.selctedbool = true;
     this.msgerror = false;
-  }
-
-  private generateNewPath(oldPath: String, newName) {
-    let array = oldPath.split("\\");
-    array[array.length - 1] = newName;
-    return array.join("\\");
-  }
-
-  private generateNewTree(data) {
-    let root = [{
-      name: localStorage.getItem('nome'),
-      path: "/",
-      type: "dir",
-      children: data
-    }];
-    this.folder = root;
   }
 
   modifyFolderReq(newFolderName) {

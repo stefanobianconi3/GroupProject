@@ -18,6 +18,15 @@ export class DashboardComponent implements OnInit {
     
   }
 
+  ngOnInit() {
+    this.checkTokenValidity();
+    this.sharedFolder.getData().subscribe(
+      (f) => {
+        this.folder = f;
+      }
+    );
+  }
+
   checkTokenValidity() {
     this.data.checkToken();
   }
@@ -34,15 +43,6 @@ export class DashboardComponent implements OnInit {
       type: "dir",
       children: data
     }];
-  }
-
-  ngOnInit() {
-    this.checkTokenValidity();
-    this.sharedFolder.getData().subscribe(
-      (f) => {
-        this.folder = f;
-      }
-    );
   }
 
 }

@@ -6,7 +6,6 @@ import {CustomPropsProvider} from '../../assets/props-provider/CustomPropsProvid
 import {CustomPaletteProvider} from "../../assets/props-provider/CustomPaletteProvider";
 import { DataService } from 'src/app/services/data.service';
 
-
 const customModdle = {
   name: "customModdle",
   uri: "http://example.com/custom-moddle",
@@ -37,6 +36,7 @@ const customModdle = {
   templateUrl: './modeler.component.html',
   styleUrls: ['./modeler.component.scss']
 })
+
 export class ModelerComponent implements OnInit {
   private path;
   private version;

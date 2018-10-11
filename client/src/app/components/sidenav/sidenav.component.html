@@ -14,7 +14,7 @@
     </div>
 
   <!-- Modal -->
-  <div class="modal" *ngIf="selected && selected.path != '/'" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal" *ngIf="selected.path != '/'" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -51,7 +51,7 @@
   </div>
 
   <!-- Modal -->
-  <div class="modal" *ngIf="selected && selected.path != '/'" id="modifyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal" *ngIf="selected.path != '/'" id="modifyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -59,7 +59,7 @@
         </div>
         <div class="modal-body">
           <p>You are going to edit the folder into this path <strong><br>{{selected.path}}<br></strong></p>
-          <input type="text" id="modifyFolder" [(ngModel)]="modifyFolder" />
+          <input type="text" id="modifyFolder" value="" [(ngModel)]="modifyFolder" />
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>

@@ -1,14 +1,14 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { saveAs } from 'file-saver/dist/FileSaver';
 import { DataService } from '../../services/data.service';
+import { saveAs } from 'file-saver/dist/FileSaver';
 
 @Component({
   selector: 'app-dashbody',
   templateUrl: './dashbody.component.html',
   styleUrls: ['./dashbody.component.scss']
 })
-export class DashbodyComponent implements OnInit {
 
+export class DashbodyComponent implements OnInit {
   @Input() models;
   @Output() modelChanged = new EventEmitter();
   private multipleVersion = false;
