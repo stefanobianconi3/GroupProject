@@ -1,27 +1,27 @@
 <div id="dash">
   <div class="table-responsive">
-    <table class="table table-hover table-sm">
-      <thead>
-        <tr>
-          <th scope="col">Name</th>
-          <th scope="col" id="latestVersion">Latest Version</th>
-          <th scope="col" id="actions">Actions</th>
-        </tr>
-      </thead>
-
+    <table class="table table-hover table-bordered table-sm">
+        <thead>
+            <tr>
+              <th scope="col" id="name">Name</th>
+              <th scope="col" id="latestVersion">Latest Version</th>
+              <th scope="col" id="actions">Actions</th>
+            </tr>
+          </thead>
+      
       <tbody *ngFor="let f of models['children']">
 
         <tr *ngIf="f['type']=='model'" id="{{f.name}}">
-          <td (click)="chooseVersion(f)" data-toggle="modal" data-target="#versionModal" id="posModello">
-            <a scope="row">
+          <td scope="row" (click)="chooseVersion(f)" data-toggle="modal" data-target="#versionModal" id="posModello">
+            <a>
               {{f.name}}
             </a>
           </td>
           <td (click)="selectModel(f)" id="posVersione">{{getVersion(f)}}</td>
           <td (click)="selectModel(f)" id="posActions">
-            <button mdbBtn type="button" class="btn btn-sm" title="Rename" id="working" (click)="modify(f)" data-toggle="modal" data-target="#modifyModel" mdbWavesEffect><mdb-icon icon="pencil-square-o" size="2x" id="pencil"></mdb-icon></button>
-            <button mdbBtn type="button" class="btn btn-sm" title="Delete" id="working" (click)="delete(f)" data-toggle="modal" data-target="#deleteModel" mdbWavesEffect><mdb-icon icon="trash-o" size="2x"></mdb-icon></button>
-            <button mdbBtn type="button" class="btn btn-sm" title="Export" id="working" (click)="export(f)" mdbWavesEffect><mdb-icon icon="download" size="2x"></mdb-icon></button>
+            <button mdbBtn type="button" class="btn btn-sm" title="Rename" id="editButton" (click)="modify(f)" data-toggle="modal" data-target="#modifyModel" mdbWavesEffect><mdb-icon icon="pencil-square-o" size="2x" id="pencil"></mdb-icon></button>
+            <button mdbBtn type="button" class="btn btn-sm" title="Export" id="exportButton" (click)="export(f)" mdbWavesEffect><mdb-icon icon="download" size="2x"></mdb-icon></button>
+            <button mdbBtn type="button" class="btn btn-sm" title="Delete" id="deleteButton" (click)="delete(f)" data-toggle="modal" data-target="#deleteModel" mdbWavesEffect><mdb-icon icon="trash-o" size="2x"></mdb-icon></button>
           </td>
         </tr>
 

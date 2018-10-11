@@ -14,12 +14,19 @@
 
 /* ICONE */
 
-#standard {
-  background-color:  grey;
+#editButton {
+  color: rgb(30, 42, 199);
+  background-color: none;
 }
 
-#working {
-  background-color: teal;
+#deleteButton {
+  color: red;
+  background-color: none;
+}
+
+#exportButton {
+  color: rgb(30, 42, 199);
+  background-color: none;
 }
 
 #plus-square {
@@ -47,11 +54,12 @@
 
 /** BODY **/
 
+
+
 .table-responsive {
-  height: 30.5em;
+  height: 34.3em;
   width: 100%;
   position: relative;
-  top: 4px;
   left: -2px;
   overflow-y: auto;
 }
@@ -66,10 +74,12 @@
 
 #posModello {
   position: relative;
+  top: 15px
 }
 
 #posVersione {
   position: relative;
+  top: 15px;
   text-align: center;
 }
 

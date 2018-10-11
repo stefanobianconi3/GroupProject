@@ -23,7 +23,7 @@ export class FolderComponent implements OnInit {
           node.expand();
           if(this.nodeSelected){
             try{
-              document.getElementById(this.nodeSelected.data.name).style.backgroundColor="#008080";
+              document.getElementById(this.nodeSelected.data.name).style.backgroundColor="rgb(30, 42, 199)";
             } catch (err) {
             }
           }

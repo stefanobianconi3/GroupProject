@@ -13,7 +13,6 @@ body{
 	font-size: 40px;
 	padding: 4px 0;
 	padding-bottom: 10px;
-	
 }
 .btn-group{
 	margin-right: 100px;
@@ -30,7 +29,7 @@ body{
 
 header{
 	height: 75px;
-	background: rgb(62, 48, 187); /* #04c052 ; #06045e */
+	background: rgb(30, 42, 199); /* #04c052 ; #06045e */
 	padding-top: 19px;
 }
 header .form-group{
@@ -80,8 +79,8 @@ header .btn-header-login{
 
 .navbar{
 	height: 50px;
-	background:  teal;
-	border-bottom-color: rgb(104, 231, 0);
+	background: rgb(30, 42, 199);
+	border-bottom-color: #f57c00;
 	border-bottom-style: solid; 
 
 }
@@ -144,10 +143,11 @@ header .btn-header-login{
 /**
 * Definiamo lo stile del titolo(logo) del pannello  
 */
+
 .logo2{
 	color: rgb(255, 255, 255);
-	font-size: 30px;
+	font-size: 28px;
 	position: absolute;
-	top: 7px;
-	left: 45px;
+	top: 5px;
+	left: 37px;
 }

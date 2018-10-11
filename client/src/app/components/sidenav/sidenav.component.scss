@@ -20,7 +20,7 @@
     -moz-transition: left 0.3s;
     transition: left 0.3s;
     /* indichiamo il colore dello sfondo del panello */
-    background:  teal; /* #03bb93 */
+    background: rgb(30, 42, 199); /* #03bb93 */
     /* indichiamo che sara sopra tutti gli altri elementi della pagina  */
     z-index: 2000;
   }
@@ -70,14 +70,6 @@
 
   #modificaCartella:hover {
     color: #f57c00;
-  }
-
-  .alert-danger {
-    position: absolute;
-    top: 55px;
-    height: 30px;
-    color: white;
-    background-color: teal;
   }
   
   #eliminaCartella {

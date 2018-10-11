@@ -54,7 +54,7 @@ private fileContent;
   private changeSlash(path) {
     let newPath = "";
     for (let i = 0; i < path.length; i++) {
-      if (path[i] == "\\") {
+      if (path[i] == "\\" || path[i] == "/") {
         newPath = newPath + "%5C";
       } else {
         newPath = newPath + path[i];

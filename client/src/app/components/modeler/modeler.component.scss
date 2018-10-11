@@ -41,8 +41,8 @@ body{
 
 .navbar{
 	height: 50px;
-	background:  teal;
-	border-bottom-color: rgb(104, 231, 0);
+	background: rgb(30, 42, 199);
+	border-bottom-color: teal;
 	border-bottom-style: solid; 
 
 }
@@ -61,7 +61,7 @@ body{
 
 .d-flex{
 	position: absolute;
-	left: 64px;
+	left: 5px;
 	top: 11px;
 	height: 32px;
 	z-index: 999;
@@ -69,23 +69,25 @@ body{
 
 #file {
 	position: relative;
-	left: 50px;
+	top: -3px;
+	left: 250px;
 }
 
 #discover {
   position: relative;
-  left: 150px;
+  top: -3px;
+  left: 300px;
 }
 
 /**
 * Definiamo lo stile del titolo(logo) del pannello  
 */
-.logo2{
+#logo{
 	color: rgb(255, 255, 255);
-	font-size: 30px;
+	font-size: 17px;
 	position: absolute;
-	top: 7px;
-	left: 45px;
+	top: 5px;
+	left: 5px;
 }
 #imageLoad{
 	position: relative;
