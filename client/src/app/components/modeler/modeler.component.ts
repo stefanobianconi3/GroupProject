@@ -275,7 +275,6 @@ export class ModelerComponent implements OnInit {
             },
             (error) => {
               document.getElementById('imageLoad').style.visibility="hidden";
-              console.log(error);
             }
           );
         }
