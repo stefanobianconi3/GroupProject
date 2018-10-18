@@ -7,4 +7,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Pros-Chain';
+  private folderSelect;
+
+  onActivate(elementRef) {
+    try{
+      elementRef.folderSelected.subscribe(f => {
+        this.folderSelect = f;
+    });
+    } catch (e) {
+
+    }
+  }
+
 }

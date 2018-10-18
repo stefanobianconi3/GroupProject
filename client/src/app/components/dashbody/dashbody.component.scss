@@ -4,63 +4,85 @@
 }
 
 #icone {
+  width: 100%;
   position: relative;
   top: 8px;
-  color: #000000; 
-  font-size: 25px; /* Set a font size */
+  color: #000000;
+  font-size: 25px; 
+  left: -5px;
 }
 
-#refresh {
+/* ICONE */
+
+#editButton {
+  color: rgb(30, 42, 199);
+  background-color: none;
+}
+
+#deleteButton {
+  color: red;
+  background-color: none;
+}
+
+#exportButton {
+  color: rgb(30, 42, 199);
+  background-color: none;
+}
+
+#plus-square {
   position: relative;
-  left: 50px;
+  top: 2px;
+  left: 1px;
 }
 
-#provaColore {
-  background-color:  teal;
-}
-
-#modelName {
+#pencil {
   position: relative;
-  top: -40px;
-  left: 425px;
+  top: 2px;
+  left: 2px;
 }
 
-#modello {
-  width: 20%; 
+#upload {
   position: relative;
-  top: -68px;
-  left: 495px; 
+  top: 2px;
+  left: 2px;
 }
 
-#newModel {
-  background-color: #f57c00;
-}
-
-.md-form input[type=text]:focus:not([readonly]) + label { 
-  color: #f57c00;
- }
-
- input[type=date]:focus:not([readonly]), input[type=datetime-local]:focus:not([readonly]), 
- input[type=email]:focus:not([readonly]), input[type=number]:focus:not([readonly]), 
- input[type=password]:focus:not([readonly]), input[type=search-md]:focus:not([readonly]), 
- input[type=search]:focus:not([readonly]), input[type=tel]:focus:not([readonly]), 
- input[type=text]:focus:not([readonly]), input[type=time]:focus:not([readonly]), 
- input[type=url]:focus:not([readonly]), textarea.md-textarea:focus:not([readonly]) 
- {
-  border-bottom: 1px solid #f57c00;
-  box-shadow: 0 1px 0 0 #f57c00;
+#download {
+  position: relative;
+  top: 1px;
 }
 
 /** BODY **/
 
+
+
 .table-responsive {
-  height: 30.5em;
+  height: 34.3em;
   width: 100%;
   position: relative;
-  top: -80px;
-  right: -7px;
+  left: -2px;
   overflow-y: auto;
 }
 
+#latestVersion {
+  text-align: center;
+}
 
+#actions {
+  text-align: center;
+}
 
+#posModello {
+  position: relative;
+  top: 15px
+}
+
+#posVersione {
+  position: relative;
+  top: 15px;
+  text-align: center;
+}
+
+#posActions {
+  text-align: center;
+}

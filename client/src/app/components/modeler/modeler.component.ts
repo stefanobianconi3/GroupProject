@@ -6,7 +6,6 @@ import {CustomPropsProvider} from '../../assets/props-provider/CustomPropsProvid
 import {CustomPaletteProvider} from "../../assets/props-provider/CustomPaletteProvider";
 import { DataService } from 'src/app/services/data.service';
 
-
 const customModdle = {
   name: "customModdle",
   uri: "http://example.com/custom-moddle",
@@ -37,6 +36,7 @@ const customModdle = {
   templateUrl: './modeler.component.html',
   styleUrls: ['./modeler.component.scss']
 })
+
 export class ModelerComponent implements OnInit {
   private path;
   private version;
@@ -49,13 +49,23 @@ export class ModelerComponent implements OnInit {
   private previous = false;
   private previousMessage = "a previous version";
   private currentMessage = "the existing version";
+  private nome;
+  private folderPath = "";
+  private file;
+  private fileName;
+  private fileContent;
+  private imageLoad = 'assets/images/load.gif';
+  private imageRed = 'assets/images/red.png';
+  private imageGreen = 'assets/images/green.png';
+  private imageYellow = 'assets/images/yellow.png';
 
   constructor(private http: HttpClient, private parameters: ActivatedRoute, private data: DataService) { 
-    
+    this.getParameters();
+    this.folderPath = this.getFolderPath();
+    this.nome = this.getModelName();
   }
 
   ngOnInit() {
-    this.getParameters();
     this.data.getModel(this.path, this.version).subscribe(
       (payload) => {
         if(payload['success']){
@@ -93,6 +103,34 @@ export class ModelerComponent implements OnInit {
     );
   }
 
+  private changeSlash(path) {
+    let newPath = "";
+    for (let i = 0; i < path.length; i++) {
+      if (path[i] == "\\") {
+        newPath = newPath + "%5C";
+      } else {
+        newPath = newPath + path[i];
+      }
+    }
+    return newPath;
+  }
+
+  private uploadModel() {
+    this.data.createModel(this.folderPath + "\\" + this.fileName).subscribe(
+      (payload) => {
+        if (payload['success']) {
+          this.data.saveModel(this.folderPath + "\\" + this.fileName, 0, this.fileContent).subscribe(
+            (data) => {
+              alert("Successfully imported the model");
+            }
+          );
+        } else {
+          alert("Model with same name found. Cannot import");
+        }
+      }
+    );
+  }
+
   getParameters(){
     this.parameters.paramMap.subscribe(
       (params) => {
@@ -104,6 +142,16 @@ export class ModelerComponent implements OnInit {
         }
       }
   );
+  }
+
+  getFolderPath(){
+    let array = this.path.split("\\");
+    let array2 = array.pop();
+    return array.join("\\");
+  }
+
+  getModelName(){
+    return this.path.split("\\").pop();
   }
 
   handleError(err: any) {
@@ -131,6 +179,7 @@ export class ModelerComponent implements OnInit {
     this.overwrite = false;
     this.modeler.saveXML(
       (err: any, xml: any) => {
+        console.log(xml);
         if(err){
           console.log(err);
         } else {
@@ -148,5 +197,98 @@ export class ModelerComponent implements OnInit {
         }
       });
   }
-}
 
+  newModelReqModeler(model){
+    this.data.createModel(this.folderPath + "\\" + model).subscribe(
+      (payload) => {
+        if(payload['success']){
+          let path = this.changeSlash(this.folderPath);
+          window.open("/modeler/" + path + "%5C" + model, '_blank');
+        } else {
+          alert("There was a problem");
+        }
+      }
+    );
+  }
+
+  importModeler() {
+    document.getElementById("upload").click();
+  }
+
+  handleFileInputModeler(files: FileList) {
+    this.file = files[0];
+    this.fileName = this.file.name.replace('.bpmn', '');
+    let fileReader = new FileReader();
+    fileReader.onloadend = (e) => {
+      //Il file è pronto
+      this.fileContent = e['srcElement']['result'];
+      this.uploadModel();
+    }
+    fileReader.readAsText(this.file);
+  }
+
+  runWebService(webService){
+    document.getElementById('imageLoad').style.visibility="visible";
+    this.modeler.saveXML(
+      (err: any, xml: any) => {
+        if(err){
+          console.log(err);
+        } else {
+          this.data.runWebService(webService, xml).subscribe(
+            (payload) => {
+              document.getElementById('imageLoad').style.visibility="hidden";
+              let imageSoundness = document.getElementById('imageSoundness')as HTMLImageElement;
+              let imageSafeness = document.getElementById('imageSafeness')as HTMLImageElement;
+              //Controllo il risultato
+              payload.split(" && ").forEach(function (item) {
+                item.split("\n").forEach(function (element) {
+                  if(element=='0'){
+                    //UNSOUND DEAD TOKEN
+                    imageSoundness.src = this.imageRed;
+                    imageSoundness.style.visibility="visible";
+                  }
+                  if(element=='1'){
+                    //PROPER COMPLETION VIOLATED
+                    imageSoundness.src= this.imageRed;
+                    imageSoundness.style.visibility="visible";
+                  }
+                  if(element=='2'){
+                    //RELAXED SOUND
+                    imageSoundness.src= this.imageYellow;
+                    imageSoundness.style.visibility="visible";
+                  }
+                  if(element=='3'){
+                    //SOUND
+                    imageSoundness.src= this.imageGreen;
+                    imageSoundness.style.visibility="visible";
+                  }
+                  if(element=='4'){
+                    imageSafeness.src= this.imageGreen;
+                    imageSafeness.style.visibility="visible";
+                  }
+                  if(element=='5'){
+                    imageSafeness.src= this.imageRed;
+                    imageSafeness.style.visibility="visible";
+                  }
+                });
+              });
+            },
+            (error) => {
+              document.getElementById('imageLoad').style.visibility="hidden";
+            }
+          );
+        }
+      }
+    );
+  }
+
+  deleteReqModeler(){
+    this.data.deleteModel(this.path).subscribe(
+      (payload) => {
+        if(payload['success']){
+          window.close();
+        }
+      }
+    )
+  }  
+}

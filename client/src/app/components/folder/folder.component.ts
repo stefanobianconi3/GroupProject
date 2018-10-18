@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
+import { ITreeOptions } from 'angular-tree-component';
 import { Folder } from '../../classes/Folder';
-import { TREE_ACTIONS, KEYS, IActionMapping, ITreeOptions } from 'angular-tree-component';
 
 @Component({
   selector: 'app-folder',
@@ -9,14 +9,23 @@ import { TREE_ACTIONS, KEYS, IActionMapping, ITreeOptions } from 'angular-tree-c
 })
 
 export class FolderComponent implements OnInit {
-
   @Input('folder') folder;
   @Output('folderSelected') folderSelected = new EventEmitter();
+  private nodeSelected;
   private options : ITreeOptions = {
     actionMapping: {
       mouse: {
         click: (tree, node, $event) => {
           this.select(node.data);
+          node.expand();
+          if(this.nodeSelected){
+            try{
+              document.getElementById(this.nodeSelected.data.name).style.backgroundColor="rgb(30, 42, 199)";
+            } catch (err) {
+            }
+          }
+          this.nodeSelected = node;
+          document.getElementById(node.data.name).style.backgroundColor="#f57c00";
         }
       }
     }
@@ -29,7 +38,7 @@ export class FolderComponent implements OnInit {
   }
 
   isDir(folder) {
-    if (folder['type'] === "dir") {
+    if (folder['type'] == "dir") {
       return true
     } else {
       return false
@@ -38,5 +47,11 @@ export class FolderComponent implements OnInit {
 
   select(cartella: Folder) {
     this.folderSelected.emit(cartella);
+  }
+
+  hideNode(node){
+    if(node.data.type != 'dir'){
+      node.hide();
+    }
   }
 }

@@ -63,4 +63,22 @@ export class DataService {
     return this.http.post(this.APIURL+"/model", {modelName: path}, { headers: this.headers } );
   }
 
+  deleteModel(path){
+    return this.http.post(this.APIURL+"/model/delete", {modelName: path}, { headers: this.headers });
+  }
+
+  modifyModel(modelName, newModelName){
+    return this.http.put(this.APIURL+"/model", {modelName: modelName, newModelName: newModelName}, { headers: this.headers });
+  }
+
+  runWebService(webService, model){
+    let serviceHeader = new HttpHeaders()
+    .set('Content-Type', 'text/plain');
+    switch(webService){
+      case "s3": {
+        return this.http.post("http://pros.unicam.it:8080/S3/rest/BPMN/Verifier", model, {headers: serviceHeader, responseType: 'text'});
+      }
+    }
+  }
+
 }

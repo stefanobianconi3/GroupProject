@@ -18,6 +18,18 @@ export class RouteGuardService implements CanActivate {
             return false;
         }
       };
+      case "signin":{
+        if(this.auth.isLoggedIn()){
+          
+          this.router.navigate(['dashboard']);
+          return false;
+        }
+        else {
+          return true;
+        }
+
+      };
+
       case "dashboard": {
         if(this.auth.isLoggedIn()){
           return true;

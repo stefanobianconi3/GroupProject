@@ -14,4 +14,101 @@
   left: 17px;
   background-color:  teal;
 }
+#version{
+  text-align:right;
+  width: 14%;
+  position: relative;
+  left: 6px;
 
+}
+
+#save1 {
+  text-align: center;
+  position: relative;
+  top: -200px;
+}
+
+.body{
+	font-family: 'Open Sans', sans-serif;
+	padding-top: 70px;
+}
+
+body{
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* navbar dopo il login */
+
+.navbar{
+	height: 50px;
+	background: rgb(30, 42, 199);
+	border-bottom-color: teal;
+	border-bottom-style: solid; 
+
+}
+.navbar-brand{
+	color: white;
+}
+
+.nav-link{
+	position: relative;
+	color: white;
+}
+
+.nav-link dropdown-toggle{
+	color: white;
+}
+
+.d-flex{
+	position: absolute;
+	left: 5px;
+	top: 11px;
+	height: 32px;
+	z-index: 999;
+}
+
+#file {
+	position: relative;
+	top: -3px;
+	left: 250px;
+}
+
+#discover {
+  position: relative;
+  top: -3px;
+  left: 300px;
+}
+
+/**
+* Definiamo lo stile del titolo(logo) del pannello  
+*/
+#logo{
+	color: rgb(255, 255, 255);
+	font-size: 17px;
+	position: absolute;
+	top: 5px;
+	left: 5px;
+}
+#imageLoad{
+	position: relative;
+	height: 30px;
+	margin-top: -470px; 
+	margin-left: 20px;
+	visibility: hidden;
+}
+
+#imageSoundness{
+	position: relative;
+	height: 30px;
+	margin-top: -470px; 
+	margin-left: 30px;
+	visibility: hidden;
+}
+
+#imageSafeness{
+	position: relative;
+	height: 30px;
+	margin-top: -470px; 
+	margin-left: 40px;
+	visibility: hidden;
+}

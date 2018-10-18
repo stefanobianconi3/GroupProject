@@ -7,7 +7,7 @@ import { NavbarComponent } from './app/components/navbar/navbar.component';
 import { HomePageComponent } from './app/components/home-page/home-page.component';
 import { DashboardComponent } from 'src/app/components/dashboard/dashboard.component';
 import { SigninComponent } from 'src/app/components/signin/signin.component';
-import { RoutingModuleModule } from 'src/app/routing-module.module';
+import { RoutingModuleModule } from 'src/app/modules/routing-module.module';
 import { AuthService } from 'src/app/services/auth.service';
 import { NgForm, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
@@ -17,6 +17,7 @@ import { ModelerComponent } from 'src/app/components/modeler/modeler.component';
 import { DashbodyComponent } from 'src/app/components/dashbody/dashbody.component';
 import { FolderComponent } from 'src/app/components/folder/folder.component';
 import { SidenavComponent } from 'src/app/components/sidenav/sidenav.component';
+import { SharedFolder } from './app/services/SharedFolder';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,7 @@ import { SidenavComponent } from 'src/app/components/sidenav/sidenav.component';
     TreeModule.forRoot()
   ],
 
-  providers: [AuthService],
+  providers: [AuthService, SharedFolder],
 
   schemas: [ NO_ERRORS_SCHEMA ],
 

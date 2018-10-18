@@ -5,6 +5,7 @@
 			<div class="col-sm-6">
 				<div class="logo">ProsChain</div>
 			</div>
+			
 			<div class="col-sm-6 hidden-xs">
 				<form  name="loginForm" #f="ngForm" (ngSubmit)="logIn(f)" >
 				<div class="row">
@@ -31,12 +32,18 @@
 					</div>
 					<div class="col-sm-2">
 						<div class="btn-group btn-sm">
-								<button type="submit" [disabled]="!f.valid" value="Login" class="btn btn-outline-dark btn-sm">Login</button>
-								<button type="button" value="Sign In" class="btn btn-outline-dark btn-sm" (click)="signin(f.form)" >Sign In</button> 
+								<button type="submit" [disabled]="!f.valid" value="Login" class="btn btn-outline-light btn-sm">Login</button>
+								<button type="button" value="Sign In" class="btn btn-outline-light btn-sm" (click)="signin(f.form)" >Sign In</button> 
 						</div>
 					</div>
 				</div>	
-			    </form>
+				</form>
+
+				<div *ngIf="newUser" class="alert alert-success" role="alert" id="alert">Account create, please do your login
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
 		    </div>
 			
 		</div>	
@@ -44,11 +51,11 @@
 </header>
 <!-- Qua sotto la navbar per quando è loggato -->
 <ng-template #logged>
-	<body id="bodyNav">
+	<body id="bodyNav" *ngIf="showNavbar">
 		<div class="navbar navbar-default navbar-fixed-top">
 			<div class="row">
 				
-				<h2 class="logo2">Welcome {{nome}}</h2>
+				<h2 class="logo2">Hi {{nome}}</h2>
 				
 				<div class="d-flex animated fadeInRightBig">
 					<div class="btn-group" id="file" mdbDropdown>
@@ -57,11 +64,10 @@
 						</button>
 					
 						<div class="dropdown-menu dropdown-primary">
-							<a class="dropdown-item" href="#">Action</a>
-							<a class="dropdown-item" href="#">Another action</a>
-							<a class="dropdown-item" href="#">Something else here</a>
+							<a class="dropdown-item" data-toggle="modal" data-target="#createModel">New Model</a>
 							<div class="divider dropdown-divider"></div>
-							<a class="dropdown-item" href="#">Separated link</a>
+							<a class="dropdown-item" (click)="import()">Import Model</a>
+							<input type="file" accept=".bpmn" id="upload" (change)="handleFileInput($event.target.files)" hidden />
 						</div>
 					</div>
 					<div class="btn-group" id="discover" mdbDropdown>
@@ -126,7 +132,7 @@
 					</div>
 
 					<div class="logout-button">
-						<button *ngIf="isLogged" type="button" value="Logout" class="btn btn-outline-dark btn-sm" (click)="logout($event)">Logout</button>
+						<button *ngIf="isLogged" type="button" value="Logout" class="btn btn-outline-blue-grey btn-sm" (click)="logout($event)">Logout</button>
 					</div>
 				</div>
 				
@@ -135,3 +141,25 @@
 		</div>
 	</body>
 </ng-template>
+
+<!-- Modal -->
+<div class="modal fade" id="createModel" tabindex="-1" role="dialog" aria-labelledby="versionLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="versionLabel">Create Model</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+		  <span>You are going to create a new model into this path <strong><br>{{folderSelect.path}}<br></strong></span>
+		  <input type="text" id="newModel1" [(ngModel)]="newModel" />
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		  <button type="button" class="btn btn-primary" (click)="newModelReq(newModel)" onclick="$('.modal').modal('hide')">Save Changes</button>
+		</div>
+	  </div>
+	</div> 
+</div>

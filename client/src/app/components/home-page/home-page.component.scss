@@ -1,12 +1,29 @@
-.welcome{
-    margin-top: 15px;
-    margin-left: 25px;
+.body {
+    height: 50em;
+    background-image: url("http://darwinbiz.com/wp-content/uploads/2015/11/business-efficiency.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-attachment: local;
 }
-.test{
-    margin-left: 10px;
-    margin-right: 10px; 
+
+#logoUnicam {
+    position: relative;
+    top: 10px;
+    text-align: center;
 }
-.footer{
-    margin-top: 15px;
-    margin-left: 25px;
+
+.text-center {
+    position: relative;
+    top: 30px;
+    margin-right: 15px;
+    margin-left: 15px;
+    opacity: 0.95;
 }
+
+#pros {
+    position: relative;
+    top: 5px;
+}
+
+
+

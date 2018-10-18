@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { DataService } from 'src/app/services/data.service';
-import { NgForm } from '@angular/forms';
-import { Folder } from '../../classes/Folder'
+import { SharedFolder } from 'src/app/services/SharedFolder';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,10 +9,23 @@ import { Folder } from '../../classes/Folder'
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  @Output() folderSelected = new EventEmitter();
   private models: any;
   private modelsPath: any;
+  private folder: any;
 
-  constructor(private http: HttpClientModule, private data: DataService) { }
+  constructor(private http: HttpClientModule, private data: DataService, private sharedFolder: SharedFolder) { 
+    
+  }
+
+  ngOnInit() {
+    this.checkTokenValidity();
+    this.sharedFolder.getData().subscribe(
+      (f) => {
+        this.folder = f;
+      }
+    );
+  }
 
   checkTokenValidity() {
     this.data.checkToken();
@@ -21,9 +33,16 @@ export class DashboardComponent implements OnInit {
 
   select(f) {
     this.models = f;
+    this.folderSelected.emit(f);
   }
-  ngOnInit() {
-    this.checkTokenValidity();
+
+  modelChanged(data) {
+    this.folder = [{
+      name: localStorage.getItem('nome'),
+      path: "/",
+      type: "dir",
+      children: data
+    }];
   }
 
 }

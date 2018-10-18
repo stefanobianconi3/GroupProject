@@ -1,7 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { DataService } from 'src/app/services/data.service';
-import { NgForm } from '@angular/forms';
 import { Folder } from '../../classes/Folder';
 
 @Component({
@@ -11,16 +10,16 @@ import { Folder } from '../../classes/Folder';
 })
 export class SidenavComponent implements OnInit {
   @ViewChild('mylabel') mylabel: ElementRef
-  private folder = [];
-  private side: boolean = true;
-  @Input() folderName;
+  @Input() folder = [];
   @Output() selezionata2 = new EventEmitter();
-  constructor(private http: HttpClientModule, private data: DataService) { }
-  private selected:Folder;
+  private side: boolean = true;
+  private selected:Folder = new Folder();
   private nameSelected;
   private selctedbool = false;
   private msgerror = false;
   private modifica = false;
+
+  constructor(private http: HttpClientModule, private data: DataService) { }
 
   ngOnInit() {
     let el: HTMLElement = this.mylabel.nativeElement as HTMLElement;
@@ -28,12 +27,28 @@ export class SidenavComponent implements OnInit {
     this.data.getFolder().subscribe(
       (payload) => {
         if (payload['success']) {
-          this.folder = payload['data'];
+          this.generateNewTree(payload['data'])
         } else {
           console.log(payload['error'])
         }
       }
     )
+  }
+
+  private generateNewPath(oldPath: String, newName) {
+    let array = oldPath.split("\\");
+    array[array.length - 1] = newName;
+    return array.join("\\");
+  }
+
+  private generateNewTree(data) {
+    let root = [{
+      name: localStorage.getItem('nome'),
+      path: "/",
+      type: "dir",
+      children: data
+    }];
+    this.folder = root;
   }
 
   openNav() {
@@ -64,19 +79,13 @@ export class SidenavComponent implements OnInit {
     this.msgerror = false;
   }
 
-  private generateNewPath(oldPath: String, newName) {
-    let array = oldPath.split("\\");
-    array[array.length - 1] = newName;
-    return array.join("\\");
-  }
-
-  modifyFolder(newFolderName) {
+  modifyFolderReq(newFolderName) {
     if (this.selected) {
       this.msgerror = false;
       this.data.modifyFolder(this.selected.path, this.generateNewPath(this.selected.path, newFolderName)).subscribe(
         (payload) => {
           if (payload['success']) {
-            this.folder = payload['data'];
+            this.generateNewTree(payload['data']);
           } else {
             console.log(payload['error'])
           }
@@ -87,13 +96,15 @@ export class SidenavComponent implements OnInit {
     }
   }
 
-  deleteFolder() {
+  deleteFolderReq() {
     if (this.selected) {
       this.msgerror = false;
       this.data.deleteFolder(this.selected.path).subscribe(
         (payload) => {
           if (payload['success']) {
-            this.folder = payload['data'];
+            this.generateNewTree(payload['data']);
+            this.selected = new Folder("root", "dir", "/", this.folder['children']);
+            this.nameSelected = "";
           } else {
             console.log(payload['error'])
           }
@@ -105,11 +116,11 @@ export class SidenavComponent implements OnInit {
   }
 
   newFolderReq(foldername) {
-    if (this.selected) {
+    if (this.selected.path != "/") {
       this.data.newFolder(this.selected.path + "\\" + "\\" + foldername).subscribe(
         (payload) => {
           if (payload['success']) {
-            this.folder = payload['data'];
+            this.generateNewTree(payload['data']);
           } else {
             console.log(payload['error'])
           }
@@ -118,7 +129,7 @@ export class SidenavComponent implements OnInit {
       this.data.newFolder(foldername).subscribe(
         (payload) => {
           if (payload['success']) {
-            this.folder = payload['data'];
+            this.generateNewTree(payload['data']);
           } else {
             console.log(payload['error'])
           }

@@ -1,65 +1,101 @@
 <div id="dash">
-  <div id="icone" class="animated zoomIn">
-      <button mdbBtn type="button" class="btn btn-sm" title="Refresh" id="provaColore" mdbWavesEffect><mdb-icon icon="refresh" size="2x"></mdb-icon></button>
-      <button mdbBtn type="button" class="btn btn-sm" title="bla bla bla" id="provaColore" mdbWavesEffect><mdb-icon icon="smile-o" size="2x"></mdb-icon></button>
-      <button mdbBtn type="button" class="btn btn-sm" title="bla bla bla" id="provaColore" mdbWavesEffect><mdb-icon icon="cab" size="2x"></mdb-icon></button>
-      <button mdbBtn type="button" class="btn btn-sm" title="bla bla bla" id="provaColore" mdbWavesEffect><mdb-icon icon="vcard" size="2x"></mdb-icon></button>
-      <button mdbBtn type="button" class="btn btn-sm" title="Security" id="provaColore" mdbWavesEffect><mdb-icon icon="key" size="2x"></mdb-icon></button>
-      <button mdbBtn type="button" class="btn btn-sm" (click)="createNewModel(modelName)" title="New model" id="newModel" mdbWavesEffect><mdb-icon icon="file-o" size="2x"></mdb-icon></button>
-
-      <div class="md-form form-sm" id="modello" >
-        <input type="text" id="form1" class="form-control" [(ngModel)]="modelName" placeholder="  nome modello">
-        
-      </div>
- 
-  </div>   
-      <div class="table-responsive">
-        <table class="table table-hover table-lg" >
-          <thead id="tHead">
+  <div class="table-responsive">
+    <table class="table table-hover table-bordered table-sm">
+        <thead>
             <tr>
-              <th scope="col">Name</th>
-              <th scope="col">Latest Version</th>
-              <th scope="col">Ultima Modifica</th>
+              <th scope="col" id="name">Name</th>
+              <th scope="col" id="latestVersion">Latest Version</th>
+              <th scope="col" id="actions">Actions</th>
             </tr>
           </thead>
-          
-          <tbody *ngFor="let f of models['children']" id="tBody">
-            
-            <tr *ngIf="f['type']=='model'">
-              <a scope="row" (click)="chooseVersion(f)" data-toggle="modal" data-target="#versionModal">
-                <td>{{f.name}}</td></a>
-                <td>{{getVersion(f)}}</td>
-                <td>gg/mm/aaaa 00:00</td>
-            </tr>
-            
-          <!-- Modal -->
-          <div class="modal fade" *ngIf="multipleVersion" id="versionModal" tabindex="-1" role="dialog" aria-labelledby="versionLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="versionLabel">Version</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <span>What version would you open? </span>
-                  <select class="selectpicker" [(ngModel)]="versionNumber">
-                    <option *ngFor="let n of model['children']">
-                      {{n.name.replace('.xml', '')}}
-                    </option>
-                  </select>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary" (click)="openModel(undefined, versionNumber)" onclick="$('.modal').modal('hide')">Open Model</button>
-                </div>
+      
+      <tbody *ngFor="let f of models['children']">
+
+        <tr *ngIf="f['type']=='model'" id="{{f.name}}">
+          <td scope="row" (click)="chooseVersion(f)" data-toggle="modal" data-target="#versionModal" id="posModello">
+            <a>
+              {{f.name}}
+            </a>
+          </td>
+          <td (click)="selectModel(f)" id="posVersione">{{getVersion(f)}}</td>
+          <td (click)="selectModel(f)" id="posActions">
+            <button mdbBtn type="button" class="btn btn-sm" title="Rename" id="editButton" (click)="modify(f)" data-toggle="modal" data-target="#modifyModel" mdbWavesEffect><mdb-icon icon="pencil-square-o" size="2x" id="pencil"></mdb-icon></button>
+            <button mdbBtn type="button" class="btn btn-sm" title="Export" id="exportButton" (click)="export(f)" mdbWavesEffect><mdb-icon icon="download" size="2x"></mdb-icon></button>
+            <button mdbBtn type="button" class="btn btn-sm" title="Delete" id="deleteButton" (click)="delete(f)" data-toggle="modal" data-target="#deleteModel" mdbWavesEffect><mdb-icon icon="trash-o" size="2x"></mdb-icon></button>
+          </td>
+        </tr>
+
+        <!-- Modal -->
+        <div class="modal fade" *ngIf="multipleVersion" id="versionModal" tabindex="-1" role="dialog" aria-labelledby="versionLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="versionLabel">Version</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <span>What version would you open? </span>
+                <select class="selectpicker" [(ngModel)]="versionNumber">
+                  <option *ngFor="let n of modelToOpen['children']">
+                    {{n.name.replace('.xml', '')}}
+                  </option>
+                </select>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="openModel(undefined, versionNumber)" onclick="$('.modal').modal('hide')">Open Model</button>
               </div>
             </div>
           </div>
+        </div>
 
-          </tbody>
-          
-        </table>
+      </tbody>
+
+    </table>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" *ngIf="modelSelected" id="modifyModel" tabindex="-1" role="dialog" aria-labelledby="versionLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="versionLabel">Modify Model</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
+      <div class="modal-body">
+        <span>You are going to modify the model with the current name <strong><br>{{modelSelected.name}}<br></strong></span>
+        <input type="text" id="modifyModel1" [(ngModel)]="modifyModel" />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="modifyModelReq(modifyModel)" onclick="$('.modal').modal('hide')">Save Changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" *ngIf="modelSelected" id="deleteModel" tabindex="-1" role="dialog" aria-labelledby="versionLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="versionLabel">Delete Model</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <span>Are you sure you want to delete <strong>{{modelSelected.name}}</strong>? This action cannot be undone</span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="deleteModelReq()" onclick="$('.modal').modal('hide')">Save Changes</button>
+      </div>
+    </div>
+  </div>
 </div>
