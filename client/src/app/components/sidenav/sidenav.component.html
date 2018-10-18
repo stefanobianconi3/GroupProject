@@ -24,8 +24,8 @@
           <span>Are you sure you want to delete <strong>{{nameSelected}}</strong> ? This action cannot be undone</span>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-danger" (click)="deleteFolderReq()" onclick="$('.modal').modal('hide')">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger" (click)="deleteFolderReq()" onclick="$('.modal').modal('hide')">Delete</button>
         </div>
       </div>
     </div>
@@ -43,8 +43,8 @@
           <input type="text" id="newFolder" [(ngModel)]="newFolder" />
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-danger" (click)="newFolderReq(newFolder)" onclick="$('.modal').modal('hide')">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="newFolderReq(newFolder)" onclick="$('.modal').modal('hide')">Create</button>
         </div>
       </div>
     </div>
@@ -62,8 +62,8 @@
           <input type="text" id="modifyFolder" value="" [(ngModel)]="modifyFolder" />
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-danger" (click)="modifyFolderReq(modifyFolder)" onclick="$('.modal').modal('hide')">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="modifyFolderReq(modifyFolder)" onclick="$('.modal').modal('hide')">Save changes</button>
         </div>
       </div>
     </div>
