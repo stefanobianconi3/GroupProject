@@ -36,9 +36,15 @@ export class SidenavComponent implements OnInit {
   }
 
   private generateNewPath(oldPath: String, newName) {
-    let array = oldPath.split("\\");
-    array[array.length - 1] = newName;
-    return array.join("\\");
+    if(oldPath.indexOf("\\") != -1){
+      let array = oldPath.split("\\");
+      array[array.length - 1] = newName;
+      return array.join("\\");
+    } else {
+      let array = oldPath.split("/");
+      array[array.length - 1] = newName;
+      return array.join("/");
+    }
   }
 
   private generateNewTree(data) {
