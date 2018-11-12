@@ -79,12 +79,13 @@ Qui sarà presente una lista bug. Premessa: il sito non è responsive al 100%. P
 * Cartella root con il nome dell'utente (lato client)
 * Cambiare schermata iniziale
 * Integrazione webservice
-
-# TODO #
-
 * Migliorare integrazione webservice
 * Migliorare bottoni sulla navbar
 * Re-Inserire selezione modello
+
+# TODO #
+
+
 
 # Future Work (Ideas) #
 
