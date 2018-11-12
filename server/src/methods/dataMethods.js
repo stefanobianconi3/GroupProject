@@ -79,7 +79,15 @@ function createFile(path, name, content) {
 module.exports = {
 
     recalcPath: function(path){
-        return path.replace(/\\/g,"/");
+        let newPath=""
+        for(let i = 0; i<path.length; i++){
+            if(path[i] == "\\"){
+                newPath = newPath + "/"
+            } else {
+                newPath = newPath + path[i]
+            }
+        }
+        return newPath
     },
 
     readDirectory: function (id) {
