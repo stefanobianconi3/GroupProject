@@ -1,6 +1,12 @@
 # Pros Chain #
 
-Questo repository è solo per fini scolastici. Qualunque azione non autorizzata è severamente vietata
+Questo repository è solo per fini scolastici. Qualunque azione non autorizzata è severamente vietata.
+
+Università degli Studi di Camerino. 
+Autori:
+Daniele Moscati.
+Stefano Bianconi.
+Gian Marco Pazzaglia.
 
 # Descrizione #
 
