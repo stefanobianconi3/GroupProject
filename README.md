@@ -4,9 +4,9 @@ Questo repository è solo per fini scolastici. Qualunque azione non autorizzata 
 
 Università degli Studi di Camerino. 
 Autori:
-Daniele Moscati.
-Stefano Bianconi.
-Gian Marco Pazzaglia.
+* Daniele Moscati.
+* Stefano Bianconi.
+* Gian Marco Pazzaglia.
 
 # Descrizione #
 
